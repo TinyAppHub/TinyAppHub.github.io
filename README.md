@@ -4,7 +4,7 @@
 
 A simple, mobile-friendly web application designed to estimate blood alcohol content (BAC) and the time required to reach complete sobriety (**0.00‰**).
 
-🔗 **[Live Demo Here](A TE LINKED LESZ IDE)**
+🔗 **[Live Demo Here](https://tinyapphub.github.io/)**
 
 ## ⚠️ Important Legal Disclaimer
 
