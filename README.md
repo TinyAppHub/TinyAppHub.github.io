@@ -1,5 +1,3 @@
-# TinyAppHub.github.io
-
 # 🍷 Sober Up - Blood Alcohol Estimator
 
 A simple, mobile-friendly web application designed to estimate blood alcohol content (BAC) and the time required to reach complete sobriety (**0.00‰**).
