@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sober Up Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🍷 Sober Up</h1>
+            <p>Worst-case scenario estimator</p>
+        </header>
+
+        <div class="card">
+            <h2>1. Personal Info</h2>
+            <div class="row">
+                <div class="col">
+                    <label>Gender</label>
+                    <select id="gender">
+                        <option value="0.68">Male</option>
+                        <option value="0.55">Female</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="80">
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top: 15px;">
+                <div class="col">
+                    <label>When did you stop drinking?</label>
+                    <input type="time" id="startTime">
+                    <small>Leave empty if "Right Now"</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2. What did you drink?</h2>
+            
+            <div class="drink-selector">
+                <label>Select Drink Type:</label>
+                <select id="drinkPreset">
+                    <option value="custom">-- Custom --</option>
+                    <option value="beer_small">Small Beer (330ml, 5%)</option>
+                    <option value="beer_large">Large Beer (500ml, 5%)</option>
+                    <option value="wine">Glass of Wine (100ml, 12%)</option>
+                    <option value="wine_large">Large Wine (150ml, 12%)</option>
+                    <option value="shot">Shot / Spirit (40ml, 40%)</option>
+                    <option value="cocktail">Strong Cocktail (200ml, 10%)</option>
+                </select>
+            </div>
+
+            <div class="row custom-inputs" style="margin-top: 10px;">
+                <div class="col">
+                    <input type="number" id="customVol" placeholder="ml">
+                </div>
+                <div class="col">
+                    <input type="number" id="customAlc" placeholder="Alc %">
+                </div>
+            </div>
+
+            <button id="addDrinkBtn" class="btn-outline">+ Add Drink</button>
+
+            <ul id="drinkList" class="drink-list"></ul>
+        </div>
+
+        <button id="calculateBtn" class="btn-primary">CALCULATE SAFE TIME</button>
+
+        <div id="resultSection" class="result-card hidden">
+            <h3>Safe to Drive Estimate</h3>
+            <div class="big-time" id="safeTimeDisplay">--:--</div>
+            <p>Time remaining: <span id="hoursLeft">0</span> hours <span id="minsLeft">0</span> mins</p>
+            <hr style="border: 0; border-top: 1px solid #333;">
+            <div class="details">
+                <p>Est. Peak BAC: <span id="peakBac">0.00</span> ‰</p>
+                <p>Total Pure Alcohol: <span id="totalAlcohol">0</span> g</p>
+            </div>
+            
+            <div class="disclaimer">
+                <strong>⚠️ LEGAL DISCLAIMER & METHODOLOGY</strong><br><br>
+                
+                <p><strong>How it works:</strong> Calculations are based on the internationally recognized <em>Widmark formula</em>. To prioritize safety, this tool uses a conservative elimination rate of <strong>0.10 ‰/h</strong> (slower than average) and calculates the time until <strong>complete sobriety (0.00‰)</strong>.</p>
+                
+                <p><strong>Terms of Use:</strong> This application is for <strong>educational and entertainment purposes only</strong>. It is NOT a medical device and CANNOT guarantee sobriety. Real-world blood alcohol levels depend on individual metabolism, food intake, medication, and liver function.</p>
+
+                <p><strong>Liability Waiver:</strong> By using this tool, you agree that the developer assumes <strong>NO LIABILITY</strong> for any decisions made based on these results. You are solely responsible for your actions.</p>
+
+                <p style="color: #cf6679; font-weight: bold;">KNOW YOUR LOCAL LAWS: Legal blood alcohol limits vary by country and region (e.g., 0.00‰, 0.05‰, 0.08‰). It is your sole responsibility to know and adhere to the traffic laws of the jurisdiction where you are operating a vehicle. When in doubt, do not drive.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
