@@ -1,4 +1,9 @@
-:root { --bg: #121212; --card: #1e1e1e; --text: #e0e0e0; --primary: #bb86fc; }
+:root { 
+    --bg: #121212; 
+    --card: #1e1e1e; 
+    --text: #e0e0e0; 
+    --primary: #bb86fc; 
+}
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
@@ -7,21 +12,52 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.container { max-width: 600px; margin: 0 auto; width: 100%; }
-.center-all { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh; }
+.lang-switch { 
+    position: absolute; 
+    top: 20px; 
+    right: 20px; 
+    cursor: pointer; 
+    font-size: 1.5rem; 
+    user-select: none; 
+    padding: 10px;
+}
 
-.lang-switch { position: absolute; top: 20px; right: 20px; cursor: pointer; font-size: 1.5rem; user-select: none; }
+.container { 
+    max-width: 600px; 
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-header { text-align: center; margin-bottom: 40px; }
-h1 { color: var(--primary); margin: 0 0 10px 0; font-size: 2.5rem; }
-p { color: #888; margin: 0; }
+header { 
+    text-align: center; 
+    margin-bottom: 40px; 
+}
+
+h1 { 
+    color: var(--primary); 
+    margin: 0 0 10px 0; 
+    font-size: 2.5rem; 
+}
+
+p { 
+    color: #888; 
+    margin: 0; 
+    font-size: 1rem;
+}
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 15px;
     width: 100%;
 }
@@ -35,15 +71,26 @@ p { color: #888; margin: 0; }
     color: white;
     transition: transform 0.2s, border-color 0.2s;
     border: 1px solid #333;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 150px;
+    
+    height: 140px; 
 }
 
-.card:active { transform: scale(0.98); }
-.card:hover { border-color: var(--primary); transform: translateY(-3px); }
+.card:active { 
+    transform: scale(0.96); 
+    border-color: var(--primary);
+}
 
-.icon { font-size: 3rem; margin-bottom: 15px; }
+@media (hover: hover) {
+    .card:hover { 
+        border-color: var(--primary); 
+        transform: translateY(-5px); 
+    }
+}
+
+.icon { font-size: 3rem; margin-bottom: 10px; }
 .card-title { font-weight: bold; font-size: 1.1rem; }
