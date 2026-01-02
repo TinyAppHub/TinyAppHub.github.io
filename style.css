@@ -11,6 +11,10 @@
     --border: #333;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
@@ -23,6 +27,7 @@ body {
 .container {
     max-width: 500px;
     margin: 0 auto;
+    width: 100%;
 }
 
 header {
@@ -43,8 +48,15 @@ header p { margin: 5px 0 0; color: var(--text-muted); font-size: 0.9rem; }
 
 h2 { font-size: 1.1rem; margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
 
-.row { display: flex; gap: 10px; }
-.col { flex: 1; }
+.row { 
+    display: flex; 
+    gap: 10px; 
+}
+
+.col { 
+    flex: 1; 
+    min-width: 0; 
+}
 
 label {
     display: block;
@@ -55,13 +67,20 @@ label {
 
 input, select {
     width: 100%;
+    max-width: 100%; 
     background-color: var(--input-bg);
     border: 1px solid var(--border);
     color: var(--text-main);
     padding: 12px;
     border-radius: 8px;
-    box-sizing: border-box;
     font-size: 1rem;
+    -webkit-appearance: none; 
+    appearance: none;
+}
+
+input[type="time"] {
+    -webkit-appearance: none;
+    display: block;
 }
 
 input:focus, select:focus {
@@ -127,6 +146,7 @@ input:focus, select:focus {
     font-weight: bold;
     color: #fff;
     margin: 10px 0;
+    word-wrap: break-word; 
 }
 
 .details {
