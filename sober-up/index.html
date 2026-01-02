@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sober Up Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-btn">← Menu</a>
+            <h1 data-key="title">Sober Up</h1>
+            <div class="lang-btn" id="langBtn">🇭🇺 / 🇬🇧</div>
+        </header>
+        <p style="text-align: center; color: #888; margin-top: -15px; margin-bottom: 20px;" data-key="subtitle">Worst-case scenario estimator</p>
+
+        <div class="card">
+            <h2 data-key="secPersonal">1. Personal Info</h2>
+            <div class="row">
+                <div class="col">
+                    <label data-key="gender">Gender</label>
+                    <select id="gender">
+                        <option value="0.68" data-key="male">Male</option>
+                        <option value="0.55" data-key="female">Female</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label data-key="weight">Weight (kg)</label>
+                    <input type="number" id="weight" data-key="phWeight" placeholder="80">
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top: 15px;">
+                <div class="col">
+                    <label data-key="stopTime">When did you stop?</label>
+                    <input type="time" id="startTime">
+                    <small data-key="timeHint">Leave empty if "Right Now"</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 data-key="secDrinks">2. What did you drink?</h2>
+            
+            <div class="drink-selector">
+                <label data-key="selectLabel">Select Drink Type:</label>
+                <select id="drinkPreset">
+                    <option value="custom" data-key="optCustom">-- Custom --</option>
+                    <option value="beer_small" data-key="optBeerS">Small Beer (330ml, 5%)</option>
+                    <option value="beer_large" data-key="optBeerL">Large Beer (500ml, 5%)</option>
+                    <option value="wine" data-key="optWine">Glass of Wine (100ml, 12%)</option>
+                    <option value="wine_large" data-key="optWineL">Large Wine (150ml, 12%)</option>
+                    <option value="shot" data-key="optShot">Shot / Spirit (40ml, 40%)</option>
+                    <option value="cocktail" data-key="optCocktail">Strong Cocktail (200ml, 10%)</option>
+                </select>
+            </div>
+
+            <div class="row custom-inputs" style="margin-top: 10px;">
+                <div class="col">
+                    <input type="number" id="customVol" placeholder="ml">
+                </div>
+                <div class="col">
+                    <input type="number" id="customAlc" placeholder="Alc %">
+                </div>
+            </div>
+
+            <button id="addDrinkBtn" class="btn-outline" data-key="btnAdd">+ Add Drink</button>
+
+            <ul id="drinkList" class="drink-list"></ul>
+        </div>
+
+        <button id="calculateBtn" class="btn-primary" data-key="btnCalc">CALCULATE SAFE TIME</button>
+
+        <div id="resultSection" class="result-card hidden">
+            <h3 data-key="resTitle">Safe to Drive Estimate</h3>
+            <div class="big-time" id="safeTimeDisplay">--:--</div>
+            <p><span data-key="resTime">Time remaining:</span> <span id="hoursLeft">0</span> <span data-key="h">h</span> <span id="minsLeft">0</span> <span data-key="m">m</span></p>
+            <hr style="border: 0; border-top: 1px solid #333;">
+            <div class="details">
+                <p>BAC: <span id="peakBac">0.00</span> ‰</p>
+                <p>Alc: <span id="totalAlcohol">0</span> g</p>
+            </div>
+            
+            <div class="disclaimer">
+                <strong data-key="discTitle">⚠️ LEGAL DISCLAIMER</strong><br><br>
+                <p data-key="discText1">Calculations use the <strong>Widmark formula</strong> with a conservative <strong>0.10 ‰/h</strong> elimination rate to reach <strong>0.00‰</strong>.</p>
+                <p data-key="discText2">This tool is for <strong>educational purposes only</strong>. It is NOT a medical device. Driving under the influence is dangerous and illegal.</p>
+                <p style="color: #cf6679; font-weight: bold;" data-key="discWarn">KNOW YOUR LOCAL LAWS. If in doubt, do not drive.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

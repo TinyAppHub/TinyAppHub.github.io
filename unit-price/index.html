@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Winner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-btn">← Menu</a>
+        <h1 data-key="title">Price Winner</h1>
+        <div class="lang-btn" id="langBtn">🇭🇺 / 🇬🇧</div>
+    </header>
+
+    <div class="container-flex">
+        <div class="prod-col" id="colA">
+            <h3 data-key="prodA">Product A</h3>
+            <input type="number" id="pA" data-key="phPrice" placeholder="Price">
+            <input type="number" id="qA" data-key="phQty" placeholder="Qty">
+        </div>
+        <div class="prod-col" id="colB">
+            <h3 data-key="prodB">Product B</h3>
+            <input type="number" id="pB" data-key="phPrice" placeholder="Price">
+            <input type="number" id="qB" data-key="phQty" placeholder="Qty">
+        </div>
+    </div>
+
+    <button id="calcBtn" class="btn-primary" data-key="btnCalc">COMPARE</button>
+
+    <div id="result" class="result-box hidden">
+        <div id="winText" class="winner-text"></div>
+        <div id="saveText" class="saving-text"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Should I buy?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-btn">← Menu</a>
+        <h1 data-key="title">Should I Buy?</h1>
+        <div class="lang-btn" id="langBtn">🇭🇺 / 🇬🇧</div>
+    </header>
+
+    <div class="card">
+        <label data-key="salary">Net Salary</label>
+        <div class="row">
+            <div class="col-2"><input type="number" id="salary"></div>
+            <div class="col-1">
+                <select id="type">
+                    <option value="month" data-key="mo">Month</option>
+                    <option value="hour" data-key="hr">Hour</option>
+                </select>
+            </div>
+        </div>
+        <small data-key="saved">Saved on device</small>
+    </div>
+
+    <div class="card">
+        <label data-key="price">Product Price</label>
+        <input type="number" id="price">
+        <button id="calcBtn" class="btn-primary" data-key="btn">CALCULATE TIME</button>
+    </div>
+
+    <div id="result" class="result-box hidden">
+        <div data-key="resText">Cost in time:</div>
+        <div class="big-time" id="timeDisplay">--</div>
+        <div class="details" id="detailsDisplay"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
