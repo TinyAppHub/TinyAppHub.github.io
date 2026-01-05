@@ -18,8 +18,6 @@ A simple, mobile-friendly web application designed to estimate blood alcohol con
 
 ## 🛠 Features
 
-- "Dark Mode" design for night usage.
-- Preset drink sizes (Beer, Wine, Spirits).
 - "Worst-case scenario" algorithm.
 - Privacy-focused: No data is sent to any server; everything runs in your browser.
 
