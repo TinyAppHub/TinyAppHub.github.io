@@ -382,6 +382,17 @@
             max-width: 400px;
         }
         
+        /* Auto advance kapcsoló - FRISSÍTVE A KÉRÉS ALAPJÁN */
+        .auto-advance-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: var(--option-hover);
+        }
+        
     </style>
 </head>
 <body>
@@ -445,9 +456,19 @@
                 </div>
             </div>
             
-            <div class="text-end">
-                <div class="fs-4 fw-bold text-success" id="score-display">0 pont</div>
-                <button class="btn btn-sm btn-link text-muted text-decoration-none" onclick="location.reload()">Kilépés</button>
+            <div class="d-flex align-items-center">
+                
+                <div class="auto-advance-container" title="Ha bekapcsolod, kattintásra azonnal értékel és ugrik!">
+                    <div class="form-check form-switch m-0 d-flex align-items-center">
+                        <input class="form-check-input me-2" type="checkbox" id="auto-advance-toggle">
+                        <label class="form-check-label small fw-bold text-muted cursor-pointer mb-0" for="auto-advance-toggle">⚡</label>
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <div class="fs-4 fw-bold text-success" id="score-display">0 pont</div>
+                    <button class="btn btn-sm btn-link text-muted text-decoration-none" onclick="location.reload()">Kilépés</button>
+                </div>
             </div>
         </div>
 
@@ -512,6 +533,7 @@
     let quizQuestions = []; 
     let isOverrideMode = false;
     let isLinearMode = false;
+    let autoAdvanceTimer = null; 
 
     // Sötét mód kezelése
     function toggleTheme() {
@@ -540,7 +562,7 @@
     window.onload = function() {
         // Téma betöltése
         if (localStorage.getItem('mi_quiz_theme') === 'dark') {
-            toggleTheme(); // Ez átbillenti sötétre
+            toggleTheme(); 
         }
 
         if (typeof questions === 'undefined' || questions.length === 0) {
@@ -567,28 +589,33 @@
         const overrideBadge = document.getElementById('override-indicator');
         const navWrapper = document.getElementById('pagination-wrapper');
 
+        // Auto advance alaphelyzet
+        document.getElementById('auto-advance-toggle').checked = false;
+
         if (isOverrideMode) {
-            // JAVÍTÓ MÓD: Eredeti sorrend mindenben
-            quizQuestions = questions; // Referencia az eredetire
+            // JAVÍTÓ MÓD
+            quizQuestions = questions; 
             checkBtn.style.display = 'none';
             saveBtn.style.display = 'block';
             scoreDisplay.style.display = 'none';
             overrideBadge.style.display = 'inline-block';
             
-            createPagination(); // Navigáció létrehozása
+            document.querySelector('.auto-advance-container').style.display = 'none';
+
+            createPagination(); 
             navWrapper.style.display = 'block';
 
         } else {
-            // NORMÁL MÓDOK: Másolatot használunk
+            // NORMÁL MÓDOK
             quizQuestions = JSON.parse(JSON.stringify(questions)); 
             
+            document.querySelector('.auto-advance-container').style.display = 'flex';
+
             if (mode === 'random') {
-                // Ha Random mód: Keverjük a kérdések sorrendjét is
                 shuffleArray(quizQuestions);
-                navWrapper.style.display = 'none'; // Random módban nincs értelme a fix navigációnak
+                navWrapper.style.display = 'none'; 
             } else {
-                // Lineáris mód
-                createPagination(); // Navigáció létrehozása
+                createPagination(); 
                 navWrapper.style.display = 'block';
             }
             
@@ -602,7 +629,7 @@
         loadQuestion();
     }
 
-    // --- ÚJ FUNKCIÓ: EGYÉNI GYAKORLÁS ---
+    // --- EGYÉNI GYAKORLÁS ---
     function startCustomQuiz() {
         const input = document.getElementById('custom-indices').value;
         if (!input.trim()) {
@@ -612,13 +639,11 @@
 
         let selectedIndices = new Set();
         
-        // Vesszővel elválasztás, majd kötőjelek kezelése
         const parts = input.split(',');
         
         parts.forEach(part => {
             part = part.trim();
             if (part.includes('-')) {
-                // Tartomány kezelése (pl. 20-25)
                 const range = part.split('-');
                 const start = parseInt(range[0]);
                 const end = parseInt(range[1]);
@@ -628,28 +653,23 @@
                     }
                 }
             } else {
-                // Sima szám
                 const num = parseInt(part);
                 if (!isNaN(num)) selectedIndices.add(num);
             }
         });
 
         const finalIndices = Array.from(selectedIndices)
-            .map(n => n - 1) // A felhasználó 1-től számol, a tömb 0-tól
-            .filter(idx => idx >= 0 && idx < questions.length); // Csak érvényes indexek
+            .map(n => n - 1) 
+            .filter(idx => idx >= 0 && idx < questions.length); 
 
         if (finalIndices.length === 0) {
             alert(`Nincs ilyen sorszámú kérdés! Kérlek 1 és ${questions.length} között adj meg számokat.`);
             return;
         }
 
-        // Kiválogatjuk a kért kérdéseket
         quizQuestions = finalIndices.map(idx => JSON.parse(JSON.stringify(questions[idx])));
-        
-        // Megkeverjük a sorrendjüket a változatosság kedvéért
         shuffleArray(quizQuestions);
 
-        // Indítás (hasonló a startQuiz random ágához)
         isOverrideMode = false;
         currentIdx = 0;
         score = 0;
@@ -661,14 +681,16 @@
         document.getElementById('save-next-btn').style.display = 'none';
         document.getElementById('score-display').style.display = 'block';
         document.getElementById('override-indicator').style.display = 'none';
-        document.getElementById('pagination-wrapper').style.display = 'none'; // Kis lista esetén felesleges a navigáció
+        document.getElementById('pagination-wrapper').style.display = 'none'; 
+        
+        document.querySelector('.auto-advance-container').style.display = 'flex';
+        document.getElementById('auto-advance-toggle').checked = false;
 
         document.getElementById('total-count').innerText = quizQuestions.length;
         loadQuestion();
     }
 
 
-    // Navigációs gombok generálása (alsó 10-es sáv)
     function createPagination() {
         const container = document.getElementById('pagination-container');
         container.innerHTML = '';
@@ -698,7 +720,6 @@
         loadQuestion();
     }
     
-    // --- ÚJ LÉPTETŐ FUNKCIÓ A NYILAKHOZ ---
     function stepQuestion(direction) {
         const newIdx = currentIdx + direction;
         if(newIdx >= 0 && newIdx < quizQuestions.length) {
@@ -707,7 +728,6 @@
         }
     }
 
-    // Navigációs gomb aktív állapotának frissítése
     function updatePaginationStatus() {
         const activeBlock = Math.floor(currentIdx / 10);
         
@@ -720,6 +740,8 @@
     }
 
     function loadQuestion() {
+        if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+
         const q = quizQuestions[currentIdx];
         isChecked = false;
 
@@ -731,29 +753,24 @@
         optionsContainer.innerHTML = '';
         document.getElementById('feedback-box').style.display = 'none';
         
-        // Gombok kezelése betöltéskor
         if (!isOverrideMode) {
             document.getElementById('check-btn').style.display = 'block';
             document.getElementById('next-btn').style.display = 'none';
             document.getElementById('skip-btn').style.display = 'none'; 
         } 
 
-        // Navigáció frissítése (alsó sáv)
         updatePaginationStatus();
 
-        // --- Nyilak állapotának frissítése ---
         document.getElementById('prev-arrow').disabled = (currentIdx === 0);
         document.getElementById('next-arrow').disabled = (currentIdx === quizQuestions.length - 1);
 
         const isMulti = q.type === 'multi' || q.correct.length > 1;
         const inputType = isMulti ? 'checkbox' : 'radio';
 
-        // Válaszopciók előkészítése
         let optionObjects = q.options.map((opt, idx) => {
             return { text: opt, originalIndex: idx };
         });
 
-        // VÁLASZOK KEVERÉSE: Csak ha nem javító mód
         if (!isOverrideMode) {
             shuffleArray(optionObjects);
         }
@@ -777,10 +794,10 @@
                 div.classList.add('override-selected');
             }
 
+            // KATTINTÁS LOGIKA
             div.onclick = function(e) {
                 if(isChecked && !isOverrideMode) return;
                 
-                // Dupla kattintás elkerülése label/input esetén
                 if (e.target !== input && e.target.tagName !== 'LABEL') {
                     input.checked = !input.checked;
                 }
@@ -789,6 +806,13 @@
                      document.querySelectorAll('input[name="option"]').forEach(i => {
                          if(i !== input) i.checked = false;
                      });
+
+                     // --- ITT AZ ÚJ "VILLÁM MÓD" LOGIKA ---
+                     const isAutoAdvance = document.getElementById('auto-advance-toggle').checked;
+                     if (!isOverrideMode && isAutoAdvance) {
+                         // Ha rádiógomb és be van kapcsolva a Villám mód -> Azonnali ellenőrzés
+                         checkAnswer(); 
+                     }
                 }
                 
                 updateSelectionStyles(isOverrideMode);
@@ -875,10 +899,19 @@
         document.getElementById('check-btn').style.display = 'none';
         document.getElementById('skip-btn').style.display = 'none'; 
         document.getElementById('next-btn').style.display = 'block';
+
+        // --- AUTO ADVANCE LOGIKA ---
+        const isAutoAdvance = document.getElementById('auto-advance-toggle').checked;
+        
+        if (isAutoAdvance && currentIdx < quizQuestions.length - 1) {
+            autoAdvanceTimer = setTimeout(() => {
+                nextQuestion();
+            }, 200); // 1.5 másodperc várakozás
+        }
     }
 
-    // Megmaradt a régi ugrás gomb is funkciónak
     function skipQuestions() {
+        if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
         currentIdx += 10;
         if (currentIdx < quizQuestions.length) {
             loadQuestion();
@@ -888,6 +921,7 @@
     }
 
     function nextQuestion() {
+        if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
         currentIdx++;
         if (currentIdx < quizQuestions.length) {
             loadQuestion();
