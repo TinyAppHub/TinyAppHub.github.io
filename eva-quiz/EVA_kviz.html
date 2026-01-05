@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EVA Beugró</title>
+    <title>EVA Beugró - Gyakorlás</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
 
@@ -39,6 +39,8 @@
             --option-selected-bg: #eff6ff;
             --option-selected-border: #3bf65a;
             --header-border: #f0f0f0;
+            --input-bg: #ffffff;
+            --input-text: #495057;
         }
 
         /* Sötét mód változók */
@@ -52,6 +54,8 @@
             --option-selected-bg: #205c1a;
             --option-selected-border: #60fa6f;
             --header-border: #2d2d2d;
+            --input-bg: #2d2d2d;
+            --input-text: #e0e0e0;
         }
 
         body {
@@ -245,6 +249,18 @@
             color: #ffca2c; 
         }
 
+        /* Custom input stílus sötét módban */
+        .custom-input {
+            background-color: var(--input-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .custom-input:focus {
+            background-color: var(--input-bg);
+            color: var(--text-main);
+            border-color: #198754;
+        }
+
         /* Navigáció */
         .pagination-container {
             display: flex;
@@ -335,30 +351,35 @@
             color: white !important;
         }
 
-        /* 2. Radio button és Checkbox pipák színe */
         .form-check-input:checked {
             background-color: #198754 !important;
             border-color: #198754 !important;
         }
         
-        /* Fókusz effekt (az a kis kék derengés kattintáskor) eltüntetése/zöldítése */
         .form-check-input:focus, .btn:focus {
             box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25) !important;
         }
 
-        /* 3. Header (fejléc) stílus */
         .header-bar {
-            border-bottom: 3px solid #198754 !important; /* Zöld csík alul */
-            /* Ha a hátteret is zöldesre akarod, vedd ki a kommentjelet a kövi sor elől: */
-            /* background-color: #f0fff4 !important; */ 
+            border-bottom: 3px solid #198754 !important;
         }
 
-        /* 4. Egyéb kék elemek (Címek, Kategória címke) */
         .text-primary {
             color: #198754 !important;
         }
         .badge.bg-primary {
             background-color: #198754 !important;
+        }
+
+        /* Egyedi input doboz stílusa a kezdőképernyőn */
+        .custom-quiz-box {
+            border: 2px dashed var(--border-color);
+            background-color: var(--option-hover);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            width: 100%;
+            max-width: 400px;
         }
         
     </style>
@@ -371,9 +392,9 @@
     
     <div id="start-screen" class="start-screen">
         <h1 class="mb-3 text-primary fw-bold">EVA Beugró</h1>
-        <p class="mb-4 text-muted">Kérdések száma: <span id="total-q-count" class="fw-bold">...</span></p>
+        <p class="mb-4 text-muted">Összes kérdés: <span id="total-q-count" class="fw-bold">...</span></p>
         
-        <div class="d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center w-100">
             <button class="btn btn-outline-primary btn-mode shadow-sm" onclick="startQuiz('linear')">
                 <span class="btn-icon">📋</span>
                 <div>
@@ -390,6 +411,15 @@
                 </div>
             </button>
             
+            <div class="custom-quiz-box shadow-sm">
+                <h5 class="fw-bold mb-2">🎯 Célzott gyakorlás</h5>
+                <p class="small text-muted mb-2">Írd be a nehéz kérdések sorszámait vesszővel vagy kötőjellel!</p>
+                <div class="input-group mb-2">
+                    <input type="text" id="custom-indices" class="form-control custom-input" placeholder="Pl: 1, 5, 12, 20-25">
+                </div>
+                <button class="btn btn-danger w-100 fw-bold" onclick="startCustomQuiz()">Gyakorlás indítása</button>
+            </div>
+
             <hr class="w-50 my-3" style="border-color: var(--border-color);">
             
             <button class="btn btn-warning btn-mode shadow-sm" onclick="startQuiz('override')">
@@ -571,6 +601,72 @@
         document.getElementById('total-count').innerText = quizQuestions.length;
         loadQuestion();
     }
+
+    // --- ÚJ FUNKCIÓ: EGYÉNI GYAKORLÁS ---
+    function startCustomQuiz() {
+        const input = document.getElementById('custom-indices').value;
+        if (!input.trim()) {
+            alert("Kérlek írj be számokat!");
+            return;
+        }
+
+        let selectedIndices = new Set();
+        
+        // Vesszővel elválasztás, majd kötőjelek kezelése
+        const parts = input.split(',');
+        
+        parts.forEach(part => {
+            part = part.trim();
+            if (part.includes('-')) {
+                // Tartomány kezelése (pl. 20-25)
+                const range = part.split('-');
+                const start = parseInt(range[0]);
+                const end = parseInt(range[1]);
+                if (!isNaN(start) && !isNaN(end)) {
+                    for(let i = Math.min(start, end); i <= Math.max(start, end); i++) {
+                        selectedIndices.add(i);
+                    }
+                }
+            } else {
+                // Sima szám
+                const num = parseInt(part);
+                if (!isNaN(num)) selectedIndices.add(num);
+            }
+        });
+
+        const finalIndices = Array.from(selectedIndices)
+            .map(n => n - 1) // A felhasználó 1-től számol, a tömb 0-tól
+            .filter(idx => idx >= 0 && idx < questions.length); // Csak érvényes indexek
+
+        if (finalIndices.length === 0) {
+            alert(`Nincs ilyen sorszámú kérdés! Kérlek 1 és ${questions.length} között adj meg számokat.`);
+            return;
+        }
+
+        // Kiválogatjuk a kért kérdéseket
+        quizQuestions = finalIndices.map(idx => JSON.parse(JSON.stringify(questions[idx])));
+        
+        // Megkeverjük a sorrendjüket a változatosság kedvéért
+        shuffleArray(quizQuestions);
+
+        // Indítás (hasonló a startQuiz random ágához)
+        isOverrideMode = false;
+        currentIdx = 0;
+        score = 0;
+
+        document.getElementById('start-screen').style.display = 'none';
+        document.getElementById('quiz-container').style.display = 'flex';
+        
+        document.getElementById('check-btn').style.display = 'block';
+        document.getElementById('save-next-btn').style.display = 'none';
+        document.getElementById('score-display').style.display = 'block';
+        document.getElementById('override-indicator').style.display = 'none';
+        document.getElementById('pagination-wrapper').style.display = 'none'; // Kis lista esetén felesleges a navigáció
+
+        document.getElementById('total-count').innerText = quizQuestions.length;
+        loadQuestion();
+    }
+
 
     // Navigációs gombok generálása (alsó 10-es sáv)
     function createPagination() {
