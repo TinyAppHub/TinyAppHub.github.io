@@ -31,3 +31,11 @@ input { width: 100%; padding: 10px; background: #2d2d2d; border: 1px solid #333;
 .hidden { display: none; }
 .winner-text { font-size: 1.2rem; font-weight: bold; color: white; }
 .saving-text { color: var(--primary); margin-top: 5px; }
+.home-btn {
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    background: #333;
+    border-radius: 8px;
+    transition: 0.2s;
+}

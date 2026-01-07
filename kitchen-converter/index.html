@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Scale | MyTinyTools</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="home-btn">🏠</a>
+        <div class="lang-switch" id="langBtn" onclick="toggleLanguage()">🇭🇺 / 🇬🇧</div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1 data-key="title">Konyhai Mérleg</h1>
+            <p data-key="subtitle">Mérleg nélkül is pontosan.</p>
+        </header>
+
+        <div class="converter-box">
+            <div class="input-row">
+                <div class="input-group">
+                    <label data-key="amountLabel">Mennyi?</label>
+                    <input type="number" id="amount" placeholder="100" inputmode="decimal">
+                </div>
+                <div class="input-group">
+                    <label data-key="unitLabel">Miben van?</label>
+                    <select id="unit">
+                        <option value="g">g</option>
+                        <option value="dkg">dkg</option>
+                        <option value="kg">kg</option>
+                        <option value="ml">ml</option>
+                        <option value="dl">dl</option>
+                        <option value="l">liter</option>
+                        <option value="cup">cup (bögre)</option>
+                        <option value="tbsp">tbsp (evőkanál)</option>
+                        <option value="tsp">tsp (teáskanál)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-row full">
+                <label data-key="materialLabel">Mit mérsz?</label>
+                <select id="density">
+                    <optgroup label="💧 Liquids" id="grp-liquid">
+                        <option value="1.0" data-key="opt_water">Normál folyadék (Víz, Tej)</option>
+                        <option value="0.92" data-key="opt_oil">Olajos (Étolaj, Olíva)</option>
+                        <option value="1.35" data-key="opt_syrup">Sűrű (Méz, Szirup)</option>
+                    </optgroup>
+                    <optgroup label="☁️ Powders" id="grp-powder">
+                        <option value="0.35" data-key="opt_light">Könnyű por (Protein, Kakaó)</option>
+                        <option value="0.55" data-key="opt_flour">Liszt-szerű (Liszt, Porcukor)</option>
+                    </optgroup>
+                    <optgroup label="💎 Granular" id="grp-grain">
+                        <option value="0.85" data-key="opt_crystal">Kristályos (Cukor, Rizs)</option>
+                        <option value="0.65" data-key="opt_med">Közepes (Morzsa, Creatine)</option>
+                        <option value="1.2" data-key="opt_heavy">Nehéz (Só)</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <div id="results" class="results-grid">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
