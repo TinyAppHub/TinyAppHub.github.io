@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konkurens Beugró - Gyakorlás</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        #home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+        #home-btn:hover { transform: scale(1.1); }
+        body.dark-mode #home-btn { background: #333; }
+
+        :root {
+            --bg-color: #eef2f5;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #6c757d;
+            --border-color: #e9ecef;
+            --option-hover: #f8f9fa;
+            --option-selected-bg: #eff6ff;
+            --option-selected-border: #3bf65a;
+            --header-border: #f0f0f0;
+            --input-bg: #ffffff;
+            --input-text: #495057;
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border-color: #333333;
+            --option-hover: #2d2d2d;
+            --option-selected-bg: #205c1a;
+            --option-selected-border: #60fa6f;
+            --header-border: #2d2d2d;
+            --input-bg: #2d2d2d;
+            --input-text: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 850px;
+            margin: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 700px;
+            transition: background-color 0.3s;
+        }
+
+        .start-screen, .end-screen {
+            padding: 40px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-container {
+            padding: 0;
+            display: none;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .header-bar {
+            background: var(--card-bg);
+            border-bottom: 2px solid var(--header-border);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quiz-content {
+            padding: 30px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .option-item {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            background: var(--card-bg);
+            color: var(--text-main);
+            user-select: none;
+        }
+
+        .option-item:hover {
+            background-color: var(--option-hover);
+            border-color: #ced4da;
+        }
+
+        .option-item.selected {
+            border-color: var(--option-selected-border);
+            background-color: var(--option-selected-bg);
+        }
+
+        /* Override stílusok */
+        .option-item.override-selected {
+            border-color: #ffc107;
+            background-color: #fff3cd;
+        }
+        body.dark-mode .option-item.override-selected {
+            background-color: #4d3e08;
+            border-color: #ffca2c;
+        }
+
+        .form-check-input {
+            margin-top: 5px;
+            margin-right: 15px;
+            transform: scale(1.3);
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        /* Feedback styles */
+        .correct-answer { background-color: #d1e7dd !important; border-color: #badbcc !important; color: #0f5132 !important; }
+        .wrong-answer { background-color: #f8d7da !important; border-color: #f5c2c7 !important; color: #842029 !important; }
+        .missed-answer { border: 2px dashed #198754 !important; background-color: transparent !important; }
+        
+        body.dark-mode .correct-answer { background-color: #053b23 !important; border-color: #0f5132 !important; color: #86efac !important; }
+        body.dark-mode .wrong-answer { background-color: #4c1116 !important; border-color: #842029 !important; color: #fca5a5 !important; }
+
+        .btn-mode {
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 10px;
+            width: 300px;
+            transition: transform 0.2s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+        .btn-mode:hover { transform: scale(1.02); }
+        .btn-icon { font-size: 1.5rem; margin-right: 15px; }
+
+        textarea.code-export {
+            width: 100%;
+            height: 200px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 10px;
+        }
+
+        .override-badge {
+            background-color: #ffc107;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .cursor-pointer { cursor: pointer; width: 100%; }
+        
+        /* Ugrás gomb stílus */
+        .btn-skip {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: white;
+        }
+        .btn-skip:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        /* Dark mode toggle button */
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--card-bg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        #theme-toggle:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+        body.dark-mode #theme-toggle {
+            background: #333;
+            color: #ffca2c; 
+        }
+
+        /* Custom input stílus sötét módban */
+        .custom-input {
+            background-color: var(--input-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .custom-input:focus {
+            background-color: var(--input-bg);
+            color: var(--text-main);
+            border-color: #198754;
+        }
+
+        /* Navigáció */
+        .pagination-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .nav-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--option-hover);
+            border-color: #aaa;
+        }
+
+        .nav-btn.active {
+            background-color: var(--option-selected-border);
+            color: white;
+            border-color: var(--option-selected-border);
+        }
+        
+        body.dark-mode .nav-btn.active {
+            background-color: #3bf648;
+            color: white;
+        }
+
+        /* ÚJ: Nyilacskák stílusa */
+        .nav-arrow {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 0 10px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+        }
+        .nav-arrow:hover {
+            opacity: 1;
+            transform: scale(1.2);
+            color: var(--option-selected-border);
+        }
+        .nav-arrow:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+            transform: none;
+            color: var(--text-muted);
+        }
+
+        body.dark-mode .text-muted { color: var(--text-muted) !important; }
+        body.dark-mode .text-dark { color: #e0e0e0 !important; }
+
+        .btn-primary {
+            background-color: #198754 !important; /* Bootstrap zöld */
+            border-color: #198754 !important;
+        }
+        .btn-primary:hover {
+            background-color: #157347 !important; /* Sötétebb zöld hoverkor */
+            border-color: #157347 !important;
+        }
+        
+        .btn-outline-primary {
+            color: #198754 !important;
+            border-color: #198754 !important;
+        }
+        .btn-outline-primary:hover {
+            background-color: #198754 !important;
+            color: white !important;
+        }
+
+        .form-check-input:checked {
+            background-color: #198754 !important;
+            border-color: #198754 !important;
+        }
+        
+        .form-check-input:focus, .btn:focus {
+            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25) !important;
+        }
+
+        .header-bar {
+            border-bottom: 3px solid #198754 !important;
+        }
+
+        .text-primary {
+            color: #198754 !important;
+        }
+        .badge.bg-primary {
+            background-color: #198754 !important;
+        }
+
+        /* Egyedi input doboz stílusa a kezdőképernyőn */
+        .custom-quiz-box {
+            border: 2px dashed var(--border-color);
+            background-color: var(--option-hover);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        /* Auto advance kapcsoló - FRISSÍTVE A KÉRÉS ALAPJÁN */
+        .auto-advance-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: var(--option-hover);
+        }
+        
+    </style>
+</head>
+<body>
+<a href="../index.html" id="home-btn">🏠</a>
+<button id="theme-toggle" onclick="toggleTheme()" title="Sötét mód váltása">🌙</button>
+
+<div class="main-card">
+    
+    <div id="start-screen" class="start-screen">
+        <h1 class="mb-3 text-primary fw-bold">Konkurens Beugró</h1>
+        <p class="mb-4 text-muted">Összes kérdés: <span id="total-q-count" class="fw-bold">...</span></p>
+        
+        <div class="d-flex flex-column align-items-center w-100">
+            <button class="btn btn-outline-primary btn-mode shadow-sm" onclick="startQuiz('linear')">
+                <span class="btn-icon">📋</span>
+                <div>
+                    <div class="fs-5 fw-bold">Sorrendben</div>
+                    <div class="small">Válaszok keverve (+ Navigáció)</div>
+                </div>
+            </button>
+
+            <button class="btn btn-outline-primary btn-mode shadow-sm" onclick="startQuiz('random')">
+                <span class="btn-icon">🔀</span>
+                <div>
+                    <div class="fs-5 fw-bold">Véletlenszerű</div>
+                    <div class="small">Kérdések és válaszok is keverve</div>
+                </div>
+            </button>
+            
+            <div class="custom-quiz-box shadow-sm">
+                <h5 class="fw-bold mb-2">🎯 Célzott gyakorlás</h5>
+                <p class="small text-muted mb-2">Írd be a nehéz kérdések sorszámait vesszővel vagy kötőjellel!</p>
+                <div class="input-group mb-2">
+                    <input type="text" id="custom-indices" class="form-control custom-input" placeholder="Pl: 1, 5, 12, 20-25">
+                </div>
+                <button class="btn btn-danger w-100 fw-bold" onclick="startCustomQuiz()">Gyakorlás indítása</button>
+            </div>
+
+            <hr class="w-50 my-3" style="border-color: var(--border-color);">
+            
+            <button class="btn btn-warning btn-mode shadow-sm" onclick="startQuiz('override')">
+                <span class="btn-icon">🛠️</span>
+                <div>
+                    <div class="fs-5 fw-bold text-dark">Javító mód</div>
+                    <div class="small text-dark">Eredeti sorrend, rögzített válaszok</div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div id="quiz-container" class="quiz-container">
+        <div class="header-bar">
+            <div>
+                <span class="badge bg-primary fs-6 mb-1" id="category-badge">Kategória</span>
+                <span id="override-indicator" class="override-badge" style="display:none;">JAVÍTÓ MÓD</span>
+                
+                <div class="d-flex align-items-center mt-1">
+                    <button class="nav-arrow me-2" id="prev-arrow" onclick="stepQuestion(-1)" title="Előző kérdés">❮</button>
+                    <div class="text-muted small fw-bold">Kérdés <span id="current-count">1</span> / <span id="total-count">0</span></div>
+                    <button class="nav-arrow ms-2" id="next-arrow" onclick="stepQuestion(1)" title="Következő kérdés">❯</button>
+                </div>
+            </div>
+            
+            <div class="d-flex align-items-center">
+                
+                <div class="auto-advance-container" title="Ha bekapcsolod, kattintásra azonnal értékel és ugrik!">
+                    <div class="form-check form-switch m-0 d-flex align-items-center">
+                        <input class="form-check-input me-2" type="checkbox" id="auto-advance-toggle">
+                        <label class="form-check-label small fw-bold text-muted cursor-pointer mb-0" for="auto-advance-toggle">⚡</label>
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <div class="fs-4 fw-bold text-success" id="score-display">0 pont</div>
+                    <button class="btn btn-sm btn-link text-muted text-decoration-none" onclick="location.reload()">Kilépés</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-content">
+            <div class="question-text" id="question-text">Betöltés...</div>
+            <div id="options-list"></div>
+
+            <div id="feedback-box" class="alert mt-3" style="display: none; border-radius: 10px;"></div>
+
+            <div class="d-grid gap-2 mt-4">
+                <button id="check-btn" class="btn btn-primary btn-lg shadow-sm" onclick="checkAnswer()">Ellenőrzés</button>
+                <button id="next-btn" class="btn btn-outline-primary btn-lg shadow-sm" style="display: none;" onclick="nextQuestion()">Következő kérdés</button>
+                
+                <button id="skip-btn" class="btn btn-skip btn-lg shadow-sm" style="display: none;" onclick="skipQuestions()">⏩ +10 Ugrás</button>
+                
+                <button id="save-next-btn" class="btn btn-warning btn-lg shadow-sm fw-bold" style="display: none;" onclick="saveAndNext()">Mentés és Következő ➡</button>
+            </div>
+
+            <div id="pagination-wrapper" style="display:none;">
+                <div class="text-muted small text-center mt-3">Gyorsugrás tizesével:</div>
+                <div id="pagination-container" class="pagination-container">
+                    </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="end-screen" class="end-screen" style="display: none;">
+        <h2 class="mb-4 text-success">Teszt Befejezve! 🎉</h2>
+        <div class="display-1 mb-3 fw-bold"><span id="final-score">0</span> <span class="fs-4 text-muted">/ <span id="final-total">0</span></span></div>
+        <div class="progress w-50 mb-3" style="height: 10px;">
+            <div id="final-progress" class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+        </div>
+        <p class="lead fw-bold text-muted" id="final-percent"></p>
+        <button class="btn btn-primary btn-lg mt-4 px-5 rounded-pill shadow" onclick="location.reload()">Új teszt indítása</button>
+    </div>
+
+    <div id="export-screen" class="end-screen" style="display: none;">
+        <h3 class="mb-3 text-warning">Javítás kész! 💾</h3>
+        <p class="text-muted">A módosításaidat tartalmazó új fájl elkészült.</p>
+        
+        <div class="alert alert-info small text-start w-100">
+            <strong>Teendő:</strong> Töltsd le a fájlt <code>questions.js</code> néven, és írd felül vele a régit a mappában.
+        </div>
+
+        <button class="btn btn-success btn-lg mb-3 w-100 shadow" onclick="downloadJS()">📥 questions.js Letöltése</button>
+        
+        <p class="small text-muted mb-1">Vagy másold ki a kódot:</p>
+        <textarea id="code-output" class="code-export" readonly></textarea>
+        <button class="btn btn-outline-secondary btn-sm mt-2" onclick="copyToClipboard()">Vágólapra másolás</button>
+        
+        <button class="btn btn-link text-muted mt-4" onclick="location.reload()">Vissza a főoldalra</button>
+    </div>
+</div>
+
+<script src="questions.js"></script>
+
+<script>
+    let currentIdx = 0;
+    let score = 0;
+    let isChecked = false;
+    let quizQuestions = []; 
+    let isOverrideMode = false;
+    let isLinearMode = false;
+    let autoAdvanceTimer = null; 
+
+    // Sötét mód kezelése
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const btn = document.getElementById('theme-toggle');
+        if (document.body.classList.contains('dark-mode')) {
+            btn.innerHTML = '☀️';
+            localStorage.setItem('mi_quiz_theme', 'dark');
+        } else {
+            btn.innerHTML = '🌙';
+            localStorage.setItem('mi_quiz_theme', 'light');
+        }
+    }
+
+    // Fisher-Yates keverés
+    function shuffleArray(array) {
+        let currentIndex = array.length, randomIndex;
+        while (currentIndex != 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+
+    window.onload = function() {
+        // Téma betöltése
+        if (localStorage.getItem('mi_quiz_theme') === 'dark') {
+            toggleTheme(); 
+        }
+
+        if (typeof questions === 'undefined' || questions.length === 0) {
+            alert("Hiba: A questions.js fájl hiányzik vagy üres! Győződj meg róla, hogy egy mappában vannak.");
+            return;
+        }
+        document.getElementById('total-q-count').innerText = questions.length;
+    };
+
+    function startQuiz(mode) {
+        // Módok beállítása
+        isOverrideMode = (mode === 'override');
+        isLinearMode = (mode === 'linear'); 
+        
+        currentIdx = 0;
+        score = 0;
+        
+        document.getElementById('start-screen').style.display = 'none';
+        document.getElementById('quiz-container').style.display = 'flex';
+        
+        const checkBtn = document.getElementById('check-btn');
+        const saveBtn = document.getElementById('save-next-btn');
+        const scoreDisplay = document.getElementById('score-display');
+        const overrideBadge = document.getElementById('override-indicator');
+        const navWrapper = document.getElementById('pagination-wrapper');
+
+        // Auto advance alaphelyzet
+        document.getElementById('auto-advance-toggle').checked = false;
+
+        if (isOverrideMode) {
+            // JAVÍTÓ MÓD
+            quizQuestions = questions; 
+            checkBtn.style.display = 'none';
+            saveBtn.style.display = 'block';
+            scoreDisplay.style.display = 'none';
+            overrideBadge.style.display = 'inline-block';
+            
+            document.querySelector('.auto-advance-container').style.display = 'none';
+
+            createPagination(); 
+            navWrapper.style.display = 'block';
+
+        } else {
+            // NORMÁL MÓDOK
+            quizQuestions = JSON.parse(JSON.stringify(questions)); 
+            
+            document.querySelector('.auto-advance-container').style.display = 'flex';
+
+            if (mode === 'random') {
+                shuffleArray(quizQuestions);
+                navWrapper.style.display = 'none'; 
+            } else {
+                createPagination(); 
+                navWrapper.style.display = 'block';
+            }
+            
+            checkBtn.style.display = 'block';
+            saveBtn.style.display = 'none';
+            scoreDisplay.style.display = 'block';
+            overrideBadge.style.display = 'none';
+        }
+
+        document.getElementById('total-count').innerText = quizQuestions.length;
+        loadQuestion();
+    }
+
+    // --- EGYÉNI GYAKORLÁS ---
+    function startCustomQuiz() {
+        const input = document.getElementById('custom-indices').value;
+        if (!input.trim()) {
+            alert("Kérlek írj be számokat!");
+            return;
+        }
+
+        let selectedIndices = new Set();
+        
+        const parts = input.split(',');
+        
+        parts.forEach(part => {
+            part = part.trim();
+            if (part.includes('-')) {
+                const range = part.split('-');
+                const start = parseInt(range[0]);
+                const end = parseInt(range[1]);
+                if (!isNaN(start) && !isNaN(end)) {
+                    for(let i = Math.min(start, end); i <= Math.max(start, end); i++) {
+                        selectedIndices.add(i);
+                    }
+                }
+            } else {
+                const num = parseInt(part);
+                if (!isNaN(num)) selectedIndices.add(num);
+            }
+        });
+
+        const finalIndices = Array.from(selectedIndices)
+            .map(n => n - 1) 
+            .filter(idx => idx >= 0 && idx < questions.length); 
+
+        if (finalIndices.length === 0) {
+            alert(`Nincs ilyen sorszámú kérdés! Kérlek 1 és ${questions.length} között adj meg számokat.`);
+            return;
+        }
+
+        quizQuestions = finalIndices.map(idx => JSON.parse(JSON.stringify(questions[idx])));
+        shuffleArray(quizQuestions);
+
+        isOverrideMode = false;
+        currentIdx = 0;
+        score = 0;
+
+        document.getElementById('start-screen').style.display = 'none';
+        document.getElementById('quiz-container').style.display = 'flex';
+        
+        document.getElementById('check-btn').style.display = 'block';
+        document.getElementById('save-next-btn').style.display = 'none';
+        document.getElementById('score-display').style.display = 'block';
+        document.getElementById('override-indicator').style.display = 'none';
+        document.getElementById('pagination-wrapper').style.display = 'none'; 
+        
+        document.querySelector('.auto-advance-container').style.display = 'flex';
+        document.getElementById('auto-advance-toggle').checked = false;
+
+        document.getElementById('total-count').innerText = quizQuestions.length;
+        loadQuestion();
+    }
+
+
+    function createPagination() {
+        const container = document.getElementById('pagination-container');
+        container.innerHTML = '';
+        
+        const total = quizQuestions.length;
+        const buttonCount = Math.ceil(total / 10);
+
+        for (let i = 0; i < buttonCount; i++) {
+            const startIdx = i * 10;
+            const btn = document.createElement('div');
+            btn.className = 'nav-btn';
+            btn.innerText = i + 1;
+            btn.id = `nav-btn-${i}`;
+            btn.title = `${startIdx + 1}. kérdéstől`;
+            
+            btn.onclick = function() {
+                jumpToQuestion(startIdx);
+            };
+            
+            container.appendChild(btn);
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        if (idx >= quizQuestions.length) return;
+        currentIdx = idx;
+        loadQuestion();
+    }
+    
+    function stepQuestion(direction) {
+        const newIdx = currentIdx + direction;
+        if(newIdx >= 0 && newIdx < quizQuestions.length) {
+            currentIdx = newIdx;
+            loadQuestion();
+        }
+    }
+
+    function updatePaginationStatus() {
+        const activeBlock = Math.floor(currentIdx / 10);
+        
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        
+        const activeBtn = document.getElementById(`nav-btn-${activeBlock}`);
+        if(activeBtn) {
+            activeBtn.classList.add('active');
+        }
+    }
+
+    function loadQuestion() {
+        if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+
+        const q = quizQuestions[currentIdx];
+        isChecked = false;
+
+        document.getElementById('current-count').innerText = currentIdx + 1;
+        document.getElementById('category-badge').innerText = q.category;
+        document.getElementById('question-text').innerText = q.question;
+        
+        const optionsContainer = document.getElementById('options-list');
+        optionsContainer.innerHTML = '';
+        document.getElementById('feedback-box').style.display = 'none';
+        
+        if (!isOverrideMode) {
+            document.getElementById('check-btn').style.display = 'block';
+            document.getElementById('next-btn').style.display = 'none';
+            document.getElementById('skip-btn').style.display = 'none'; 
+        } 
+
+        updatePaginationStatus();
+
+        document.getElementById('prev-arrow').disabled = (currentIdx === 0);
+        document.getElementById('next-arrow').disabled = (currentIdx === quizQuestions.length - 1);
+
+        const isMulti = q.type === 'multi' || q.correct.length > 1;
+        const inputType = isMulti ? 'checkbox' : 'radio';
+
+        let optionObjects = q.options.map((opt, idx) => {
+            return { text: opt, originalIndex: idx };
+        });
+
+        if (!isOverrideMode) {
+            shuffleArray(optionObjects);
+        }
+
+        optionObjects.forEach((optObj, visualIdx) => {
+            const div = document.createElement('div');
+            div.className = 'option-item';
+            
+            const originalIdx = optObj.originalIndex;
+
+            const input = document.createElement('input');
+            input.type = inputType;
+            input.className = 'form-check-input';
+            input.name = 'option';
+            input.value = originalIdx;
+            input.id = `opt-${visualIdx}`; 
+
+            if (isOverrideMode && q.correct.includes(originalIdx)) {
+                input.checked = true;
+                div.classList.add('selected');
+                div.classList.add('override-selected');
+            }
+
+            // KATTINTÁS LOGIKA
+            div.onclick = function(e) {
+                if(isChecked && !isOverrideMode) return;
+                
+                if (e.target !== input && e.target.tagName !== 'LABEL') {
+                    input.checked = !input.checked;
+                }
+
+                if (inputType === 'radio' && input.checked) {
+                     document.querySelectorAll('input[name="option"]').forEach(i => {
+                         if(i !== input) i.checked = false;
+                     });
+
+                     // --- ITT AZ ÚJ "VILLÁM MÓD" LOGIKA ---
+                     const isAutoAdvance = document.getElementById('auto-advance-toggle').checked;
+                     if (!isOverrideMode && isAutoAdvance) {
+                         // Ha rádiógomb és be van kapcsolva a Villám mód -> Azonnali ellenőrzés
+                         checkAnswer(); 
+                     }
+                }
+                
+                updateSelectionStyles(isOverrideMode);
+            };
+
+            const label = document.createElement('label');
+            label.className = 'form-check-label cursor-pointer';
+            label.htmlFor = `opt-${visualIdx}`;
+            label.innerText = optObj.text;
+
+            div.appendChild(input);
+            div.appendChild(label);
+            optionsContainer.appendChild(div);
+        });
+    }
+
+    function updateSelectionStyles(isOverride) {
+        document.querySelectorAll('.option-item').forEach(div => {
+            const input = div.querySelector('input');
+            div.classList.remove('selected');
+            if(isOverride) div.classList.remove('override-selected');
+
+            if (input.checked) {
+                div.classList.add('selected');
+                if(isOverride) div.classList.add('override-selected');
+            } 
+        });
+    }
+
+    // --- NORMÁL MÓD ---
+
+    function checkAnswer() {
+        const q = quizQuestions[currentIdx];
+        const selectedInputs = document.querySelectorAll('input[name="option"]:checked');
+        const selectedValues = Array.from(selectedInputs).map(i => parseInt(i.value));
+
+        if (selectedValues.length === 0) {
+            alert("Kérlek válassz legalább egy választ!");
+            return;
+        }
+
+        isChecked = true;
+        const feedback = document.getElementById('feedback-box');
+        
+        selectedValues.sort();
+        const correctSorted = [...q.correct].sort();
+        const isCorrect = JSON.stringify(selectedValues) === JSON.stringify(correctSorted);
+
+        if (isCorrect) {
+            score++;
+            document.getElementById('score-display').innerText = score + " pont";
+            feedback.className = "alert alert-success";
+            feedback.innerHTML = "<strong>Helyes válasz! ✅</strong>";
+        } else {
+            feedback.className = "alert alert-danger";
+            feedback.innerHTML = "<strong>Helytelen válasz! ❌</strong>";
+        }
+        feedback.style.display = 'block';
+
+        const allOptions = document.querySelectorAll('.option-item');
+        allOptions.forEach((div) => {
+            div.onclick = null;
+            const input = div.querySelector('input');
+            input.disabled = true;
+
+            const originalIdx = parseInt(input.value);
+            const isSelected = input.checked;
+            const isActuallyCorrect = q.correct.includes(originalIdx);
+
+            div.classList.remove('selected');
+
+            if (isActuallyCorrect) {
+                div.classList.add('correct-answer');
+                if (!isSelected) {
+                    div.innerHTML += ' <span class="badge bg-success ms-2 float-end">Ez a helyes</span>';
+                    div.classList.add('missed-answer');
+                }
+            } else if (isSelected) {
+                div.classList.add('wrong-answer');
+                div.innerHTML += ' <span class="badge bg-danger ms-2 float-end">Hibás</span>';
+            }
+        });
+
+        document.getElementById('check-btn').style.display = 'none';
+        document.getElementById('skip-btn').style.display = 'none'; 
+        document.getElementById('next-btn').style.display = 'block';
+
+        // --- AUTO ADVANCE LOGIKA ---
+        const isAutoAdvance = document.getElementById('auto-advance-toggle').checked;
+        
+        if (isAutoAdvance && currentIdx < quizQuestions.length - 1) {
+            autoAdvanceTimer = setTimeout(() => {
+                nextQuestion();
+            }, 100);
+        }
+    }
+
+    function skipQuestions() {
+        if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+        currentIdx += 10;
+        if (currentIdx < quizQuestions.length) {
+            loadQuestion();
+        } else {
+            showEndScreen();
+        }
+    }
+
+    function nextQuestion() {
+        if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+        currentIdx++;
+        if (currentIdx < quizQuestions.length) {
+            loadQuestion();
+        } else {
+            showEndScreen();
+        }
+    }
+
+    function showEndScreen() {
+        document.getElementById('quiz-container').style.display = 'none';
+        document.getElementById('end-screen').style.display = 'flex';
+        document.getElementById('final-score').innerText = score;
+        document.getElementById('final-total').innerText = quizQuestions.length;
+        
+        const percent = Math.round((score / quizQuestions.length) * 100);
+        document.getElementById('final-percent').innerText = `${percent}%-os teljesítmény`;
+        document.getElementById('final-progress').style.width = percent + "%";
+    }
+
+    // --- JAVÍTÓ MÓD ---
+
+    function saveAndNext() {
+        const selectedInputs = document.querySelectorAll('input[name="option"]:checked');
+        const newCorrectIndices = Array.from(selectedInputs).map(i => parseInt(i.value));
+
+        if (newCorrectIndices.length === 0) {
+            if(!confirm("Figyelem! Nem jelöltél be semmit helyes válasznak. Biztos tovább lépsz?")) return;
+        }
+
+        questions[currentIdx].correct = newCorrectIndices.sort();
+
+        currentIdx++;
+        if (currentIdx < questions.length) {
+            loadQuestion();
+        } else {
+            showExportScreen();
+        }
+    }
+
+    function showExportScreen() {
+        document.getElementById('quiz-container').style.display = 'none';
+        document.getElementById('export-screen').style.display = 'flex';
+
+        const jsonContent = JSON.stringify(questions, null, 4);
+        const jsContent = `const questions = ${jsonContent};`;
+        
+        document.getElementById('code-output').value = jsContent;
+    }
+
+    function downloadJS() {
+        const text = document.getElementById('code-output').value;
+        const blob = new Blob([text], { type: "text/javascript" });
+        const anchor = document.createElement("a");
+        anchor.download = "questions.js";
+        anchor.href = window.URL.createObjectURL(blob);
+        anchor.target = "_blank";
+        anchor.style.display = "none";
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+    }
+
+    function copyToClipboard() {
+        const copyText = document.getElementById("code-output");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); 
+        navigator.clipboard.writeText(copyText.value).then(() => {
+            alert("Kód másolva a vágólapra!");
+        });
+    }
+
+</script>
+
+</body>
+</html>
