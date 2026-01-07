@@ -1,0 +1,28 @@
+# --- OS Rendszerfájlok (Mac & Windows) ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- IDE és Editor mappák ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Node.js és Csomagok ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Build mappák ---
+dist/
+build/
+
+# --- Biztonság ---
+.env
+.env.local
