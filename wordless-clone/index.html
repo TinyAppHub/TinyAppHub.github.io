@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wordless Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <header>
+            <a href="../index.html" class="home-btn">🏠</a>
+            <h1>Wordless Clone</h1>
+        </header>
+        
+        <div class="controls">
+            <select id="word-length">
+                <option value="3">3 word</option>
+                <option value="4">4 word</option>
+                <option value="5" selected>5 word</option>
+                <option value="6">6 word</option>
+            </select>
+            <button id="new-game-btn">New Game</button>
+        </div>
+
+        <div id="message-area"></div>
+
+        <div id="game-board-container">
+            <div id="game-board">
+                </div>
+        </div>
+
+        <div id="keyboard-container">
+            </div>
+        <footer style="margin-top: 20px; font-size: 0.8rem; color: #888; text-align: center;">
+            <p style="margin: 5px 0;">This is an open-source practice project.</p>
+            <p style="margin: 5px 0;">Inspired by <a href="https://lessgames.com/wordless" target="_blank" style="color: #aaa; text-decoration: underline;">Wordless</a>.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

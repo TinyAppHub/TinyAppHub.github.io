@@ -1,0 +1,179 @@
+:root {
+    --bg-color: #121213;
+    --text-color: #ffffff;
+    --tile-border: #3a3a3c;
+    --tile-active: #818384;
+    --green: #538d4e;
+    --yellow: #b59f3b;
+    --gray: #3a3a3c;
+    --key-bg: #818384;
+}
+
+header {
+    position: relative; /* Ez kell, hogy a gomb ehhez igazodjon */
+    width: 100%;
+    display: flex;
+    justify-content: center; /* A H1-et középre igazítja */
+    align-items: center;
+    padding: 10px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+
+.home-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    background: #333;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 10px;
+    height: 100vh;
+    box-sizing: border-box;
+    touch-action: manipulation;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+}
+
+header h1 {
+    margin: 10px 0;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+
+.controls {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+select, button {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--key-bg);
+    color: white;
+}
+
+button#new-game-btn {
+    background-color: var(--green);
+    font-weight: bold;
+}
+
+#game-board-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+#game-board {
+    display: grid;
+    grid-gap: 6px;
+    padding: 10px;
+}
+
+.tile {
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--tile-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    user-select: none;
+    border-radius: 4px;
+}
+
+.tile[data-status="filled"] {
+    border-color: var(--tile-active);
+    animation: pop 0.1s ease-in-out;
+}
+
+@keyframes pop {
+    50% { transform: scale(1.1); }
+}
+
+.tile.green, .key.green { background-color: var(--green); border-color: var(--green); color: white; }
+.tile.yellow, .key.yellow { background-color: var(--yellow); border-color: var(--yellow); color: white; }
+.tile.gray, .key.gray { background-color: var(--gray); border-color: var(--gray); color: white; }
+
+
+#message-area {
+    height: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#keyboard-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+    touch-action: manipulation;
+}
+
+.key {
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    margin: 0 3px;
+    height: 58px;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--key-bg);
+    color: white;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.key.wide {
+    flex: 1.5;
+    font-size: 0.9rem;
+}
+
+@media (max-height: 700px) {
+    .tile { width: 45px; height: 45px; font-size: 1.8rem; }
+    .key { height: 45px; font-size: 1rem; }
+    header h1 { font-size: 1.5rem; margin: 5px 0; }
+}
