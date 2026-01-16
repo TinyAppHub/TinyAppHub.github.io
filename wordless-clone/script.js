@@ -337,7 +337,7 @@ function deleteLetter() {
 
 function checkRow() {
     if (currentTile < currentLength) {
-        showMessage("Not enough char!");
+        showMessage("Not enough character!");
         shakeRow();
         playSound('error');
         return;
