@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algo 2 Szótár Kvíz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="../index.html" class="home-btn">🏠</a>
+            <div>
+                <h1>Algo 2 Szavak</h1>
+                <p>Válassz irányt és fordítsd le a kifejezést!</p>
+            </div>
+        </header>
+
+        <div class="mode-selector">
+            <label class="mode-option">
+                <input type="radio" name="mode" value="eng_hun" checked>
+                <span>🇬🇧 Angol ➡ 🇭🇺 Magyar</span>
+            </label>
+            <label class="mode-option">
+                <input type="radio" name="mode" value="hun_eng">
+                <span>🇭🇺 Magyar ➡ 🇬🇧 Angol</span>
+            </label>
+        </div>
+
+        <div class="card">
+            <div class="word-display">
+                <span id="question-word">...</span>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="answer-input" placeholder="Írd ide a jelentést..." autocomplete="off">
+                <button id="check-btn">Ellenőrzés</button>
+            </div>
+
+            <div id="feedback" class="feedback hidden"></div>
+            
+            <button id="next-btn" class="hidden">Következő szó</button>
+        </div>
+
+        <footer>
+            <p>Összesen: <span id="total-count">0</span> szó az adatbázisban.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

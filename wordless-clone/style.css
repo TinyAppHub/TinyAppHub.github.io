@@ -10,10 +10,10 @@
 }
 
 header {
-    position: relative; /* Ez kell, hogy a gomb ehhez igazodjon */
+    position: relative;
     width: 100%;
     display: flex;
-    justify-content: center; /* A H1-et középre igazítja */
+    justify-content: center;
     align-items: center;
     padding: 10px 0;
 }
