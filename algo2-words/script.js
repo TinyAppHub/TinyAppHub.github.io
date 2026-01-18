@@ -50,33 +50,48 @@ const inputEl = document.getElementById("answer-input");
 const checkBtn = document.getElementById("check-btn");
 const nextBtn = document.getElementById("next-btn");
 const feedbackEl = document.getElementById("feedback");
-const totalCountEl = document.getElementById("total-count");
 const modeRadios = document.querySelectorAll('input[name="mode"]');
 
+const quizCard = document.getElementById("quiz-card");
+const resultCard = document.getElementById("result-card");
+const progressText = document.getElementById("progress-text");
+const scoreText = document.getElementById("score-text");
+
+const finalScoreDisplay = document.getElementById("final-score-display");
+const totalQuestionsDisplay = document.getElementById(
+  "total-questions-display",
+);
+const evaluationText = document.getElementById("evaluation-text");
+const restartBtn = document.getElementById("restart-btn");
+
+let quizQueue = [];
 let currentWordObj = null;
+let score = 0;
+let totalQuestions = 0;
+let currentQuestionIndex = 0;
 
 function init() {
-  totalCountEl.innerText = dictionary.length;
-  loadRandomWord();
-
+  restartBtn.addEventListener("click", startQuiz);
   checkBtn.addEventListener("click", checkAnswer);
-  nextBtn.addEventListener("click", loadRandomWord);
+  nextBtn.addEventListener("click", nextQuestion);
 
   inputEl.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
       if (nextBtn.classList.contains("hidden")) {
         checkAnswer();
       } else {
-        loadRandomWord();
+        nextQuestion();
       }
     }
   });
 
   modeRadios.forEach((radio) => {
     radio.addEventListener("change", () => {
-      loadRandomWord();
+      startQuiz();
     });
   });
+
+  startQuiz();
 }
 
 function getCurrentMode() {
@@ -89,17 +104,52 @@ function getCurrentMode() {
   return selectedMode;
 }
 
-function loadRandomWord() {
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function startQuiz() {
+  quizCard.classList.remove("hidden");
+  resultCard.classList.add("hidden");
+
+  score = 0;
+  quizQueue = shuffleArray([...dictionary]);
+  totalQuestions = dictionary.length;
+  currentQuestionIndex = 0;
+
+  updateStats();
+  loadWordFromQueue();
+}
+
+function updateStats() {
+  let displayIndex =
+    currentQuestionIndex < totalQuestions
+      ? currentQuestionIndex + 1
+      : totalQuestions;
+  progressText.innerText = `${displayIndex} / ${totalQuestions}`;
+  scoreText.innerText = score;
+}
+
+function loadWordFromQueue() {
+  if (quizQueue.length === 0) {
+    showResults();
+    return;
+  }
+
+  currentWordObj = quizQueue.pop();
+
   feedbackEl.classList.add("hidden");
   feedbackEl.className = "feedback hidden";
   nextBtn.classList.add("hidden");
   checkBtn.classList.remove("hidden");
+
   inputEl.value = "";
   inputEl.disabled = false;
   inputEl.focus();
-
-  const randomIndex = Math.floor(Math.random() * dictionary.length);
-  currentWordObj = dictionary[randomIndex];
 
   const mode = getCurrentMode();
   if (mode === "eng_hun") {
@@ -109,110 +159,6 @@ function loadRandomWord() {
     questionEl.innerText = currentWordObj.hun;
     inputEl.placeholder = "Írd ide az angol jelentést...";
   }
-}
-
-function getColoredFeedback(userAttempt, correctAnswer) {
-  const n = userAttempt.length;
-  const m = correctAnswer.length;
-
-  const dp = Array(n + 1)
-    .fill()
-    .map(() => Array(m + 1).fill(0));
-
-  for (let i = 1; i <= n; i++) {
-    for (let j = 1; j <= m; j++) {
-      if (userAttempt[i - 1] === correctAnswer[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1] + 1;
-      } else {
-        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
-      }
-    }
-  }
-
-  let i = n;
-  let j = m;
-  let resultHtml = "";
-
-  let charArray = [];
-
-  while (i > 0 && j > 0) {
-    if (userAttempt[i - 1] === correctAnswer[j - 1]) {
-      charArray.unshift(
-        `<span class="char-correct">${userAttempt[i - 1]}</span>`,
-      );
-      i--;
-      j--;
-    } else if (dp[i - 1][j] > dp[i][j - 1]) {
-      charArray.unshift(
-        `<span class="char-wrong">${userAttempt[i - 1]}</span>`,
-      );
-      i--;
-    } else {
-      j--;
-    }
-  }
-
-  while (i > 0) {
-    charArray.unshift(`<span class="char-wrong">${userAttempt[i - 1]}</span>`);
-    i--;
-  }
-
-  return charArray.join("");
-}
-function getColoredFeedback(userAttempt, correctAnswer) {
-  const n = userAttempt.length;
-  const m = correctAnswer.length;
-
-  const dp = Array(n + 1)
-    .fill()
-    .map(() => Array(m + 1).fill(0));
-
-  for (let i = 1; i <= n; i++) {
-    for (let j = 1; j <= m; j++) {
-      if (userAttempt[i - 1] === correctAnswer[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1] + 1;
-      } else {
-        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
-      }
-    }
-  }
-
-  let i = n;
-  let j = m;
-  let resultHtml = "";
-
-  let charArray = [];
-
-  while (i > 0 && j > 0) {
-    if (userAttempt[i - 1] === correctAnswer[j - 1]) {
-      charArray.unshift(
-        `<span class="char-correct">${userAttempt[i - 1]}</span>`,
-      );
-      i--;
-      j--;
-    } else if (dp[i - 1][j] > dp[i][j - 1]) {
-      charArray.unshift(
-        `<span class="char-wrong">${userAttempt[i - 1]}</span>`,
-      );
-      i--;
-    } else {
-      j--;
-    }
-  }
-
-  while (i > 0) {
-    charArray.unshift(`<span class="char-wrong">${userAttempt[i - 1]}</span>`);
-    i--;
-  }
-
-  return charArray.join("");
-}
-
-function normalizeText(text) {
-  return text
-    .toLowerCase()
-    .replace(/\s*\(.*?\)\s*/g, "")
-    .trim();
 }
 
 function checkAnswer() {
@@ -231,12 +177,12 @@ function checkAnswer() {
 
   const isCorrect =
     userAnswer === correctAnswerClean ||
-    (userAnswer.length > 2 &&
-      correctAnswerRaw.toLowerCase().includes(userAnswer));
+    (userAnswer.length > 2 && correctAnswerClean.includes(userAnswer));
 
   feedbackEl.classList.remove("hidden");
 
   if (isCorrect && userAnswer !== "") {
+    score++;
     feedbackEl.innerText = "Helyes! ✅";
     feedbackEl.classList.remove("wrong");
     feedbackEl.classList.add("correct");
@@ -254,6 +200,31 @@ function checkAnswer() {
     feedbackEl.classList.add("wrong");
     handleCorrectState();
   }
+
+  updateStats();
+}
+
+function nextQuestion() {
+  currentQuestionIndex++;
+  updateStats();
+  loadWordFromQueue();
+}
+
+function showResults() {
+  quizCard.classList.add("hidden");
+  resultCard.classList.remove("hidden");
+
+  finalScoreDisplay.innerText = score;
+  totalQuestionsDisplay.innerText = totalQuestions;
+
+  const percentage = (score / totalQuestions) * 100;
+  let text = "";
+  if (percentage === 100) text = "Tökéletes! Profi vagy! 🏆";
+  else if (percentage >= 80) text = "Nagyon szép teljesítmény! 🔥";
+  else if (percentage >= 50) text = "Nem rossz, de van még hova fejlődni. 👍";
+  else text = "Gyakorolj még egy kicsit! 💪";
+
+  evaluationText.innerText = text;
 }
 
 function handleCorrectState() {
@@ -261,6 +232,60 @@ function handleCorrectState() {
   checkBtn.classList.add("hidden");
   nextBtn.classList.remove("hidden");
   nextBtn.focus();
+}
+
+function normalizeText(text) {
+  return text
+    .toLowerCase()
+    .replace(/\s*\(.*?\)\s*/g, "")
+    .trim();
+}
+
+function getColoredFeedback(userAttempt, correctAnswer) {
+  const n = userAttempt.length;
+  const m = correctAnswer.length;
+
+  const dp = Array(n + 1)
+    .fill()
+    .map(() => Array(m + 1).fill(0));
+
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= m; j++) {
+      if (userAttempt[i - 1] === correctAnswer[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  let i = n;
+  let j = m;
+  let charArray = [];
+
+  while (i > 0 && j > 0) {
+    if (userAttempt[i - 1] === correctAnswer[j - 1]) {
+      charArray.unshift(
+        `<span class="char-correct">${userAttempt[i - 1]}</span>`,
+      );
+      i--;
+      j--;
+    } else if (dp[i - 1][j] > dp[i][j - 1]) {
+      charArray.unshift(
+        `<span class="char-wrong">${userAttempt[i - 1]}</span>`,
+      );
+      i--;
+    } else {
+      j--;
+    }
+  }
+
+  while (i > 0) {
+    charArray.unshift(`<span class="char-wrong">${userAttempt[i - 1]}</span>`);
+    i--;
+  }
+
+  return charArray.join("");
 }
 
 init();

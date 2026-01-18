@@ -12,8 +12,8 @@
         <header>
             <a href="../index.html" class="home-btn">🏠</a>
             <div>
-                <h1>Algo 2 Szavak</h1>
-                <p>Válassz irányt és fordítsd le a kifejezést!</p>
+                <h1>Algo 2 Kvíz</h1>
+                <p>Menj végig az összes kifejezésen!</p>
             </div>
         </header>
 
@@ -28,7 +28,12 @@
             </label>
         </div>
 
-        <div class="card">
+        <div class="stats-bar">
+            <span>Haladás: <strong id="progress-text">0/0</strong></span>
+            <span>Pontszám: <strong id="score-text">0</strong></span>
+        </div>
+
+        <div class="card" id="quiz-card">
             <div class="word-display">
                 <span id="question-word">...</span>
             </div>
@@ -43,8 +48,17 @@
             <button id="next-btn" class="hidden">Következő szó</button>
         </div>
 
+        <div class="card hidden" id="result-card">
+            <h2>Kvíz vége! 🎉</h2>
+            <div class="final-score">
+                <span id="final-score-display">0</span> / <span id="total-questions-display">0</span>
+            </div>
+            <p id="evaluation-text"></p>
+            <button id="restart-btn">Újraindítás</button>
+        </div>
+
         <footer>
-            <p>Összesen: <span id="total-count">0</span> szó az adatbázisban.</p>
+            <p>Algo 2 gyakorló</p>
         </footer>
     </div>
 
