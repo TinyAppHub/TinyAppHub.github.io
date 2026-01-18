@@ -111,6 +111,103 @@ function loadRandomWord() {
   }
 }
 
+function getColoredFeedback(userAttempt, correctAnswer) {
+  const n = userAttempt.length;
+  const m = correctAnswer.length;
+
+  const dp = Array(n + 1)
+    .fill()
+    .map(() => Array(m + 1).fill(0));
+
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= m; j++) {
+      if (userAttempt[i - 1] === correctAnswer[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  let i = n;
+  let j = m;
+  let resultHtml = "";
+
+  let charArray = [];
+
+  while (i > 0 && j > 0) {
+    if (userAttempt[i - 1] === correctAnswer[j - 1]) {
+      charArray.unshift(
+        `<span class="char-correct">${userAttempt[i - 1]}</span>`,
+      );
+      i--;
+      j--;
+    } else if (dp[i - 1][j] > dp[i][j - 1]) {
+      charArray.unshift(
+        `<span class="char-wrong">${userAttempt[i - 1]}</span>`,
+      );
+      i--;
+    } else {
+      j--;
+    }
+  }
+
+  while (i > 0) {
+    charArray.unshift(`<span class="char-wrong">${userAttempt[i - 1]}</span>`);
+    i--;
+  }
+
+  return charArray.join("");
+}
+function getColoredFeedback(userAttempt, correctAnswer) {
+  const n = userAttempt.length;
+  const m = correctAnswer.length;
+
+  const dp = Array(n + 1)
+    .fill()
+    .map(() => Array(m + 1).fill(0));
+
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= m; j++) {
+      if (userAttempt[i - 1] === correctAnswer[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  let i = n;
+  let j = m;
+  let resultHtml = "";
+
+  let charArray = [];
+
+  while (i > 0 && j > 0) {
+    if (userAttempt[i - 1] === correctAnswer[j - 1]) {
+      charArray.unshift(
+        `<span class="char-correct">${userAttempt[i - 1]}</span>`,
+      );
+      i--;
+      j--;
+    } else if (dp[i - 1][j] > dp[i][j - 1]) {
+      charArray.unshift(
+        `<span class="char-wrong">${userAttempt[i - 1]}</span>`,
+      );
+      i--;
+    } else {
+      j--;
+    }
+  }
+
+  while (i > 0) {
+    charArray.unshift(`<span class="char-wrong">${userAttempt[i - 1]}</span>`);
+    i--;
+  }
+
+  return charArray.join("");
+}
+
 function normalizeText(text) {
   return text
     .toLowerCase()
@@ -123,14 +220,11 @@ function checkAnswer() {
   const mode = getCurrentMode();
 
   let correctAnswerRaw = "";
-  let questionText = "";
 
   if (mode === "eng_hun") {
     correctAnswerRaw = currentWordObj.hun;
-    questionText = currentWordObj.eng;
   } else {
     correctAnswerRaw = currentWordObj.eng;
-    questionText = currentWordObj.hun;
   }
 
   const correctAnswerClean = normalizeText(correctAnswerRaw);
@@ -144,10 +238,19 @@ function checkAnswer() {
 
   if (isCorrect && userAnswer !== "") {
     feedbackEl.innerText = "Helyes! ✅";
+    feedbackEl.classList.remove("wrong");
     feedbackEl.classList.add("correct");
     handleCorrectState();
   } else {
-    feedbackEl.innerHTML = `Nem jó. ❌ <br>A helyes válasz: <strong>${correctAnswerRaw}</strong>`;
+    const coloredDiff = getColoredFeedback(userAnswer, correctAnswerClean);
+
+    feedbackEl.innerHTML = `
+      Nem jó. ❌ <br>
+      Ezt írtad: ${coloredDiff} <br>
+      A helyes válasz: <strong>${correctAnswerRaw}</strong>
+    `;
+
+    feedbackEl.classList.remove("correct");
     feedbackEl.classList.add("wrong");
     handleCorrectState();
   }

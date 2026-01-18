@@ -195,6 +195,17 @@ footer {
     color: #666;
 }
 
+.char-correct {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.char-wrong {
+    color: #e74c3c;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 @media (max-width: 400px) {
     .word-display {
         font-size: 1.2rem;
