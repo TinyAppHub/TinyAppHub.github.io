@@ -17,7 +17,7 @@ const dictionary = [
   { eng: "forward edge", hun: "előre él" },
   { eng: "cross edge", hun: "kereszt él" },
   { eng: "balance", hun: "egyensúly" },
-  { eng: "left/right rotation", hun: "balra/jobbra forgatás" },
+  { eng: "left right rotation", hun: "balra jobbra forgatás" },
   { eng: "minimum spanning tree (MST)", hun: "minimális feszítőfa" },
   { eng: "safe for A", hun: "biztonságos A hoz" },
   { eng: "relaxation", hun: "közelítés" },
@@ -35,7 +35,7 @@ const dictionary = [
   { eng: "invalid shift", hun: "érvénytelen eltolás" },
   { eng: "naive string matching", hun: "egyszerű mintaillesztés" },
   { eng: "brute force", hun: "nyers erő" },
-  { eng: "proper prefix/suffix", hun: "valódi prefix/szuffix" },
+  { eng: "proper prefix suffix", hun: "valódi prefix szuffix" },
   {
     eng: "transitivity of suffix relation",
     hun: "szuffixum reláció tranzitivitása",
