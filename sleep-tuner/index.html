@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Tuner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="lang-btn" id="langBtn">🇭🇺 / 🇬🇧</div>
+    <a href="../index.html" class="home-btn">🏠</a>
+
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <div class="container" id="main-container">
+        <div class="card">
+            <h1 data-key="title">Sleep Tuner</h1>
+            <p class="subtitle" data-key="subtitle">Állítsd be a hangolódás idejét</p>
+            
+            <div class="time-control">
+                <button id="btn-minus" class="adjust-btn">-</button>
+                <div class="time-display">
+                    <span id="display-hours">1</span><span class="unit" data-key="unitHour">óra</span>
+                    <span id="display-mins">00</span><span class="unit" data-key="unitMin">perc</span>
+                </div>
+                <button id="btn-plus" class="adjust-btn">+</button>
+            </div>
+
+            <div class="visualizer">
+                <div class="sleep-circle"></div>
+            </div>
+
+            <p id="status-text" data-key="statusReady">Készen állsz az alvásra?</p>
+
+            <button id="toggle-btn" class="glow-btn" data-key="btnStart">START</button>
+        </div>
+    </div>
+
+    <div id="blackout" class="hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

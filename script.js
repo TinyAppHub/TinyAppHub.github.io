@@ -11,6 +11,7 @@ const texts = {
     wordlessclone: "Wordless Clone",
     algo2words: "Alogo2 Words",
     learntimer: "Learn Timer",
+    sleeptuner: "Sleep Tuner",
   },
   hu: {
     mainTitle: "Eszközeim",
@@ -24,6 +25,7 @@ const texts = {
     wordlessclone: "Wordless Klón",
     algo2words: "Alogo2 Szavak",
     learntimer: "Tanulás Időzítő",
+    sleeptuner: "Alvás Elősegítő",
   },
 };
 
