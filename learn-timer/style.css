@@ -143,20 +143,15 @@ input:focus { border-color: var(--primary); }
     50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); transform: scale(1.02); }
     100% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.1); }
 }
-/* --- MOBIL OPTIMALIZÁLÁS JAVÍTVA --- */
 @media (max-width: 480px) {
     .container {
         margin-top: 60px;
-        padding: 15px; /* Kicsit több hely oldalt */
+        padding: 15px;
     }
 
-    /* A trükk: Nem írjuk át a méreteket pixelre, 
-       hanem egyszerűen lekicsinyítjük az egészet arányosan */
     .circle-container {
-        transform: scale(0.8); /* 80%-os méretre kicsinyít */
-        margin-bottom: 10px;
-        /* Fontos: a scale miatt maradhat üres hely, ezt kompenzáljuk negatív margóval ha kell, 
-           de itt a margin-bottom csökkentése elég */
+        transform: scale(0.85);
+        margin-bottom: 0;
     }
 
     .timer-display-inner {
