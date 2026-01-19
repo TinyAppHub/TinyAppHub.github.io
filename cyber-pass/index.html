@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberPass</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <a href="../index.html" class="home-btn">🏠</a>
+    <div class="lang-btn" id="langBtn">🇭🇺 / 🇬🇧</div>
+
+    <div class="container">
+        <div class="card">
+            <h1 class="glitch" data-text="CYBERPASS" data-key="title">CYBERPASS</h1>
+            
+            <div class="password-display-container">
+                <div id="password-output" class="password-text" data-key="placeholder">GENERÁLJ!</div>
+                <button id="copy-btn" class="icon-btn" title="Másolás">
+                    📋
+                </button>
+            </div>
+            <div id="copy-msg" class="hidden" data-key="msgCopied">Vágólapra másolva!</div>
+
+            <div class="strength-bar">
+                <div id="strength-fill"></div>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label><span data-key="lblLength">Hossz:</span> <span id="length-val">16</span></label>
+                    <input type="range" id="length-range" min="6" max="32" value="16">
+                </div>
+
+                <div class="toggles">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="inc-upper" checked>
+                        <span class="checkmark"></span>
+                        <span data-key="lblUpper">Nagybetűk (A-Z)</span>
+                    </label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="inc-numbers" checked>
+                        <span class="checkmark"></span>
+                        <span data-key="lblNumbers">Számok (0-9)</span>
+                    </label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="inc-symbols" checked>
+                        <span class="checkmark"></span>
+                        <span data-key="lblSymbols">Szimbólumok (!@#)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="generate-btn" class="glow-btn" data-key="btnGenerate">GENERÁLÁS</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+:root {
+    --bg-color: #050505;
+    --card-bg: #111;
+    --primary: #00ff9d;
+    --secondary: #00d2ff;
+    --text: #e0e0e0;
+    --text-muted: #666;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: 
+        linear-gradient(rgba(0, 255, 157, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 157, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    position: relative;
+}
+
+.lang-btn, .home-btn {
+    position: absolute;
+    top: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+    text-decoration: none;
+    user-select: none;
+    z-index: 1000;
+}
+.lang-btn { right: 20px; }
+.home-btn { left: 20px; }
+.lang-btn:hover, .home-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
+
+
+.container { width: 100%; max-width: 450px; padding: 20px; }
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(0, 255, 157, 0.1);
+}
+
+h1 {
+    text-align: center; margin-bottom: 25px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--primary);
+    letter-spacing: 3px;
+    position: relative;
+}
+h1::before, h1::after {
+    content: attr(data-text);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--card-bg);
+}
+h1::before {
+    left: 2px; text-shadow: -1px 0 red; clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+h1::after {
+    left: -2px; text-shadow: -1px 0 blue; clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim-1 {
+    0% { clip: rect(30px, 9999px, 10px, 0); }
+    100% { clip: rect(80px, 9999px, 100px, 0); }
+}
+@keyframes glitch-anim-2 {
+    0% { clip: rect(100px, 9999px, 10px, 0); }
+    100% { clip: rect(10px, 9999px, 60px, 0); }
+}
+
+.password-display-container {
+    background: #000;
+    border: 1px solid var(--primary);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: inset 0 0 20px rgba(0, 255, 157, 0.1);
+}
+
+.password-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    color: var(--primary);
+    word-break: break-all;
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--primary);
+}
+
+.icon-btn {
+    background: none; border: none; font-size: 1.5rem;
+    cursor: pointer; color: var(--text); transition: 0.2s;
+    margin-left: 10px;
+}
+.icon-btn:hover { transform: scale(1.1); color: white; }
+
+#copy-msg {
+    text-align: center; color: var(--secondary); font-size: 0.8rem;
+    margin-bottom: 15px; height: 1em; opacity: 1; transition: opacity 0.5s;
+}
+.hidden { opacity: 0 !important; }
+
+.strength-bar {
+    width: 100%; height: 4px; background: #333;
+    margin-bottom: 25px; border-radius: 2px; overflow: hidden;
+}
+#strength-fill {
+    height: 100%; width: 0%;
+    background: var(--primary);
+    transition: width 0.3s, background 0.3s;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.control-group { margin-bottom: 20px; }
+.control-group label {
+    display: flex; justify-content: space-between;
+    margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; color: var(--secondary);
+}
+
+input[type=range] {
+    width: 100%; cursor: pointer; accent-color: var(--secondary);
+}
+
+.toggles { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+.checkbox-container {
+    display: flex; align-items: center; cursor: pointer;
+    font-size: 0.9rem; color: var(--text-muted); transition: 0.2s;
+}
+.checkbox-container:hover { color: var(--text); }
+.checkbox-container input { display: none; }
+.checkmark {
+    width: 20px; height: 20px; background: #222; border: 1px solid #444;
+    margin-right: 12px; border-radius: 4px; position: relative;
+    transition: 0.2s;
+}
+.checkbox-container input:checked + .checkmark {
+    background: var(--secondary); border-color: var(--secondary);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+}
+.checkbox-container input:checked + .checkmark:after {
+    content: ''; position: absolute; left: 6px; top: 2px;
+    width: 5px; height: 10px; border: solid black;
+    border-width: 0 2px 2px 0; transform: rotate(45deg);
+}
+
+.glow-btn {
+    width: 100%; padding: 15px; border: none; border-radius: 8px;
+    background: var(--primary); color: black;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem; font-weight: 700; cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.4);
+    transition: 0.2s; letter-spacing: 2px;
+}
+.glow-btn:hover {
+    background: #fff; box-shadow: 0 0 40px rgba(0, 255, 157, 0.8);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin-top: 60px;
+        padding: 15px;
+    }
+
+    .card {
+        padding: 20px 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .password-display-container {
+        padding: 15px;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .password-text {
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+
+    .icon-btn {
+        font-size: 1.8rem;
+        padding: 5px;
+    }
+
+    .control-group label, 
+    .checkbox-container {
+        font-size: 0.9rem;
+    }
+
+    .checkmark {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .lang-btn, .home-btn {
+        top: 15px;
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+}
