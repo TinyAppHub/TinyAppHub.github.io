@@ -14,6 +14,7 @@ const texts = {
     sleeptuner: "Sleep Tuner",
     cyberpass: "Password Generator",
     worldquiz: "Countries Quiz",
+    flashlight: "Flashlight",
   },
   hu: {
     mainTitle: "Eszközeim",
@@ -30,6 +31,7 @@ const texts = {
     sleeptuner: "Alvás Elősegítő",
     cyberpass: "Jelszó Generátor",
     worldquiz: "Ország Kvíz",
+    flashlight: "Zsebámpa",
   },
 };
 
