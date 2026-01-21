@@ -13,6 +13,7 @@ const texts = {
     learntimer: "Learn Timer",
     sleeptuner: "Sleep Tuner",
     cyberpass: "Password Generator",
+    worldquiz: "Countries Quiz",
   },
   hu: {
     mainTitle: "Eszközeim",
@@ -28,6 +29,7 @@ const texts = {
     learntimer: "Tanulás Időzítő",
     sleeptuner: "Alvás Elősegítő",
     cyberpass: "Jelszó Generátor",
+    worldquiz: "Ország Kvíz",
   },
 };
 
