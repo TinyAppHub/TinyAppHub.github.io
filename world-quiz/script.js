@@ -212,7 +212,6 @@ const countriesData = [
   { id: "sb", name_hu: "Salamon-szigetek", continent: "Oceania" },
   { id: "vu", name_hu: "Vanuatu", continent: "Oceania" },
 ];
-
 let currentMatches = [];
 let currentFocus = -1;
 
@@ -238,6 +237,8 @@ const resultsContainer = document.getElementById("results-container");
 const mapContainer = document.getElementById("map-container");
 const mapContent = document.getElementById("map-content");
 const tooltip = document.getElementById("tooltip");
+const zoomInBtn = document.getElementById("zoom-in");
+const zoomOutBtn = document.getElementById("zoom-out");
 
 let scale = 1;
 let pointX = 0;
@@ -393,27 +394,19 @@ function renderContinents() {
 }
 
 function setupZoomAndPan() {
-  mapContainer.addEventListener("wheel", (e) => {
-    e.preventDefault();
-
+  function performZoom(direction, originX, originY) {
     const zoomIntensity = 0.2;
     const minScale = 1;
     const maxScale = 8;
 
-    const rect = mapContainer.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const direction = e.deltaY > 0 ? -1 : 1;
     const factor = direction > 0 ? 1 + zoomIntensity : 1 / (1 + zoomIntensity);
-
     let newScale = scale * factor;
 
     if (newScale < minScale) newScale = minScale;
     if (newScale > maxScale) newScale = maxScale;
 
-    pointX = mouseX - (mouseX - pointX) * (newScale / scale);
-    pointY = mouseY - (mouseY - pointY) * (newScale / scale);
+    pointX = originX - (originX - pointX) * (newScale / scale);
+    pointY = originY - (originY - pointY) * (newScale / scale);
 
     if (newScale === minScale) {
       pointX = 0;
@@ -422,7 +415,30 @@ function setupZoomAndPan() {
 
     scale = newScale;
     updateTransform();
+  }
+
+  mapContainer.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const rect = mapContainer.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const direction = e.deltaY > 0 ? -1 : 1;
+    performZoom(direction, mouseX, mouseY);
   });
+
+  if (zoomInBtn && zoomOutBtn) {
+    zoomInBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const rect = mapContainer.getBoundingClientRect();
+      performZoom(1, rect.width / 2, rect.height / 2);
+    });
+
+    zoomOutBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const rect = mapContainer.getBoundingClientRect();
+      performZoom(-1, rect.width / 2, rect.height / 2);
+    });
+  }
 
   mapContainer.addEventListener("mousedown", (e) => {
     e.preventDefault();
@@ -451,7 +467,7 @@ function setupZoomAndPan() {
       const id = target.id || target.closest("g").id;
       const countryData = countriesData.find((c) => c.id === id);
 
-      if (countryData) {
+      if (countryData && tooltip) {
         isHoveringCountry = true;
         tooltip.style.display = "block";
         tooltip.textContent = countryData.name_hu;
@@ -460,7 +476,7 @@ function setupZoomAndPan() {
       }
     }
 
-    if (!isHoveringCountry) {
+    if (!isHoveringCountry && tooltip) {
       tooltip.style.display = "none";
     }
   });
@@ -477,6 +493,35 @@ function setupZoomAndPan() {
       isDragging = false;
       mapContainer.style.cursor = "grab";
     }
+  });
+
+  mapContainer.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - pointX;
+        startY = e.touches[0].clientY - pointY;
+      }
+    },
+    { passive: false },
+  );
+
+  mapContainer.addEventListener(
+    "touchmove",
+    (e) => {
+      if (isDragging && e.touches.length === 1) {
+        e.preventDefault();
+        pointX = e.touches[0].clientX - startX;
+        pointY = e.touches[0].clientY - startY;
+        updateTransform();
+      }
+    },
+    { passive: false },
+  );
+
+  mapContainer.addEventListener("touchend", () => {
+    isDragging = false;
   });
 }
 
