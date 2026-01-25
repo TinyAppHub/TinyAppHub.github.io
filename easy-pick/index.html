@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Wheel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <div class="main-container">
+        <div class="controls">
+            <header>
+                <a href="../index.html" class="home-btn">🏠</a>
+                <h1 data-key="title">Döntéskerék</h1>
+                <div class="lang-btn" id="langBtn">HU / EN</div>
+            </header>
+            
+            <div class="input-group">
+                <input type="text" id="itemInput" data-key="placeholder" placeholder="Írd be az opciót..." autocomplete="off">
+                <button id="addBtn">+</button>
+            </div>
+            <ul id="itemList"></ul>
+        </div>
+
+        <div class="wheel-container">
+            <div class="pointer"></div>
+            <canvas id="wheelCanvas" width="500" height="500"></canvas>
+            <button id="spinBtn" data-key="spin">PÖRGETÉS</button>
+        </div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 data-key="winnerTitle">A győztes:</h2>
+            <p id="winnerResult"></p>
+            <button id="closeModal" data-key="close">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

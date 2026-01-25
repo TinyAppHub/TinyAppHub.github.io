@@ -15,6 +15,7 @@ const texts = {
     cyberpass: "Password Generator",
     worldquiz: "Countries Quiz",
     flashlight: "Flashlight",
+    easypick: "Easy Pick",
   },
   hu: {
     mainTitle: "Eszközeim",
@@ -32,6 +33,7 @@ const texts = {
     cyberpass: "Jelszó Generátor",
     worldquiz: "Ország Kvíz",
     flashlight: "Zsebámpa",
+    easypick: "Döntéskerék",
   },
 };
 
