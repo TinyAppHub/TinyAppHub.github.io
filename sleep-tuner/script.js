@@ -73,9 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let setTimeMinutes = 60;
-  let remainingSeconds = 0;
   let isRunning = false;
   let timerInterval = null;
+  let endTime = 0;
 
   const audio = new Audio("lofi.mp3");
   audio.loop = true;
@@ -124,6 +124,24 @@ document.addEventListener("DOMContentLoaded", () => {
     displayMins.textContent = m < 10 ? "0" + m : m;
   }
 
+  function updateVisualTimer() {
+    const now = Date.now();
+    const timeLeft = endTime - now;
+
+    if (timeLeft <= 0) {
+      displayHours.textContent = 0;
+      displayMins.textContent = "00";
+      return;
+    }
+
+    let seconds = Math.ceil(timeLeft / 1000);
+    let h = Math.floor(seconds / 3600);
+    let m = Math.floor((seconds % 3600) / 60);
+
+    displayHours.textContent = h;
+    displayMins.textContent = m < 10 ? "0" + m : m;
+  }
+
   btnPlus.addEventListener("click", () => {
     if (isRunning) return;
     if (setTimeMinutes < 720) {
@@ -140,9 +158,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  audio.addEventListener("timeupdate", () => {
+    if (!isRunning) return;
+
+    const now = Date.now();
+    const timeLeft = endTime - now;
+
+    if (timeLeft <= 60000 && timeLeft > 0) {
+      let newVol = timeLeft / 60000;
+      if (newVol > 1) newVol = 1;
+      if (newVol < 0) newVol = 0;
+      audio.volume = newVol;
+    }
+
+    if (timeLeft <= 0) {
+      finishSleep();
+    }
+  });
+
   function startTimer() {
     isRunning = true;
-    remainingSeconds = setTimeMinutes * 60;
+    endTime = Date.now() + setTimeMinutes * 60 * 1000;
 
     fadeIn();
 
@@ -155,36 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
     btnPlus.style.opacity = 0.3;
     btnMinus.style.opacity = 0.3;
 
-    timerInterval = setInterval(() => {
-      remainingSeconds--;
-
-      let h = Math.floor(remainingSeconds / 3600);
-      let m = Math.floor((remainingSeconds % 3600) / 60);
-      displayHours.textContent = h;
-      displayMins.textContent = m < 10 ? "0" + m : m;
-
-      if (remainingSeconds === 60) {
-        startLongFadeOut();
-      }
-
-      if (remainingSeconds <= 0) {
-        finishSleep();
-      }
-    }, 1000);
-  }
-
-  function startLongFadeOut() {
-    let vol = audio.volume;
-    let step = vol / 60;
-
-    let longFade = setInterval(() => {
-      if (audio.volume > step) {
-        audio.volume -= step;
-      } else {
-        audio.volume = 0;
-        clearInterval(longFade);
-      }
-    }, 1000);
+    clearInterval(timerInterval);
+    updateVisualTimer();
+    timerInterval = setInterval(updateVisualTimer, 1000);
   }
 
   function finishSleep() {
