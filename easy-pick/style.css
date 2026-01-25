@@ -77,15 +77,53 @@ header h1 {
 }
 
 @media (max-width: 600px) {
-    header h1 {
-        font-size: 1.4rem;
-        max-width: 50%;
-        line-height: 1.2;
+    header {
+        padding-top: 60px;
+        padding-bottom: 15px;
+        height: auto;
     }
-    
+
+    header h1 {
+        font-size: 1.5rem;
+        max-width: 90%;
+        margin: 0 auto;
+        line-height: 1.2;
+        position: static;
+        transform: none;
+    }
+
     .home-btn, .lang-btn {
-        padding: 5px 10px;
-        font-size: 0.9rem;
+        position: absolute;
+        top: 12px;
+        transform: none;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        height: 36px;
+        font-size: 0.85rem;
+        padding: 0 15px;
+    }
+
+    .home-btn {
+        left: 15px;
+        width: 36px;
+        padding: 0;
+    }
+
+    .lang-btn {
+        right: 15px;
+    }
+
+    .home-btn:hover, 
+    .lang-btn:hover {
+        transform: scale(1.05);
+    }
+
+    .home-btn:active, 
+    .lang-btn:active {
+        transform: scale(0.95);
     }
 }
 
