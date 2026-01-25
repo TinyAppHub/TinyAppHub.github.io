@@ -95,12 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
         artist: `${texts[lang].remaining}${timeLeftMins} ${texts[lang].unitMin}`,
         album: "Sleep Timer",
         artwork: [
-          { src: "cover.jpg", sizes: "96x96", type: "image/jpeg" },
-          { src: "cover.jpg", sizes: "128x128", type: "image/jpeg" },
-          { src: "cover.jpg", sizes: "192x192", type: "image/jpeg" },
-          { src: "cover.jpg", sizes: "256x256", type: "image/jpeg" },
-          { src: "cover.jpg", sizes: "384x384", type: "image/jpeg" },
-          { src: "cover.jpg", sizes: "512x512", type: "image/jpeg" },
+          { src: "cover2.jpg", sizes: "96x96", type: "image/jpeg" },
+          { src: "cover2.jpg", sizes: "128x128", type: "image/jpeg" },
+          { src: "cover2.jpg", sizes: "192x192", type: "image/jpeg" },
+          { src: "cover2.jpg", sizes: "256x256", type: "image/jpeg" },
+          { src: "cover2.jpg", sizes: "384x384", type: "image/jpeg" },
+          { src: "cover2.jpg", sizes: "512x512", type: "image/jpeg" },
         ],
       });
     }
