@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btnStart: "START",
       btnStop: "STOP SLEEP",
       errorFile: "Error: 'lofi.mp3' not found in folder or autoplay blocked!",
+      remaining: "Remaining: ",
     },
     hu: {
       title: "Sleep Tuner",
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btnStop: "ALVÁS MEGSZAKÍTÁSA",
       errorFile:
         "Hiba: Nem találom a 'lofi.mp3' fájlt a mappában, vagy a böngésző letiltotta az automatikus lejátszást!",
+      remaining: "Hátralévő idő: ",
     },
   };
 
@@ -82,12 +84,89 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let fadeInterval = null;
 
+  function updateMediaSessionMetadata() {
+    if ("mediaSession" in navigator && isRunning) {
+      const now = Date.now();
+      const timeLeftMs = Math.max(0, endTime - now);
+      const timeLeftMins = Math.ceil(timeLeftMs / 60000);
+
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: "Sleep Tuner",
+        artist: `${texts[lang].remaining}${timeLeftMins} ${texts[lang].unitMin}`,
+        album: "Sleep Timer",
+        artwork: [
+          { src: "cover.jpg", sizes: "96x96", type: "image/jpeg" },
+          { src: "cover.jpg", sizes: "128x128", type: "image/jpeg" },
+          { src: "cover.jpg", sizes: "192x192", type: "image/jpeg" },
+          { src: "cover.jpg", sizes: "256x256", type: "image/jpeg" },
+          { src: "cover.jpg", sizes: "384x384", type: "image/jpeg" },
+          { src: "cover.jpg", sizes: "512x512", type: "image/jpeg" },
+        ],
+      });
+    }
+  }
+
+  function setupMediaSession() {
+    if ("mediaSession" in navigator) {
+      updateMediaSessionMetadata();
+
+      navigator.mediaSession.setActionHandler("pause", () => {
+        manualStop();
+      });
+      navigator.mediaSession.setActionHandler("stop", () => {
+        manualStop();
+      });
+
+      navigator.mediaSession.setActionHandler("previoustrack", () => {
+        adjustTime(-15);
+      });
+      navigator.mediaSession.setActionHandler("nexttrack", () => {
+        adjustTime(15);
+      });
+
+      navigator.mediaSession.setActionHandler("seekbackward", () => {
+        adjustTime(-15);
+      });
+      navigator.mediaSession.setActionHandler("seekforward", () => {
+        adjustTime(15);
+      });
+    }
+  }
+
+  function adjustTime(minutes) {
+    if (!isRunning) return;
+
+    endTime += minutes * 60 * 1000;
+
+    setTimeMinutes += minutes;
+
+    const now = Date.now();
+
+    if (endTime < now) {
+      finishSleep();
+      return;
+    }
+
+    if (setTimeMinutes > 720) {
+      setTimeMinutes = 720;
+      endTime = now + 720 * 60 * 1000;
+    }
+
+    updateVisualTimer();
+    updateMediaSessionMetadata();
+  }
+
   function fadeIn() {
     audio.volume = 0;
-    audio.play().catch((error) => {
-      alert(texts[lang].errorFile);
-      manualStop();
-    });
+    audio
+      .play()
+      .then(() => {
+        setupMediaSession();
+      })
+      .catch((error) => {
+        alert(texts[lang].errorFile);
+        manualStop();
+      });
 
     let vol = 0;
     clearInterval(fadeInterval);
@@ -103,6 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function fadeOutAndStop() {
     let vol = audio.volume;
+
+    if ("mediaSession" in navigator) {
+      navigator.mediaSession.metadata = null;
+    }
+
     clearInterval(fadeInterval);
     fadeInterval = setInterval(() => {
       if (vol > 0.05) {
@@ -140,6 +224,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     displayHours.textContent = h;
     displayMins.textContent = m < 10 ? "0" + m : m;
+
+    if (seconds % 60 === 0) {
+      updateMediaSessionMetadata();
+    }
   }
 
   btnPlus.addEventListener("click", () => {
@@ -201,6 +289,10 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.pause();
     isRunning = false;
 
+    if ("mediaSession" in navigator) {
+      navigator.mediaSession.metadata = null;
+    }
+
     blackoutEl.classList.remove("hidden");
     setTimeout(() => {
       blackoutEl.classList.add("active");
@@ -251,6 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lang = lang === "hu" ? "en" : "hu";
     localStorage.setItem("userLang", lang);
     renderLang();
+    updateMediaSessionMetadata();
   });
 
   renderLang();
