@@ -79,6 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let timerInterval = null;
   let endTime = 0;
 
+  let lastDisplayedMinute = -1;
+
   const audio = new Audio("lofi.mp3");
   audio.loop = true;
 
@@ -95,12 +97,12 @@ document.addEventListener("DOMContentLoaded", () => {
         artist: `${texts[lang].remaining}${timeLeftMins} ${texts[lang].unitMin}`,
         album: "Sleep Timer",
         artwork: [
-          { src: "cover2.jpg", sizes: "96x96", type: "image/jpeg" },
-          { src: "cover2.jpg", sizes: "128x128", type: "image/jpeg" },
-          { src: "cover2.jpg", sizes: "192x192", type: "image/jpeg" },
-          { src: "cover2.jpg", sizes: "256x256", type: "image/jpeg" },
-          { src: "cover2.jpg", sizes: "384x384", type: "image/jpeg" },
-          { src: "cover2.jpg", sizes: "512x512", type: "image/jpeg" },
+          { src: "cover.jpg?v=3", sizes: "96x96", type: "image/jpeg" },
+          { src: "cover.jpg?v=3", sizes: "128x128", type: "image/jpeg" },
+          { src: "cover.jpg?v=3", sizes: "192x192", type: "image/jpeg" },
+          { src: "cover.jpg?v=3", sizes: "256x256", type: "image/jpeg" },
+          { src: "cover.jpg?v=3", sizes: "384x384", type: "image/jpeg" },
+          { src: "cover.jpg?v=3", sizes: "512x512", type: "image/jpeg" },
         ],
       });
     }
@@ -108,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setupMediaSession() {
     if ("mediaSession" in navigator) {
+      lastDisplayedMinute = -1;
       updateMediaSessionMetadata();
 
       navigator.mediaSession.setActionHandler("pause", () => {
@@ -137,12 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isRunning) return;
 
     endTime += minutes * 60 * 1000;
-
     setTimeMinutes += minutes;
 
     const now = Date.now();
-
     if (endTime < now) {
+      endTime = now;
       finishSleep();
       return;
     }
@@ -152,8 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
       endTime = now + 720 * 60 * 1000;
     }
 
+    lastDisplayedMinute = -1;
     updateVisualTimer();
-    updateMediaSessionMetadata();
   }
 
   function fadeIn() {
@@ -218,16 +220,19 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    let remainingMins = Math.ceil(timeLeft / 60000);
+
+    if (remainingMins !== lastDisplayedMinute) {
+      lastDisplayedMinute = remainingMins;
+      updateMediaSessionMetadata();
+    }
+
     let seconds = Math.ceil(timeLeft / 1000);
     let h = Math.floor(seconds / 3600);
     let m = Math.floor((seconds % 3600) / 60);
 
     displayHours.textContent = h;
     displayMins.textContent = m < 10 ? "0" + m : m;
-
-    if (seconds % 60 === 0) {
-      updateMediaSessionMetadata();
-    }
   }
 
   btnPlus.addEventListener("click", () => {
@@ -267,6 +272,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function startTimer() {
     isRunning = true;
     endTime = Date.now() + setTimeMinutes * 60 * 1000;
+
+    lastDisplayedMinute = -1;
 
     fadeIn();
 
@@ -343,6 +350,8 @@ document.addEventListener("DOMContentLoaded", () => {
     lang = lang === "hu" ? "en" : "hu";
     localStorage.setItem("userLang", lang);
     renderLang();
+
+    lastDisplayedMinute = -1;
     updateMediaSessionMetadata();
   });
 
