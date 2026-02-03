@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olaszország Kvíz</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+        <div id="start-screen" class="screen">
+            <a href="../index.html" class="home-btn">🏠</a>
+            <h1>🇮🇹 Ciao Mamma! 🇮🇹</h1>
+            <p>Mennyire ismered Olaszországot? <br> Készen állsz egy kis utazásra?</p>
+            <button id="start-btn" class="btn">Indulás!</button>
+        </div>
+
+        <div id="quiz-screen" class="screen hide">
+            <div class="header">
+                <span id="question-counter">Kérdés: 1 / 100</span>
+                <span id="score-counter">Pont: 0</span>
+            </div>
+            <div id="question-container">
+                <h2 id="question">Kérdés helye</h2>
+                <div id="answer-buttons" class="btn-grid">
+                    </div>
+            </div>
+            <button id="next-btn" class="btn next-btn hide">Következő</button>
+        </div>
+
+        <div id="result-screen" class="screen hide">
+            <h2>A kvíz véget ért!</h2>
+            <p id="final-score">Eredményed: 0</p>
+            <p id="result-message"></p>
+            <button id="restart-btn" class="btn">Újrakezdés</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

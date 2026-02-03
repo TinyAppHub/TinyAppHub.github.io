@@ -16,6 +16,7 @@ const texts = {
     worldquiz: "Countries Quiz",
     flashlight: "Flashlight",
     easypick: "Easy Pick",
+    italyquiz: "Italy Quiz",
   },
   hu: {
     mainTitle: "Eszközeim",
@@ -34,6 +35,7 @@ const texts = {
     worldquiz: "Ország Kvíz",
     flashlight: "Zsebámpa",
     easypick: "Döntéskerék",
+    italyquiz: "Olaszország Kvíz",
   },
 };
 
