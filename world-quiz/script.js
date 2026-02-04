@@ -239,6 +239,7 @@ const mapContent = document.getElementById("map-content");
 const tooltip = document.getElementById("tooltip");
 const zoomInBtn = document.getElementById("zoom-in");
 const zoomOutBtn = document.getElementById("zoom-out");
+const giveUpBtn = document.getElementById("give-up-btn");
 
 let scale = 1;
 let pointX = 0;
@@ -253,6 +254,10 @@ function init() {
   setupZoomAndPan();
 
   inputField.addEventListener("input", handleInput);
+
+  if (giveUpBtn) {
+    giveUpBtn.addEventListener("click", giveUp);
+  }
 
   inputField.addEventListener("keydown", (e) => {
     if (e.key === "Tab") {
@@ -527,6 +532,157 @@ function setupZoomAndPan() {
 
 function updateTransform() {
   mapContent.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+}
+
+function giveUp() {
+  countriesData.forEach((country) => {
+    if (!foundCountries.includes(country.id)) {
+      const mapElement = document.getElementById(country.id);
+      if (mapElement) {
+        mapElement.classList.add("missed");
+      }
+    }
+  });
+
+  inputField.disabled = true;
+  giveUpBtn.disabled = true;
+  inputField.value = "Játék vége";
+  suggestionsBox.innerHTML = "";
+}
+
+function setupZoomAndPan() {
+  function performZoom(direction, originX, originY) {
+    const zoomIntensity = 0.2;
+    const minScale = 1;
+    const maxScale = 8;
+
+    const factor = direction > 0 ? 1 + zoomIntensity : 1 / (1 + zoomIntensity);
+    let newScale = scale * factor;
+
+    if (newScale < minScale) newScale = minScale;
+    if (newScale > maxScale) newScale = maxScale;
+
+    pointX = originX - (originX - pointX) * (newScale / scale);
+    pointY = originY - (originY - pointY) * (newScale / scale);
+
+    if (newScale === minScale) {
+      pointX = 0;
+      pointY = 0;
+    }
+
+    scale = newScale;
+    updateTransform();
+  }
+
+  mapContainer.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const rect = mapContainer.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const direction = e.deltaY > 0 ? -1 : 1;
+    performZoom(direction, mouseX, mouseY);
+  });
+
+  if (zoomInBtn && zoomOutBtn) {
+    zoomInBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const rect = mapContainer.getBoundingClientRect();
+      performZoom(1, rect.width / 2, rect.height / 2);
+    });
+
+    zoomOutBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const rect = mapContainer.getBoundingClientRect();
+      performZoom(-1, rect.width / 2, rect.height / 2);
+    });
+  }
+
+  mapContainer.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    isDragging = true;
+    startX = e.clientX - pointX;
+    startY = e.clientY - pointY;
+    mapContainer.style.cursor = "grabbing";
+  });
+
+  mapContainer.addEventListener("mousemove", (e) => {
+    if (isDragging) {
+      e.preventDefault();
+      pointX = e.clientX - startX;
+      pointY = e.clientY - startY;
+      updateTransform();
+      return;
+    }
+
+    const target = e.target;
+    let isHoveringCountry = false;
+
+    if (
+      (target.tagName === "path" || target.tagName === "g") &&
+      (target.classList.contains("found") ||
+        target.closest(".found") ||
+        target.classList.contains("missed") ||
+        target.closest(".missed"))
+    ) {
+      const id = target.id || target.closest("g").id;
+      const countryData = countriesData.find((c) => c.id === id);
+
+      if (countryData && tooltip) {
+        isHoveringCountry = true;
+        tooltip.style.display = "block";
+        tooltip.textContent = countryData.name_hu;
+        tooltip.style.left = e.clientX + 15 + "px";
+        tooltip.style.top = e.clientY + 15 + "px";
+      }
+    }
+
+    if (!isHoveringCountry && tooltip) {
+      tooltip.style.display = "none";
+    }
+  });
+
+  document.addEventListener("mouseup", () => {
+    if (isDragging) {
+      isDragging = false;
+      mapContainer.style.cursor = "grab";
+    }
+  });
+
+  document.addEventListener("mouseleave", () => {
+    if (isDragging) {
+      isDragging = false;
+      mapContainer.style.cursor = "grab";
+    }
+  });
+
+  mapContainer.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX - pointX;
+        startY = e.touches[0].clientY - pointY;
+      }
+    },
+    { passive: false },
+  );
+
+  mapContainer.addEventListener(
+    "touchmove",
+    (e) => {
+      if (isDragging && e.touches.length === 1) {
+        e.preventDefault();
+        pointX = e.touches[0].clientX - startX;
+        pointY = e.touches[0].clientY - startY;
+        updateTransform();
+      }
+    },
+    { passive: false },
+  );
+
+  mapContainer.addEventListener("touchend", () => {
+    isDragging = false;
+  });
 }
 
 init();

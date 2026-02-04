@@ -118,6 +118,16 @@ header h1 {
     margin-right: auto;
 }
 
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 input {
     width: 100%;
     padding: 15px;
@@ -271,4 +281,41 @@ svg {
     color: #27ae60;
     font-weight: 600;
     border-bottom: 1px dashed #333;
+}
+.give-up-btn {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.give-up-btn:hover {
+    background-color: #c82333;
+}
+
+.give-up-btn:disabled {
+    background-color: #e2e6ea;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+#world-map path.missed,
+#world-map g.missed path,
+#world-map g.missed {
+    fill: #ff4d4d;
+    transition: fill 0.3s ease;
+}
+
+#world-map path.missed:hover,
+#world-map g.missed:hover path,
+#world-map g.missed:hover {
+    fill: #ff0000;
+    stroke: #333;
+    stroke-width: 1px;
 }
