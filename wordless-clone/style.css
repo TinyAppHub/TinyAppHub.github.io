@@ -177,3 +177,30 @@ button#new-game-btn {
     .key { height: 45px; font-size: 1rem; }
     header h1 { font-size: 1.5rem; margin: 5px 0; }
 }
+.project-footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid #eee; /* Finom elválasztó vonal */
+    text-align: center;
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.project-footer a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px dotted #333;
+}
+
+.project-footer a:hover {
+    border-bottom: 1px solid #000;
+}
+
+.project-footer .disclaimer {
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 10px;
+    font-style: italic;
+}
