@@ -6,7 +6,7 @@ A web-based word puzzle game built for coding practice and logic implementation.
 >
 > This project is a **fan-made recreation** designed strictly for **educational purposes** and coding practice.
 >
-> - **Inspiration:** This game is inspired by the mechanics and design found at [Wordless.com](https://lessgames.com/wordless).
+> - **Inspiration:** This game is inspired by the mechanics and design found at [lessgames.com/wordless](https://lessgames.com/wordless).
 > - **No Affiliation:** This project is **NOT** affiliated with, endorsed by, or connected to the creators or owners of lessgames.com.
 > - **Non-Commercial:** This is a hobby project. It generates no revenue, contains no ads, and is not intended to compete with the original platform.
 > - **Trademark:** Any trademarks or intellectual property related to "Wordless" belong to their respective owners.
