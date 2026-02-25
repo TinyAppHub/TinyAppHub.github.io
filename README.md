@@ -7,5 +7,5 @@ This repository serves as a distinct playground for my development journey. Ever
 * 🎉 **Entertainment**
 * 🎨 **Fan-based / Hobby Projects**
 
-Please enjoy exploring these mini-apps knowing they are built for the love of coding! 
+Enjoy exploring these mini-apps knowing they are built for the love of coding! 
 [tinyapphub] (https://tinyapphub.github.io/)
