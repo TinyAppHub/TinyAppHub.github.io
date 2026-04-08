@@ -17,6 +17,7 @@ const texts = {
     flashlight: "Flashlight",
     easypick: "Easy Pick",
     italyquiz: "Italy Quiz",
+    szoftTechQuiz: "SoftTech Quiz",
   },
   hu: {
     mainTitle: "Eszközeim",
@@ -36,6 +37,7 @@ const texts = {
     flashlight: "Zsebámpa",
     easypick: "Döntéskerék",
     italyquiz: "Olaszország Kvíz",
+    szoftTechQuiz: "SzoftTech Kvíz",
   },
 };
 
