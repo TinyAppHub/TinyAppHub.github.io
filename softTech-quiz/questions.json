@@ -1,476 +1,571 @@
 [
   {
-    "question": "Mely álltás hamis? A követelmények feltárását nehezítheti, hogy...",
+    "question": "Mi a szoftver?",
     "answers": [
-      "a vevők nem rendelkeznek informatikai ismeretekkel.",
-      "a vevők bizonytalanok az elvárásokban.",
-      "a vevők nem egyértelműen fejtik ki az elvárásokat.",
-      "a vevők a szoftver közvetlen felhasználói."
+      "Csapatmunkában készült alkalmazás.",
+      "Olyan alkalmazás, ahol a funkciók alaposan teszteltek és működésük garantált.",
+      "Programok, dokumentációk, konfiguráció és adatok együttese.",
+      "Programok és dokumentációk együttese."
     ],
-    "correct": "a vevők a szoftver közvetlen felhasználói."
+    "correct": "Programok, dokumentációk, konfiguráció és adatok együttese."
   },
   {
-    "question": "Melyik nem 'nem funkcionális' követelmény?",
+    "question": "A szoftverfejlesztési csapatnak számos tagja lehet, akik különböző szerepeket töltenek be. Az alábbi szerepek közül melyik van helytelenül meghatározva?",
     "answers": [
-      "Termék követelmények",
-      "Szolgáltatások, reakciók leírása",
-      "Külső követelmények",
-      "Menedzselési követelmények"
+      "programgazda (program management): fejlesztés ütemezése, feladatok elosztása és követése",
+      "minőségbiztosító (quality assurance): tesztelés tervezése, megvalósítása, minőségi kritériumok ellenőrzése",
+      "fejlesztő (developer): szoftver implementációja",
+      "termékgazda (product management): szoftver magas szintű tervének elkészítése"
     ],
-    "correct": "Szolgáltatások, reakciók leírása"
+    "correct": "termékgazda (product management): szoftver magas szintű tervének elkészítése"
   },
   {
-    "question": "Mely reláció típus nem része a használati eset diagramnak?",
-    "answers": ["Származtatás", "Kompozíció", "Előfeltétel", "Tartalmazás"],
+    "question": "A követelmény feltárásnál melyet tartjuk a termék követelményekhez soroltnak?",
+    "answers": ["Megbízhatóság", "Környezeti", "Működési", "Fejlesztési"],
+    "correct": "Megbízhatóság"
+  },
+  {
+    "question": "Melyik lépés nem része a szoftver specifikációnak?",
+    "answers": [
+      "követelmény validáció",
+      "megvalósíthatósági elemzés",
+      "rendszer szerkezetének meghatározása",
+      "követelmény feltárás és elemzés"
+    ],
+    "correct": "rendszer szerkezetének meghatározása"
+  },
+  {
+    "question": "Miből indul ki az objektum orientált tervezés?",
+    "answers": [
+      "Architektúra",
+      "Funkciók",
+      "Tevékenységek",
+      "Entitások és kapcsolataik"
+    ],
+    "correct": "Entitások és kapcsolataik"
+  },
+  {
+    "question": "Az alábbi megvalósítás alapján melyik reláció áll fenn pontosan az autó (Car) és a motor (Engine) között?",
+    "answers": ["Általánosítás", "Aggregáció", "Kompozíció", "Asszociáció"],
     "correct": "Kompozíció"
   },
   {
-    "question": "Melyik a használati történet (user story) szerkezete?",
+    "question": "Mi a Git LFS (Large File Storage) célja és működési elve?",
     "answers": [
-      "USER felhasználó IN USE CASE használati eset WITH RELATION kapcsolat",
-      "GIVEN környezet WHEN tevékenység THEN hatás",
-      "WHEN tevékenység APPLYING funkció IN ORDER TO cél",
-      "AS A szerepkör USE funkció TO cél"
+      "A nagy méretű bináris állományokat Git helyett SVN verziókezelőrendszerbe helyezi.",
+      "A nagy méretű bináris állományokat egy hivatkozással helyettesíti, és magukat a fájlokat külön tárolja.",
+      "A nagy méretű bináris állományoknak csak az utolsó állapotát őrzi meg.",
+      "A nagy méretű bináris állományokat a GitHub szerverén tárolja."
     ],
-    "correct": "GIVEN környezet WHEN tevékenység THEN hatás"
+    "correct": "A nagy méretű bináris állományokat egy hivatkozással helyettesíti, és magukat a fájlokat külön tárolja."
   },
   {
-    "question": "Melyik állítás hamis a tervezés fázisait illetően?",
+    "question": "Melyik nem funkciója a projektmenedzsment eszközöknek?",
     "answers": [
-      "Minden fázisban bevezethetünk új osztályokat.",
-      "Minden fázisban tovább pontosíthatók a már létező osztályok.",
-      "A funkcionálisan elaprózódott osztályokat egy csomagba kell tennünk.",
-      "A bonyolulttá váló osztályokat felbonthatjuk."
+      "Hibák bejelentése, kapcsolódó információk feltöltése.",
+      "Folytonos integráció és kihelyezés támogatása.",
+      "Fejlesztés ütemtervének rögzítése.",
+      "Feladatok (issue) létrehozása, célszemélyhez rendelése."
     ],
-    "correct": "A funkcionálisan elaprózódott osztályokat egy csomagba kell tennünk."
+    "correct": "Folytonos integráció és kihelyezés támogatása."
   },
   {
-    "question": "Hány alapelvet célszerű követnünk a SOLID elv szerint?",
-    "answers": ["5", "4", "6", "3"],
-    "correct": "5"
+    "question": "Milyen előnyökkel rendelkeznek a 3. generációs verziókezelő rendszerek (például a Git) a korábbi generációs eszközökhöz képest?",
+    "answers": [
+      "Nem a teljes állományokat, csak az egyes revíziók közötti változásokat (deltákat) tárolja.",
+      "Automatikusan kiküszöböli az összes potenciális kódegyesítési konfliktust.",
+      "Mindenki közvetlenül írhat a fő tárolóba, így nincs szükség fejlesztési ágakra.",
+      "Minden kliens rendelkezik a teljes tárolóval és verziótörténettel, ami lehetővé teszi a helyi műveleteket."
+    ],
+    "correct": "Minden kliens rendelkezik a teljes tárolóval és verziótörténettel, ami lehetővé teszi a helyi műveleteket."
   },
   {
-    "question": "Mi a szoftver architektúra?",
+    "question": "Mi a különbség a 'self-contained' és a 'framework-dependent' publikálás között .NET Core alkalmazások esetén?",
     "answers": [
-      "A szoftver komponens diagramja.",
-      "A szoftver fejlesztése során meghozott elsődleges tervezési döntések halmaza.",
-      "A szoftvernek a hardver architektúrájára való kitelepülési módja.",
-      "Az az osztályszerkezet, amelyből a csomagdiagramot építjük fel."
+      "A 'self-contained' kihelyezés során a .NET runtime-ot is a csomagba helyezi, így az operációs rendszeren nincs szükség előre telepített .NET környezetre.",
+      "A 'framework-dependent' kihelyezés nem igényel telepített .NET SDK-t, míg a 'self-contained' verzió megköveteli a teljes SDK jelenlétét.",
+      "A 'framework-dependent' kihelyezés kompatibilitási módban fordítja a .NET Core alkalmazást.",
+      "A 'self-contained' publikálás azt jelenti, hogy az alkalmazás csak egyetlen fájlt tartalmaz."
     ],
-    "correct": "A szoftver fejlesztése során meghozott elsődleges tervezési döntések halmaza."
+    "correct": "A 'self-contained' kihelyezés során a .NET runtime-ot is a csomagba helyezi, így az operációs rendszeren nincs szükség előre telepített .NET környezetre."
   },
   {
-    "question": "Mely architektúra esetében a legnehezebb elkülöníteni a program funkcióit?",
+    "question": "A szoftver evolúció lépésekben történik. Az alábbiak közül melyik nem tartozik bele ebbe?",
     "answers": [
-      "Monolitikus architektúra.",
-      "Model-nézet-kontroller architektúra.",
-      "Model-nézet architektúra."
+      "Új funkciók bevezetése.",
+      "A szoftver új (hardver/szoftver) környezetbe történő bevezetése.",
+      "A kiadás után felmerült hibák javítása.",
+      "Olyan számítógépes problémamegoldó rendszer, amely az evolúció mechanizmusára épül."
     ],
-    "correct": "Monolitikus architektúra."
-  },
-  {
-    "question": "Mi nem lehet program komponens?",
-    "answers": [
-      "Végrehajtható állomány. (Executable)",
-      "Alkotóelem. (Artifact)",
-      "Programkönyvtár. (Class library)"
-    ],
-    "correct": "Alkotóelem. (Artifact)"
+    "correct": "Olyan számítógépes problémamegoldó rendszer, amely az evolúció mechanizmusára épül."
   },
   {
     "question": "Melyik nem része a rendszertervnek?",
     "answers": [
+      "Költségbecslés",
       "Felhasználói felület",
       "Dinamikus terv",
-      "Költségbecslés",
       "Statikus terv"
     ],
     "correct": "Költségbecslés"
   },
   {
-    "question": "Melyik SOLID elv ad lehetőséget a polimorfizmus megvalósítására?",
-    "answers": ["SRP", "LSP", "OCP", "ISP"],
-    "correct": "LSP"
+    "question": "Melyik nem agilis szoftverfejlesztési módszertan szerinti modell az alábbiak közül?",
+    "answers": ["Lean", "Kanban", "Scrum", "Rational Unified Process (RUP)"],
+    "correct": "Rational Unified Process (RUP)"
   },
   {
-    "question": "Mely állítás hamis a Single Responsibility Principle-el kapcsolatban?",
+    "question": "Melyik nem funkciója a projektmenedzsment eszközöknek?",
     "answers": [
-      "Egy programegység csak egy felelősséggel rendelkezhet.",
-      "Elősegíti a programegységek laza összekapcsolását.",
-      "Feltöredezheti a programszerkezetet a túlzott használata.",
-      "Ha az SRP elvet megszegjük, akkor az Open/Closed Principle-t is."
+      "Programverziók és változások áttekintése.",
+      "Feladatok (issue) létrehozása, célszemélyhez (assignee) rendelése.",
+      "UML diagramok elkészítése és elhelyezése a tervben (case tooling).",
+      "Hibák bejelentése, kapcsolódó információk (pl. eseménynapló) feltöltése."
     ],
-    "correct": "Ha az SRP elvet megszegjük, akkor az Open/Closed Principle-t is."
+    "correct": "UML diagramok elkészítése és elhelyezése a tervben (case tooling)."
   },
   {
-    "question": "Melyik állítás hamis? A Liskov helyettési elv...",
+    "question": "A szoftverfejlesztési csapatnak számos tagja lehet, akik különböző szerepeket töltenek be. Az alábbi szerepek közül melyik van helytelenül meghatározva?",
     "answers": [
-      "...tiltja a kivételek típusának bővítését.",
-      "...elvárja a paraméterek kontravarianciáját.",
-      "...megengedi az invariánsok gyengítését.",
-      "...elvárja a visszatérési értékek kovarianciáját."
+      "termékgazda (product management): üzleti folyamatok, prioritások és elfogadási feltételek kezelése",
+      "fejlesztő (developer): szoftver implementációja",
+      "minőségbiztosító (quality assurance): szoftver magas szintű tervének elkészítése, technikai döntések kezelése",
+      "programgazda (program management): fejlesztés ütemezése, feladatok elosztása és követése"
     ],
-    "correct": "...megengedi az invariánsok gyengítését."
+    "correct": "minőségbiztosító (quality assurance): szoftver magas szintű tervének elkészítése, technikai döntések kezelése"
   },
   {
-    "question": "Mely állítás állja meg a helyét a Függőségek megfordítása elvnél?",
+    "question": "Mi volt az ún. szoftverkrízis kiváltó oka az 1960-as és 70-es években?",
     "answers": [
-      "A konkrét osztályokat nem alakíthatjuk át.",
-      "A konkrét osztályok az absztrakció segítségével lépnek kapcsolatba egymással.",
-      "Az osztály mezői a konkrét osztályok példányait tartalmazzák.",
-      "Az objektum az osztályok példányosítását közvetlen saját maga végzi."
+      "A szoftverfejlesztés alulfinanszírozottsága miatti pénzügyi okok.",
+      "A magasabb szintű programozási nyelvek megjelenése.",
+      "A hidegháborús versengés miatt a tudástranszfer akadályozása.",
+      "A szoftverprojektek méretben, komplexitásban, időben és a résztvevő fejlesztők számában is növekedni kezdtek."
     ],
-    "correct": "A konkrét osztályok az absztrakció segítségével lépnek kapcsolatba egymással."
+    "correct": "A szoftverprojektek méretben, komplexitásban, időben és a résztvevő fejlesztők számában is növekedni kezdtek."
   },
   {
-    "question": "Milyen módon NEM fecskendezhetünk be függőséget?",
+    "question": "Mely reláció típus nem része a használati eset diagramnak?",
+    "answers": ["Származtatás", "Előfeltétel", "Kompozíció", "Tartalmazás"],
+    "correct": "Kompozíció"
+  },
+  {
+    "question": "Melyik nem \"nem funkcionális\" követelmény?",
     "answers": [
-      "Interfész segítségével, ahol a kliens megvalósítja a beállító műveletet.",
-      "Konstruktor paraméteren keresztül.",
-      "Beállító műveleten keresztül.",
-      "Egyke tervminta használatával."
+      "Külső követelmények",
+      "Szolgáltatások, reakciók leírása",
+      "Termék követelmények",
+      "Menedzselési követelmények"
     ],
-    "correct": "Egyke tervminta használatával."
+    "correct": "Szolgáltatások, reakciók leírása"
   },
   {
-    "question": "Minek jelölésére nem való a cédulák (tickets) használata egy projektmenedzsment eszközben?",
+    "question": "Mely állítás hamis? A követelmények feltárását nehezítheti, hogy...",
     "answers": [
-      "Dokumentációs feladat",
-      "Új funkcionalitás",
+      "a vevők nem rendelkeznek informatikai ismeretekkel.",
+      "a vevők nem egyértelműen fejtik ki az elvárásokat.",
+      "a vevők a szoftver közvetlen felhasználói.",
+      "a vevők bizonytalanok az elvárásokban."
+    ],
+    "correct": "a vevők a szoftver közvetlen felhasználói."
+  },
+  {
+    "question": "Melyik állítás nem helytálló a következő diagramra?",
+    "answers": [
+      "Üres tábla létrehozása esetén nem történik adatfeltöltés.",
+      "Az adatok szöveges, Excel és CSV formátumú fájlokból importálhatóak.",
+      "Adatok importálása, valamint szerkesztése hatására is történik eseménynaplózás.",
+      "Amennyiben megszűrjük a sorokat, a tábla létrehozási funkciókat nem használhatjuk."
+    ],
+    "correct": "Amennyiben megszűrjük a sorokat, a tábla létrehozási funkciókat nem használhatjuk."
+  },
+  {
+    "question": "A használati esetek diagramja különböző alkotó elemekből áll össze. Az alábbiak közül melyik nem tartozik közéjük?",
+    "answers": ["aktor", "reláció", "függőség", "funkció"],
+    "correct": "funkció"
+  },
+  {
+    "question": "Mely architektúra esetében a legnehezebb elkülöníteni a program funkcióit?",
+    "answers": [
+      "Model-nézet architektúra.",
+      "Model-nézet-nézetmodell architektúra.",
+      "Model-nézet-vezérlő architektúra.",
+      "Monolitikus architektúra."
+    ],
+    "correct": "Monolitikus architektúra."
+  },
+  {
+    "question": "Mi a Single responsibility principle (SRP) elv célja?",
+    "answers": [
+      "Minden komponens, osztály, metódus csak egy felelősségi körrel rendelkezzen, ami megváltoztatásának oka lehet.",
+      "Minden metódus csak egyféle típusú kivétel kezeletlenül hagyását teheti lehetővé.",
+      "Minden osztály reprezentációját egyetlen adattagban kell definiálni, egy komplex adatstruktúra létrehozásával.",
+      "A felhasználói felület minden vezérlője csak egyetlen funkcióért felelhet, szoftverergonómiai megfontolásból."
+    ],
+    "correct": "Minden komponens, osztály, metódus csak egy felelősségi körrel rendelkezzen, ami megváltoztatásának oka lehet."
+  },
+  {
+    "question": "Hány alapelvet célszerű követnünk a SOLID elv szerint?",
+    "answers": ["4", "3", "6", "5"],
+    "correct": "5"
+  },
+  {
+    "question": "Mi a szoftver architektúra?",
+    "answers": [
+      "A szoftver fejlesztése során meghozott elsődleges tervezési döntések halmaza.",
+      "Az az osztályszerkezet, amelyből a csomagdiagramot építjük fel.",
+      "A szoftvernek a hardver architektúrájára való kitelepülési módja.",
+      "A szoftver komponens diagramja."
+    ],
+    "correct": "A szoftver fejlesztése során meghozott elsődleges tervezési döntések halmaza."
+  },
+  {
+    "question": "Melyik nem UML csomagdiagrammokban alkalmazható reláció?",
+    "answers": ["merge", "provide", "import", "use"],
+    "correct": "provide"
+  },
+  {
+    "question": "Melyik helyes?",
+    "answers": [
+      "Az UML tevékenység diagram (activity diagram) célja az objektumok közötti kommunikáció sorrendjének megállapítása.",
+      "Az UML kommunikáció diagram (communications diagram) célja az objektumok közötti kommunikáció sorrendjének megállapítása.",
+      "Az UML szekvencia diagram (sequence diagram) célja az objektumok közötti kommunikáció sorrendjének megállapítása."
+    ],
+    "correct": "Az UML szekvencia diagram (sequence diagram) célja az objektumok közötti kommunikáció sorrendjének megállapítása."
+  },
+  {
+    "question": "Melyik helyes?",
+    "answers": [
+      "Az UML kommunikáció diagram (communications diagram) célja az objektumok közötti interakció időrendi ábrázolása.",
+      "Az UML tevékenység diagram (activity diagram) célja az objektumok közötti interakció időrendi ábrázolása.",
+      "Az UML szekvencia diagram (sequence diagram) célja az objektumok közötti interakció időrendi ábrázolása."
+    ],
+    "correct": "Az UML szekvencia diagram (sequence diagram) célja az objektumok közötti interakció időrendi ábrázolása."
+  },
+  {
+    "question": "Az alábbi állapot diagramra melyik állítás igaz?",
+    "answers": [
+      "A UniversityStudent objektum removeCourse metódusa nem kerülhet meghívásra.",
+      "A UniversityStudent objektum newCourse metódusa meghívásra kerülhet.",
+      "A hallgató mérete megegyezhet a fejméretével.",
+      "Az állapot átmenet feltétele lehet a newCourse metódus meghívása."
+    ],
+    "correct": "Az állapot átmenet feltétele lehet a newCourse metódus meghívása."
+  },
+  {
+    "question": "Melyik diagram nem jó az objektumok és osztályok közötti interakciós folyamatok modellezésére?",
+    "answers": [
+      "kommunikációs diagram",
+      "állapot diagram",
+      "tevékenység diagram",
+      "szekvencia diagram"
+    ],
+    "correct": "állapot diagram"
+  },
+  {
+    "question": "Melyik állítás helyes?",
+    "answers": [
+      "Az UML kommunikáció diagram (communications diagram) célja az objektumok közötti kommunikációban felhasznált adatok sorrendjének megállapítása.",
+      "Az UML kommunikáció diagram (communications diagram) célja, hogy az objektumok közötti kommunikáció lefolyását a kommunikációk és a kommunikációkban felhasznált adatok szempontjából közelítse meg.",
+      "Az UML tevékenység diagram (activity diagram) célja, hogy a végrehajtás lefolyását a tevékenységek és a tevékenységekben felhasznált adatok szempontjából közelítse meg.",
+      "Az UML szekvencia diagram (sequence diagram) célja, hogy az objektumok közötti interakció lefolyását az interakciók és az interakciókban felhasznált adatok szempontjából közelítse meg."
+    ],
+    "correct": "Az UML kommunikáció diagram (communications diagram) célja, hogy az objektumok közötti kommunikáció lefolyását a kommunikációk és a kommunikációkban felhasznált adatok szempontjából közelítse meg."
+  },
+  {
+    "question": "Mik a centralizált verziókövető rendszerek hátrányai?",
+    "answers": [
+      "Fájl alapú műveletvégzés (1 verzió 1 fájl változásai).",
+      "Peer-to-peer kommunikáció.",
+      "Konkurenciakezelés kizárólagos zárak által történik.",
+      "A verziókezeléshez hálózati kapcsolat szükséges."
+    ],
+    "correct": "A verziókezeléshez hálózati kapcsolat szükséges."
+  },
+  {
+    "question": "Minek jelölésére nem való a feladatok (issuek) használata egy projektmenedzsment eszközben?",
+    "answers": [
       "A futam lezárásához kapcsolódó megbeszélés",
-      "Hiba"
+      "Hiba",
+      "Új funkcionalitás",
+      "Dokumentációs feladat"
     ],
     "correct": "A futam lezárásához kapcsolódó megbeszélés"
   },
   {
-    "question": "Melyik nem projektvezető szolgáltatás?",
-    "answers": ["GitHub", "GitLab", "Redmine", "Azure Devops"],
-    "correct": "Redmine"
-  },
-  {
-    "question": "Mely állítás hamis a verziókövető rendszerekkel kapcsolatban?",
-    "answers": [
-      "A használatának segítségével nincs szükségünk a konfliktusok kezelésére.",
-      "Lehetővé teszi a módosítások ellenőrzését.",
-      "A segítségével az összes eddigi program változatot eltárolhatjuk.",
-      "Megengedi a változtatások visszavonását."
-    ],
-    "correct": "A használatának segítségével nincs szükségünk a konfliktusok kezelésére."
-  },
-  {
     "question": "Mely állítás vonatkozik az elosztott verziókövető rendszerekre?",
     "answers": [
-      "Fájl alapú műveletvégzést végez.",
-      "A kommunikáció peer to peer elven történik, de kitüntetett szerverek felállítására van lehetőség.",
+      "A konkurenciakezelés jellemzően beküldés előtti egyesítéssel történik.",
       "Ismert megvalósításai pl.: CVS, SVN, SourceSafe",
-      "A konkurenciakezelés jellemzően beküldés előtti egyesítéssel történik."
+      "A kommunikáció peer to peer elven történik, de kitüntetett szerverek felállítására van lehetőség.",
+      "Fájl alapú műveletvégzést végez."
     ],
     "correct": "A kommunikáció peer to peer elven történik, de kitüntetett szerverek felállítására van lehetőség."
   },
   {
-    "question": "Az alábbiak közül a git mely parancsával szinkronizálhatjuk a távoli tárolóból a lokális tárolónkba az oda mások által beküldött új verziókat?",
-    "answers": ["git pull", "git synchronize", "git push", "git commit"],
-    "correct": "git pull"
+    "question": "Melyik nem projektvezető szolgáltatás?",
+    "answers": ["GitHub", "GitLab", "Azure Devops", "Redmine"],
+    "correct": "GitHub"
   },
   {
-    "question": "Mely feladatot nem látja el a build rendszer?",
+    "question": "Mely állítás hamis a verziókövető rendszerekkel kapcsolatban?",
     "answers": [
+      "A segítségével az összes eddigi program változatot eltárolhatjuk.",
+      "Lehetővé teszi a módosítások ellenőrzését.",
+      "Megengedi a változtatások visszavonását.",
+      "A használatának segítségével nincs szükségünk a konfliktusok kezelésére."
+    ],
+    "correct": "A használatának segítségével nincs szükségünk a konfliktusok kezelésére."
+  },
+  {
+    "question": "Mely feladatot nem látja el egy build rendszer?",
+    "answers": [
+      "A megváltozott projekt fájlok automatikus feltöltése a verziókezelőbe.",
       "Függőségek kezelése",
-      "Program lefordítása",
       "Automatizált tesztek végrehajtása",
-      "A megváltozott projekt fájlok automatikus feltöltése a verziókezelőbe."
+      "Program lefordítása"
     ],
     "correct": "A megváltozott projekt fájlok automatikus feltöltése a verziókezelőbe."
   },
   {
-    "question": "Melyik nem build rendszer?",
-    "answers": ["Cthulhu", "Maven", "Ant", "Gradle"],
-    "correct": "Cthulhu"
-  },
-  {
-    "question": "Hogy nevezik a Maven build rendszer projekt fájlját?",
-    "answers": ["build.xml", "build.pom", "pom.pom", "pom.xml"],
-    "correct": "pom.xml"
-  },
-  {
-    "question": "inek a rövidítése a GAV a Maven rendszerben?",
+    "question": "Mi a build rendszerek elsődleges célja?",
     "answers": [
-      "Graphical Advanced Visualizer",
-      "Genuine Application Verifier",
-      "Group, Artifact Id, Version",
-      "Group, Application Id, Version"
+      "A forráskód fordíthatóvá tétele continuous integration (CI) környezetben",
+      "A forráskód fordításának a definiált szabályok szerinti automatizálása.",
+      "A forráskód felosztása fordítási egységekre.",
+      "A forráskód fordítása konzolos eszközökkel, ha integrált fejlesztőkörnyezet (IDE) nem áll rendelkezésre."
     ],
-    "correct": "Group, Artifact Id, Version"
+    "correct": "A forráskód fordításának a definiált szabályok szerinti automatizálása."
   },
   {
-    "question": "Mely állítás igaz a pom.xml tartalmával kapcsolatban?",
+    "question": "Mi a .NET Standard?",
     "answers": [
-      "modelVersion: az alkalmazás modell rétegének verziószáma",
-      "artifactId: a projekt egyedi neve",
-      "groupId: a modult fejlesztő csapat cégen belüli azonosítója",
-      "version: a fordításhoz szükséges minimális Maven verzió"
+      "A .NET Framework standard library-je.",
+      "A .NET Framework új-generációs, cross-platform futtatókörnyezete.",
+      "Olyan API specifikáció, amelynek az összes .NET platform megfeleltethető.",
+      "A .NET Framework implementációja Linux operációs rendszerre, korábbi nevén Mono Framework."
     ],
-    "correct": "artifactId: a projekt egyedi neve"
+    "correct": "Olyan API specifikáció, amelynek az összes .NET platform megfeleltethető."
   },
   {
-    "question": "Mely állítás igaz a verifikációval kapcsolatban?",
-    "answers": [
-      "A statikus elemzés ellenére nem garantált a hibák egymás általi elfedése.",
-      "A statikus elemzés a teljes programkód ismeretében végezhető el.",
-      "A dinamikus elemzés felfedheti a programegységek együttműködéséből származó hibákat.",
-      "A dinamikus elemzés nem alkalmas a program teljesítményének mérésére."
-    ],
-    "correct": "A dinamikus elemzés felfedheti a programegységek együttműködéséből származó hibákat."
+    "question": "Melyik nem része egy szabálynak a Make build rendszerben?",
+    "answers": ["cél", "változók", "utasítások", "függőségek"],
+    "correct": "változók"
   },
   {
-    "question": "A tesztelés...",
+    "question": "Melyik állítás hamis a GNU Make build rendszerre vonatkozóan?",
     "answers": [
-      "...garantálja, hogy a program minden körülmény között helytáll.",
-      "...célja fordítási időben felderíteni a hibákat.",
-      "...futási idejű hibák, rendellenességek, kompatibilitási problémák keresésére használatos.",
-      "...garantálja, hogy a program hibamentes."
+      "A Make egy önálló (standalone) build rendszer.",
+      "A hamis (phony) célok azokat a célokat jelölik, amelyek fájlként nem fognak előállni a szabály eredményeként.",
+      "Csak a frissített függőségekhez tartozó célokat generálja újra.",
+      "Képes külső függőségek (szoftverkönyvtárak) automatikus betöltésére."
     ],
-    "correct": "...futási idejű hibák, rendellenességek, kompatibilitási problémák keresésére használatos."
-  },
-  {
-    "question": "Mely állítás igaz?",
-    "answers": [
-      "A felhasználói teszt jellemzően fekete doboz tesztekből áll.",
-      "A füst tesztet a tápegységből felszálló füst mennyiségének mérésével végzik.",
-      "A kiadás tesztet a fejlesztő csapat végzi.",
-      "A fejlesztői teszt jellemzően fekete doboz tesztekből áll."
-    ],
-    "correct": "A felhasználói teszt jellemzően fekete doboz tesztekből áll."
-  },
-  {
-    "question": "A fejlesztői teszt lépéseinek helyes sorrendje:",
-    "answers": [
-      "egységteszt, integrációs teszt, rendszerteszt",
-      "integrációs teszt, egységteszt, rendszerteszt",
-      "egységteszt, rendszerteszt, integrációs teszt",
-      "rendszerteszt, integrációs teszt, egységteszt"
-    ],
-    "correct": "egységteszt, integrációs teszt, rendszerteszt"
+    "correct": "Képes külső függőségek (szoftverkönyvtárak) automatikus betöltésére."
   },
   {
     "question": "Mely állítás hamis?",
     "answers": [
+      "Az integrációs és rendszertesztek első lépése a füst teszt.",
       "A tesztgyűjtemények által letesztelt programkód mértékét nevezzük kód lefedettségnek.",
       "A kiadásteszt nem foglalja magába a kihelyezést (pl. telepítés).",
-      "A kiadásteszt és a felhasználói teszt során a szoftvernek már általában a célkörnyezetben, tényleges adatokkal kell dolgoznia.",
-      "Az integrációs és rendszertesztek első lépése a füst teszt."
+      "A kiadásteszt és a felhasználói teszt során a szoftvernek már általában a célkörnyezetben, tényleges adatokkal kell dolgoznia."
     ],
     "correct": "A kiadásteszt nem foglalja magába a kihelyezést (pl. telepítés)."
   },
   {
-    "question": "A folytonos integráció célja...",
+    "question": "A fejlesztői teszt lépéseinek helyes sorrendje:",
     "answers": [
-      "... a több, kisebb részből álló kód egy nagyobb, összefüggő kódbázissá alakítása.",
-      "... az elkészített szoftver automatikus eljuttatása a felhasználókhoz.",
-      "... a lehetséges hibák, integrációs problémák azonnali, automatizált kiszűrése, visszajelzés a fejlesztőknek.",
-      "... a programverziók tárolása, visszakereshetősége."
+      "integrációs teszt, egységteszt, rendszerteszt",
+      "rendszerteszt, integrációs teszt, egységteszt",
+      "egységteszt, integrációs teszt, rendszerteszt",
+      "egységteszt, rendszerteszt, integrációs teszt"
     ],
-    "correct": "... a lehetséges hibák, integrációs problémák azonnali, automatizált kiszűrése, visszajelzés a fejlesztőknek."
+    "correct": "egységteszt, integrációs teszt, rendszerteszt"
   },
   {
-    "question": "A folyamatos teljesítés célja...",
+    "question": "Az alábbiak közül melyik egy Lehman törvény?",
     "answers": [
-      "... a folyamatos kiadások automatizálása.",
-      "... hogy a programkódok verziókezelő rendszer segítségével egy központi tárhelyre kerüljenek, naponta többször.",
-      ". az önszerveződő, kis csapatok folytonos interakciójának biztosítása gyors visszajelzésekkel.",
-      "... a gyors alkalmazásfejlesztés megvalósítása, inkrementális alapon."
+      "egy szoftvernek változnia kell, vagy különben folyamatosan csökken a használhatósága és minősége",
+      "egy szoftvert folyamatosan használni kell, vagy különben folyamatosan csökken a használhatósága és minősége",
+      "egy szoftvert folyamatosan használni kell, hogy folyamatosan nőjön a használhatósága és minősége",
+      "egy szoftvernek változnia kell, hogy folyamatosan csökkenjen a használhatósága és minősége"
     ],
-    "correct": "... a gyors alkalmazásfejlesztés megvalósítása, inkrementális alapon."
+    "correct": "egy szoftvernek változnia kell, vagy különben folyamatosan csökken a használhatósága és minősége"
   },
   {
-    "question": "Hogy hívjuk a folyamatos integráció és teljesítés egymásra épülő feladatait?",
-    "answers": ["milestone", "module", "task", "job"],
-    "correct": "job"
+    "question": "Mely állítás igaz?",
+    "answers": [
+      "A kiadás tesztet a fejlesztő csapat végzi.",
+      "A fejlesztői teszt jellemzően fekete doboz tesztekből áll.",
+      "A füst tesztet a tápegységből felszálló füst mennyiségének mérésével végzik.",
+      "A felhasználói teszt jellemzően fekete doboz tesztekből áll."
+    ],
+    "correct": "A felhasználói teszt jellemzően fekete doboz tesztekből áll."
   },
   {
-    "question": "Az alábbiak közül melyik nincs kapcsolatban a folytonos integrációval?",
-    "answers": ["GitLab", "JetLag", "Travis", "AppVeyor"],
-    "correct": "JetLag"
+    "question": "Mi a tesztelés helyes sorrendje?",
+    "answers": [
+      "integrációs teszt, felhasználói teszt, kiadásteszt, egységteszt, rendszerteszt",
+      "egységteszt, integrációs teszt, felhasználói teszt, rendszerteszt, kiadásteszt",
+      "kiadásteszt, egységteszt, felhasználói teszt, rendszerteszt, integrációs teszt",
+      "egységteszt, integrációs teszt, rendszerteszt, kiadásteszt, felhasználói teszt"
+    ],
+    "correct": "egységteszt, integrációs teszt, rendszerteszt, kiadásteszt, felhasználói teszt"
   },
   {
     "question": "Melyik állítás nem igaz a container framework-ökre (pl. Docker)?",
     "answers": [
-      "A containerek saját, elkülönített, virtualizált környezetben futnak.",
-      "A containerekben futó alkalmazások belső hálózati kapcsolaton kommunikálhatnak egymással.",
       "Minden container osztozik a gazda számítógép hardveres erőforrásain.",
-      "A containerek futó alkalmazások annak saját virtuális operációs rendszerén (pl. Docker OS) futnak."
+      "A containerek saját, elkülönített, virtualizált környezetben futnak.",
+      "A containerek futó alkalmazások annak saját virtuális operációs rendszerén (pl. Docker OS) futnak.",
+      "A containerekben futó alkalmazások belső hálózati kapcsolaton kommunikálhatnak egymással."
     ],
     "correct": "A containerek futó alkalmazások annak saját virtuális operációs rendszerén (pl. Docker OS) futnak."
   },
   {
-    "question": "Melyik NEM része a TDD három alapszabályának?",
+    "question": "Mi a célja a folyamatos integrációs (continuous integration, CI) gyakorlati módszernek?",
     "answers": [
-      "NE kódoljunk semmit, kivéve ami ahhoz kell, hogy a programunk átmenjen a sikertelen teszten.",
-      "Tesztből csak éppen elegendő mértékűt írjunk a hiba demonstrálásához.",
-      "A sikeres tesztelést mindig refaktorálás követi.",
-      "Csak annyi kódot írjunk, amennyi éppen elegendő a sikeres teszthez."
+      "Az elbukott integrációs tesztek automatikus újra futtatása, ameddig meg nem javulnak.",
+      "A manuális tesztelés teljes kiváltása.",
+      "Objektum orientált programozási nyelvre való átállást segíti elő.",
+      "A lehetséges hibák, integrációs problémák azonnali, automatizált kiszűrése, visszajelzés a fejlesztőnek."
     ],
-    "correct": "A sikeres tesztelést mindig refaktorálás követi."
+    "correct": "A lehetséges hibák, integrációs problémák azonnali, automatizált kiszűrése, visszajelzés a fejlesztőnek."
   },
   {
-    "question": "Mi igaz a TDD elvű fejlesztésre?",
+    "question": "Mi a folyamatos teljesítés (continuous delivery) célja?",
     "answers": [
-      "A végső kódnak elegendő jól működnie az utoljára bevezetett tesztesetekben.",
-      "Elegendő, ha csak annyit kódolunk, ami pillanatnyilag szükséges.",
-      "Végeredményként egy struktúrált kódot kapunk, ami kielégíti a teszteket, de még esetlegesen refaktorálásra szorul.",
-      "A tesztek a lehetséges használati eseteknek csak egy részhalmazát fedik le."
+      "A folyamatos kiadások automatizálása.",
+      "A programkódok egy központi tárhelyre küldésre, verziókezelő rendszer segítségével, naponta többször.",
+      "Az önszerveződő, kis csapatok folytonos interakciójának biztosítása gyors visszajelzésekkel.",
+      "A gyors alkalmazásfejlesztés megvalósítása, inkrementális alapon."
     ],
-    "correct": "A tesztek a lehetséges használati eseteknek csak egy részhalmazát fedik le."
+    "correct": "A folyamatos kiadások automatizálása."
   },
   {
-    "question": "Mely tulajdonságok jellemzőek a Clean Code-ra?",
-    "answers": [
-      "Jól dokumentált, tesztelt, elegáns",
-      "Könnyen olvasható, nem tartalmaz kódismétlést, tesztelhető",
-      "Olvasható, tömör, öndokumentáló",
-      "Olvasható, karbantartható, tesztelhető, elegáns"
-    ],
-    "correct": "Olvasható, karbantartható, tesztelhető, elegáns"
+    "question": "Hogy hívjuk a folyamatos integráció és teljesítés egymásra épülő feladatait?",
+    "answers": ["module", "job", "task", "milestone"],
+    "correct": "job"
   },
   {
-    "question": "Mi NEM jellemző oka a megírt kód folytonos változásának?",
-    "answers": [
-      "követelmény változások",
-      "új funkciók bevezetése",
-      "kód minőségének javítása",
-      "hibajavítások"
-    ],
-    "correct": "kód minőségének javítása"
+    "question": "Milyen nyelven írható le a GitLab CI/CD konfigurációja?",
+    "answers": ["YAML", "XAML", "XML", "JSON"],
+    "correct": "YAML"
   },
   {
-    "question": "Melyik koncepció része a Clean Code-nak?",
+    "question": "Melyik fajta kommentet kerüljük?",
     "answers": [
-      "Használjunk prefixeket az elnevezéseknél",
-      "Rövidítsük mindig a változó neveket",
-      "Ugyanazt a nevet ne használjuk különböző célra",
-      "A break és continue utasításokat elővigyázatosan kell alkalmaznunk."
+      "Kikommentezett kód",
+      "Szándékot, pontosítást tartalmazó komment",
+      "TODO",
+      "Következményre figyelmeztető komment"
     ],
-    "correct": "Ugyanazt a nevet ne használjuk különböző célra"
+    "correct": "Kikommentezett kód"
   },
   {
     "question": "Melyik állítás hamis a metódusokkal kapcsolatban a Clean Code-nál?",
     "answers": [
-      "A megvalósítás férjen rá egy képernyőre.",
       "Ne ismételjük önmagunkat a kódban (DRY).",
+      "A megvalósítás férjen rá egy képernyőre.",
       "Egy metódus több asztrakciós szintet is megvalósíthat.",
       "A blokkoknak egyértelmű be- és kilépési pontja kell legyen (break, continue nem megengedett)."
     ],
     "correct": "Egy metódus több asztrakciós szintet is megvalósíthat."
   },
   {
-    "question": "Melyik állítás igaz a Clean Code-al kapcsolatban?",
+    "question": "Melyik koncepció része a Clean Code-nak?",
     "answers": [
-      "A függvények egyszerre válaszolhatnak egy kérdésre és hajthatnak végre valamit.",
-      "Hibakódokat és kivételeket egyaránt használatunk.",
-      "A kód és a komment nem feltétlenül él együtt.",
-      "A komment segít a nehezen érthető kódot megérteni."
+      "Rövidítsük mindig a változó neveket",
+      "A break és continue utasításokat elővigyázatosan kell alkalmaznunk.",
+      "Használjunk prefixeket az elnevezéseknél",
+      "Ugyanazt a nevet ne használjuk különböző célra"
     ],
-    "correct": "A kód és a komment nem feltétlenül él együtt."
+    "correct": "Ugyanazt a nevet ne használjuk különböző célra"
   },
   {
-    "question": "Mely szál futtatja az eseménykezelésért felelős tevékenységeket?",
-    "answers": ["DBT", "ELT", "EDT", "DDT"],
-    "correct": "EDT"
-  },
-  {
-    "question": "Melyik nem létező szál állapot?",
-    "answers": ["Running", "Stopped", "Resumed", "Suspended"],
-    "correct": "Stopped"
-  },
-  {
-    "question": "Mi a szálak alapértelmezett prioritása?",
-    "answers": ["1", "0", "10", "5"],
-    "correct": "5"
-  },
-  {
-    "question": "A Thread objektum mely metódusával indítható el új szál?",
-    "answers": ["start", "run", "execute", "spawn"],
-    "correct": "start"
-  },
-  {
-    "question": "Mely metódussal tud egy szál lemondani a CPU időről?",
-    "answers": ["wait", "sleep", "interrupt", "suspend"],
-    "correct": "sleep"
-  },
-  {
-    "question": "Egy szál mely metódusának meghívásával lehet megvárni a szál befejeződését?",
-    "answers": ["await", "stop", "wait", "join"],
-    "correct": "join"
-  },
-  {
-    "question": "Mit jelent párhuzamos környezetben a kiéheztetés?",
+    "question": "Mi NEM jellemző oka a megírt kód folytonos változásának?",
     "answers": [
-      "A párhuzamos program szálai nem tudnak elindulni, mert az operációs rendszer korábban zombi állapotba került.",
-      "A szálak nem mondanak le a használt erőforrásaikról.",
-      "Egy szál nem tud hozzáférni a kívánt erőforráshoz huzamosabb ideig, mert más, hosszú futásidejű szálak korábban kapják azt meg.",
-      "Mire a program hajlandó befejeződni, a felhasználó már régen éhen halt."
+      "kód minőségének javítása",
+      "követelmény változások",
+      "hibajavítások",
+      "új funkciók bevezetése"
     ],
-    "correct": "Egy szál nem tud hozzáférni a kívánt erőforráshoz huzamosabb ideig, mert más, hosszú futásidejű szálak korábban kapják azt meg."
+    "correct": "kód minőségének javítása"
   },
   {
-    "question": "Egy lock-ként használt objektum mely metódusával ébreszthető fel az arra várakozó szál?",
-    "answers": ["notify", "wake", "wait", "spotifiy"],
-    "correct": "notify"
-  },
-  {
-    "question": "Mi igaz egy immutable objektumra?",
+    "question": "Mely tulajdonságok jellemzőek a Clean Code-ra?",
     "answers": [
-      "Az objektumban attribútumai nem változtathatók meg, de a referenciák esetében a rajtuk keresztül elérhető objektumokon ez megengedett.",
-      "Az objektum állapota nem változtatható meg a konstruktor lefutása után.",
-      "Attribútumai csak setter metódusok segítségével változtathatók meg.",
-      "Az objektumban nem tárolhatunk referenciát más objektumokra."
+      "Könnyen olvasható, nem tartalmaz kódismétlést, tesztelhető",
+      "Olvasható, karbantartható, tesztelhető, elegáns",
+      "Olvasható, tömör, öndokumentáló",
+      "Jól dokumentált, tesztelt, elegáns"
     ],
-    "correct": "Az objektum állapota nem változtatható meg a konstruktor lefutása után."
+    "correct": "Olvasható, karbantartható, tesztelhető, elegáns"
   },
   {
-    "question": "Melyik NEM LÉTEZŐ tervminta osztály?",
-    "answers": ["Létrehozási", "Viselkedési", "Végrehajtási", "Szerkezeti"],
-    "correct": "Végrehajtási"
+    "question": "Melyik tervezési minta alkalmazása látszik a képen?",
+    "answers": ["bejáró", "híd", "homlokzat", "építő"],
+    "correct": "homlokzat"
+  },
+  {
+    "question": "Melyik tervezési minta alkalmazása látszik a képen?",
+    "answers": ["elvont gyár", "megjelenítő", "díszítő", "gyártófüggvény"],
+    "correct": "díszítő"
+  },
+  {
+    "question": "Melyik tervezési mintát alkalmazhatjuk abban az esetben, ha egy adott osztály példányosítását szeretnénk a hozzátartozó alosztályokra átruházni?",
+    "answers": [
+      "Command (Parancs)",
+      "Observer (Megfigyelő)",
+      "Builder (Építő)",
+      "Factory method (Gyártó függvény)"
+    ],
+    "correct": "Factory method (Gyártó függvény)"
   },
   {
     "question": "Melyik tervmintát soroltuk rossz osztályba?",
     "answers": [
-      "Pehelysúlyú - Viselkedési minta",
-      "Építő - Létrehozási minta",
+      "Felelősséglánc - Viselkedési minta",
       "Egyke - Létrehozási minta",
-      "Felelősséglánc - Viselkedési minta"
+      "Építő - Létrehozási minta",
+      "Pehelysúlyú - Viselkedési minta"
     ],
     "correct": "Pehelysúlyú - Viselkedési minta"
   },
   {
-    "question": "Mely tervmintával csökkenthetjük a szükséges memóriát úgy, hogy megosztjuk az állapot közös részeit több objektum között egy új objektumban?",
+    "question": "Melyik tervezési mintát alkalmazhatjuk abban az esetben, ha konkrét osztály megadása nélkül szeretnénk kapcsolódó vagy egymástól függő objektumok családjának létrehozására felületet biztosítani?",
     "answers": [
-      "Pehelysúlyú (Flyweight)",
-      "Helyettes (Proxy) ",
-      "Összetétel (Composite)",
-      "Illesztő (Adapter)"
+      "Adapter (Illesztő)",
+      "Builder (Építő)",
+      "Abstract Factory (Absztrakt gyár)",
+      "Factory method (Gyártó függvény)"
     ],
-    "correct": "Pehelysúlyú (Flyweight)"
+    "correct": "Abstract Factory (Absztrakt gyár)"
   },
   {
-    "question": "Mely tervminta ad egyszerűsített felületet egy könyvtárhoz, keretrendszerhez stb.?",
+    "question": "Melyik tervezési minta nyújt megoldást arra a problémára, ha több objektumot szeretnénk értesíteni, amikor egy másik objektumnak megváltozik az állapota?",
     "answers": [
-      "Homlokzat (Facade)",
-      "Híd (Bridge)",
-      "Illesztő (Adapter)",
-      "Helyettes (Proxy)"
+      "Observer (Megfigyelő)",
+      "Singleton (Egyke)",
+      "Factory (Gyártó)",
+      "Adapter (Illesztő)"
     ],
-    "correct": "Homlokzat (Facade)"
+    "correct": "Observer (Megfigyelő)"
   },
   {
-    "question": "Mely tervminta fordítja le egy osztály interfészét egy kompatibilis másik interfészre?",
+    "question": "Mely tervminta ad lehetőséget egy gyűjtemény bejárására anélkül, hogy az elemek ábrázolását ismernénk?",
     "answers": [
-      "Híd (Bridge)",
-      "Illesztő (Adapter)",
-      "Helyettes (Proxy)",
-      "Homlokzat (Facade)"
+      "Emlékeztető (Memento)",
+      "Stratégia (Strategy)",
+      "Közvetítő (Mediator)",
+      "Bejáró (Iterator)"
     ],
-    "correct": "Illesztő (Adapter)"
+    "correct": "Bejáró (Iterator)"
+  },
+  {
+    "question": "Melyik tervezési minta alkalmazása látszik a képen?",
+    "answers": ["perzisztencia", "közvetítő", "homlokzat", "híd"],
+    "correct": "homlokzat"
   },
   {
     "question": "Mely tervminta teszi lehetővé a kérések továbbítását a kezelők lánca mentén?",
@@ -486,1045 +581,100 @@
     "question": "Mely tervminta tudja csökkenteni az objektumok közötti függőségeket?",
     "answers": [
       "Gyártó művelet (Factory method)",
+      "Közvetítő (Mediator)",
       "Illesztő (Adapter)",
-      "Híd (Bridge)",
-      "Közvetítő (Mediator)"
+      "Híd (Bridge)"
     ],
     "correct": "Közvetítő (Mediator)"
   },
   {
-    "question": "Mely tervminta ad lehetőséget egy gyűjtemény bejárására anélkül, hogy az elemek ábrázolását ismernénk?",
+    "question": "Mi a különbség a folyamat (process) és a szál (thread) között?",
     "answers": [
-      "Emlékeztető (Memento)",
-      "Közvetítő (Mediator)",
-      "Stratégia (Strategy)",
-      "Bejáró (Iterator)"
+      "Egy szál több folyamatot is tartalmazhat.",
+      "Nincs különbség, a kettő egymás szinonimája.",
+      "A folyamatoknak saját végrehajtási környezetük (pl. memóriaterület) van, a szálak osztozkodnak ezen.",
+      "A folyamatokat Linux operációs rendszeren szálaknak hívjuk."
     ],
-    "correct": "Bejáró (Iterator)"
+    "correct": "A folyamatoknak saját végrehajtási környezetük (pl. memóriaterület) van, a szálak osztozkodnak ezen."
   },
   {
-    "question": "Mi lehet Java-ban generikus paraméter?",
+    "question": "Melyik állítás hamis az std::future<T> típusra?",
     "answers": [
-      "Osztályok, melyek megvalósítják a generikus által igénybe vett metódusokat.",
-      "Bármely osztály.",
-      "Bármilyen típus, ami megvalósítja a generikus által igénybe vett metódusokat.",
-      "Bármilyen típus."
+      "Az std::future<T> típus objektum nem feltétlen aszinkron végrehajtást jelent.",
+      "Egy std::future<T> típus objektum egy ígéret arra, hogy egy T típusú eredmény előállításra kerül majd.",
+      "Az std::future<T> típusú típus alkalmas kivételek átadására is szálak között.",
+      "Egy std::future<T> típusú objektumba beleírható egy másik szálon majd kiolvasható érték."
     ],
-    "correct": "Osztályok, melyek megvalósítják a generikus által igénybe vett metódusokat."
+    "correct": "Egy std::future<T> típusú objektumba beleírható egy másik szálon majd kiolvasható érték."
   },
   {
-    "question": "Melyiket tekintjük absztrakciós módszernek?",
+    "question": "Mi a kiéheztetés (starvation)?",
     "answers": [
-      "A generikus osztályok és az műveletek használata is absztrakciós módszer.",
-      "Az absztrakt műveletek használatát.",
-      "Egyik sem absztrakciós módszer.",
-      "A generikus osztályok használatát."
+      "Olyan logikai hiba, amelynek során egy közös erőforráshoz több szál is egyszerre hozzáférhet, ezzel inkonzisztens állapotba juttatva a programot.",
+      "Olyan jogosultságkezelési hiba, amely során egy szál nem tudja a szükséges erőforrásokat (pl. fájlokat) megnyitni.",
+      "Olyan ütemezési hiba, amely során egy erőforrásra több szál is várakozik és egyikük sem jut soha hozzá, így \"lefagy\" a program.",
+      "Olyan prioritási hiba, amely esetén a kis prioritású vagy nagy erőforrás igényű folyamatok sosem képesek lefutni."
     ],
-    "correct": "A generikus osztályok és az műveletek használata is absztrakciós módszer."
+    "correct": "Olyan prioritási hiba, amely esetén a kis prioritású vagy nagy erőforrás igényű folyamatok sosem képesek lefutni."
   },
   {
-    "question": "Lehet-e egy generikus osztálynak absztrakt művelete?",
-    "answers": ["Nem.", "Igen."],
-    "correct": "Igen."
-  },
-  {
-    "question": "Lehet-e egy absztrakt osztálynak generikus művelete?",
-    "answers": ["Nem.", "Igen."],
-    "correct": "Igen."
-  },
-  {
-    "question": "Melyik állítás hamis?",
-    "answers": [
-      "A gyűjtemény tetszőleges mennyiségű adatot csoportosít.",
-      "Primitív típusok esetében azok beburkoló osztályával példányosíthatjuk a gyűjteményt.",
-      "A tömbök nem gyűjtemények.",
-      "A gyűjteményben tárolt adatok típusa azonos."
-    ],
-    "correct": "A gyűjteményben tárolt adatok típusa azonos."
-  },
-  {
-    "question": "Milyen adattagokat használhat a saját osztályán belül egy statikus metódus?",
-    "answers": [
-      "Minden adattagot",
-      "Azokat, amelyekhez adtunk gettert",
-      "A statikusakat",
-      "A statikusakat és a publikusakat"
-    ],
-    "correct": "A statikusakat"
-  },
-  {
-    "question": "Mire nem használható egy statikus attribútum?",
-    "answers": [
-      "Az osztály objektumainak példány szintű értékeihez",
-      "Konstans értékek definiálására",
-      "Jelzők definiálására (flag-ek)",
-      "Az osztály objektumai által közösen használt értékekhez"
-    ],
-    "correct": "Az osztály objektumainak példány szintű értékeihez"
-  },
-  {
-    "question": "Milyen típusú kivételeket kötelező elkapni vagy jelezni a továbbadását?",
-    "answers": [
-      "Exception és RuntimeException",
-      "RuntimeException",
-      "Exception",
-      "Egyiket sem kell"
-    ],
-    "correct": "Exception"
-  },
-  {
-    "question": "Hogyan definiálunk saját kivétel típust?",
-    "answers": [
-      "Erre nincs lehetőségünk",
-      "Származtatjuk a kivétel típusunkat az Exception-ből",
-      "Készítünk egy felsorolási típust, a hibák fajtáival",
-      "Létrehozunk egy egyszerű osztályt"
-    ],
-    "correct": "Származtatjuk a kivétel típusunkat az Exception-ből"
-  },
-  {
-    "question": "Melyik állítás hamis a Serializable által megvalósított szerializációval kapcsolatban?",
-    "answers": [
-      "A távoli metódus hívás (RMI) egy jellemző segédeszköze.",
-      "Az objektumokról pillanatképet készíthetünk vele",
-      "Az objektum bináris reprezentációjának előállítására.",
-      "A szerializáció elmenti az objektum állapotát, és kapcsolatait is, és ezeket automatikusan képes deszerializálni is."
-    ],
-    "correct": "A szerializáció elmenti az objektum állapotát, és kapcsolatait is, és ezeket automatikusan képes deszerializálni is."
-  },
-  {
-    "question": "Mely közös ősosztályból származnak a Java Swing vezérlő elemek?",
-    "answers": ["JObject", "JFrame", "JControl", "JComponent"],
-    "correct": "JComponent"
-  },
-  {
-    "question": "Melyik osztály testesítő meg Swing környezetben az ablakot?",
-    "answers": ["JPanel", "JFrame", "JWindow", "JDialog"],
-    "correct": "JFrame"
-  },
-  {
-    "question": "Mely művelettel lehet megadni az ablak bezárásakori viselkedést?",
-    "answers": [
-      "setCloseBehavior(...)",
-      "enableExitOnClose(...)",
-      "setAutoClose(...)",
-      "setDefaultCloseOperation(...)"
-    ],
-    "correct": "setDefaultCloseOperation(...)"
-  },
-  {
-    "question": "Mely párossal lehet az ablakeseményeket kezelni?",
-    "answers": [
-      "addWindowListener metódusnak átadott WindowEvents megvalósítás",
-      "addWindowEvents metódusnak átadott WindowEvents megvalósítás",
-      "addWindowListener metódusnak átadott WindowAdapter megvalósítás",
-      "addWindowEvents metódusnak átadott WindowAdapter megvalósítás"
-    ],
-    "correct": "addWindowListener metódusnak átadott WindowAdapter megvalósítás"
-  },
-  {
-    "question": "Melyik állítás igaz? Az ablak ikonjának fájlja...",
-    "answers": [
-      "...JAR-ból és fájlrendszerből ugyanúgy tölthető be.",
-      "...mindig a projektben kell legyen elhelyezve.",
-      "...csak bmp vagy ico formátumú lehet.",
-      "...ha a program JAR fájljában van, akkor garantáltan elérhetjük mindig."
-    ],
-    "correct": "...ha a program JAR fájljában van, akkor garantáltan elérhetjük mindig."
-  },
-  {
-    "question": "Mely metódussal lehet egy Swing komponenshez egér kattintás figyelőt hozzáadni?",
-    "answers": [
-      "addMouseClickListener",
-      "addMouseMotionListener",
-      "addMouseWheelListener",
-      "addMouseListener"
-    ],
-    "correct": "addMouseListener"
-  },
-  {
-    "question": "Mit célszerű tennünk, ha több fajta egér eseményt is kezelnünk kell?",
-    "answers": [
-      "Megvalósítjuk egyenként a MouseListener, MouseMotionListener, MouseWheelListener interfészeket.",
-      "Származtatunk egy eseménykezelő osztályt a MouseAdapter-ből.",
-      "Minden eseményhez külön-külön interfész megvalósítást kell adnunk.",
-      "Készítünk egy osztályt, amely megvalósítja mindhárom interfészt (MouseListener, MouseMotionListener, MouseWheelListener)."
-    ],
-    "correct": "Származtatunk egy eseménykezelő osztályt a MouseAdapter-ből."
-  },
-  {
-    "question": "Mi az eseménykezelést alkalmazó programok alapötlete?",
-    "answers": [
-      "A hibákat eseményekként dolgozzuk fel.",
-      "Az egér kattintásokra külön függvényekben tudjunk reagálni.",
-      "Az esemény objektumot az eseménykezelőnek kell definiálnia.",
-      "A program futása közben események hatására menjenek végbe bizonyos folyamatok."
-    ],
-    "correct": "A program futása közben események hatására menjenek végbe bizonyos folyamatok."
-  },
-  {
-    "question": "Mely állítás hamis az eseményobjektummal kapcsolatban?",
-    "answers": [
-      "Hordozza az esemény tulajdonságait.",
-      "Rendelkezik referenciával arról, hogy hol váltódott ki az esemény.",
-      "Hasonló típusú eseményekhez létrehozható megfelelő eseményosztály.",
-      "Az esemény forrását tartalmazó source attribútum mindig valós objektumra mutat."
-    ],
-    "correct": "Az esemény forrását tartalmazó source attribútum mindig valós objektumra mutat."
-  },
-  {
-    "question": "Mely állítás hamis? Az eseménykezelő függvény...",
-    "answers": [
-      "...paraméterként megkapja a kiváltott eseményt, amelyre éppen reagálni kell.",
-      "...csak a grafikus elemek eseményeinek kezelésére használatos.",
-      "...tartalmazza azt a tevékenységet, amelyet az adott eseményre reagálásképp végre kell hajtani.",
-      "...működése közben kiválthat más eseményeket is."
-    ],
-    "correct": "...csak a grafikus elemek eseményeinek kezelésére használatos."
-  },
-  {
-    "question": "Mely állítás igaz?",
-    "answers": [
-      "A RadioButton példányai közül egy JFrame-ben legfeljebb csak egy lehet kiválasztva.",
-      "A ButtonGroup lényege, hogy a hozzá rendelt Button-ok stílusa együttesen legyen kezelhető.",
-      "A ButtonGroup egy vizuális keretbe fogja össze a RadioButton-okat.",
-      "A kölcsönös kizárásban lévő RadioButton-okhoz csoportot kell rendelni."
-    ],
-    "correct": "A kölcsönös kizárásban lévő RadioButton-okhoz csoportot kell rendelni."
-  },
-  {
-    "question": "A NetBeans designer-e az alábbi metódusba gyűjti a vizuális elemek inicializálását...",
-    "answers": [
-      "initControls",
-      "initComponents",
-      "initializeComponents",
-      "initApplication"
-    ],
-    "correct": "initComponents"
-  },
-  {
-    "question": "A gombok tevékenységeinek megvalósítását a következő interface-el valósítjuk meg",
-    "answers": [
-      "ActionListener",
-      "EventClickListener",
-      "ActionHandler",
-      "ButtonClickListener"
-    ],
-    "correct": "ActionListener"
-  },
-  {
-    "question": "Az ActionListener mely metódusát kell megvalósítani gomb esemény kezelésekor?",
-    "answers": ["handleClick", "onEvent", "onClick", "actionPerformed"],
-    "correct": "actionPerformed"
-  },
-  {
-    "question": "Mi igaz a JList-re?",
-    "answers": [
-      "A JList vezérlőben az elem kijelölését a valueChanged eseményen keresztül érzékelhetjük.",
-      "A JList alapértelmezett modellje a DefaultContainerModel.",
-      "A JList tárolja a megjelenítendő adatait.",
-      "A JList modelljében tárolt adatok típusa String."
-    ],
-    "correct": "A JList vezérlőben az elem kijelölését a valueChanged eseményen keresztül érzékelhetjük."
-  },
-  {
-    "question": "A JTextField mely metódusával kérdezhető le a szerkesztett szöveg?",
-    "answers": ["setContent", "setText", "getContent", "getText"],
-    "correct": "getText"
-  },
-  {
-    "question": "Mely interfészt kell megvalósítani, ha értesülni akarunk a Slider értékének változásáról?",
-    "answers": [
-      "StateChangeListener",
-      "ChangeListener",
-      "ValueChangedListener",
-      "ScrollListener"
-    ],
-    "correct": "ChangeListener"
-  },
-  {
-    "question": "Mely metódus hívással kaphatunk grafikus eszközkapcsolatot egy BufferedImage-n, hogy rajzolni tudjunk rá?",
-    "answers": ["getImage", "getBitmap", "getGraphics", "getContent"],
-    "correct": "getGraphics"
-  },
-  {
-    "question": "Mely metódusban definiálható felül egy Swing UI komponens felületének kirajzolása?",
-    "answers": ["draw", "paint", "paintComponent", "drawComponent"],
-    "correct": "paintComponent"
-  },
-  {
-    "question": "A Graphics2D mely metódusával rajzolhatunk?",
-    "answers": ["fillRectangle", "clearRectange", "drawPie", "drawRoundRect"],
-    "correct": "drawRoundRect"
-  },
-  {
-    "question": "Melyik parancs része a DQL-nek (Data Query Language) ?",
-    "answers": [
-      "CREATE TABLE tablename(...)",
-      "UPDATE table SET ...",
-      "INSERT INTO table (...) VALUES (...)",
-      "SELECT * FROM table"
-    ],
-    "correct": "SELECT * FROM table"
-  },
-  {
-    "question": "Mire való a Connection rollback() metódusa?",
-    "answers": [
-      "Visszavonja egy felhasználó hozzáférési jogosultságát.",
-      "Visszavonja az utolsó megkezdett, de még nem commit-olt tranzakciót.",
-      "Visszavonja az utolsó kiadott módosítási kérelmet.",
-      "Visszavonja a kapcsolat létrejötte óta megvalósult adatbázis módosításokat."
-    ],
-    "correct": "Visszavonja az utolsó megkezdett, de még nem commit-olt tranzakciót."
-  },
-  {
-    "question": "Melyik metódus hívás biztosan helytelen a ResultSet típusú rs változón?",
-    "answers": [
-      "rs.getString(\"ADDR\");",
-      "rs.getInt(2);",
-      "rs.getInt(0);",
-      "rs.getString(5);"
-    ],
-    "correct": "rs.getInt(0);"
-  },
-  {
-    "question": "Mit nevezünk Dirty Reads-nek?",
-    "answers": [
-      "Nem véglegesített adatok olvasása.",
-      "Helytelen formátumban tárolt adatok olvasását.",
-      "Túl sok adatot kérünk le az adatbáziskezelőtől.",
-      "Véglegesített adatok olvasása."
-    ],
-    "correct": "Nem véglegesített adatok olvasása."
-  },
-  {
-    "question": "Mi igaz egy jó adatbázissal kapcsolatban?",
-    "answers": [
-      "Tartalmazhat redundanciát.",
-      "Biztosítja az adatok épségét.",
-      "Minden tábla minden oszlopa indexelt.",
-      "A kulcsok csak egyetlen mezőből állhatnak."
-    ],
-    "correct": "Biztosítja az adatok épségét."
-  },
-  {
-    "question": "Milyen típust használ a JPasswordField az adatok tárolásához?",
-    "answers": ["Character[]", "String", "byte[]", "char[]"],
-    "correct": "char[]"
-  },
-  {
-    "question": "Mely állítás igaz a JTable-el kapcsolatban?",
-    "answers": [
-      "Az adatokat a JTable tárolja.",
-      "A táblázatohoz tartozik egy adatokat tároló objektum, ami a TableModel interfészt implementálja.",
-      "A TableModel-nek nem létezik alapértelmezett (absztrakt) megvalósítása.",
-      "A fireTableStructureChanged metódus csak a táblázat struktúráját érvényteleníti."
-    ],
-    "correct": "A táblázatohoz tartozik egy adatokat tároló objektum, ami a TableModel interfészt implementálja."
-  },
-  {
-    "question": "Mely metódusait kell mindenképpen implementálni a TableModel-nek a minimális működéshez?",
-    "answers": [
-      "getValueAt, getColumnName",
-      "getRowCount, getColumnCount, getValueAt",
-      "getColumnName, getValueAt, getColumnClass",
-      "getValueAt"
-    ],
-    "correct": "getRowCount, getColumnCount, getValueAt"
-  },
-  {
-    "question": "A JTable megjelenítéséhez a Cell renderer a következő típus-megjelenítés párt használja.",
-    "answers": [
-      "Boolean - jelölő négyzet",
-      "Date - dátum választó",
-      "Number - TextField",
-      "ImageIcon, Icon - PictureBox"
-    ],
-    "correct": "Boolean - jelölő négyzet"
-  },
-  {
-    "question": "Mely állítás NEM IGAZ az állapottal kapcsolatban?",
-    "answers": [
-      "Az állapot megszűnése a programban magától is bekövetkezhet.",
-      "Az állapotnak van azonosítója, így megkülönböztethető a többitől.",
-      "Az állapot addig marad fenn, amíg az objektumok attribútumainak értékei kielégítik az állapothoz rendelt invariánst.",
-      "Az objektum állapotát az attribútumok konkrét értékeinek n-esével jellemezzük."
-    ],
-    "correct": "Az állapot megszűnése a programban magától is bekövetkezhet."
-  },
-  {
-    "question": "Mely állítás HAMIS?",
-    "answers": [
-      "Az objektum megszűnésekor az objektum állapota egyszerűen törlődik.",
-      "Az objektum megszűnésekor egy rendszeren kívüli befejező állapotba kerül az objektum.",
-      "Az állapot megszűnése esemény hatására következik be.",
-      "Az állapot megszűnésekor egy másik állapotba kerül az objektum."
-    ],
-    "correct": "Az objektum megszűnésekor az objektum állapota egyszerűen törlődik."
-  },
-  {
-    "question": "Mely állítás igaz az állapotdiagrammal kapcsolatban?",
-    "answers": [
-      "Az állapotdiagram gráfjának csúcsai az események, élei az állapotátmenetek.",
-      "Az állapotdiagram több kezdő állapotot is tartalmazhat.",
-      "Az állapotdiagram egy összefüggő irányítatlan gráf.",
-      "Az állapotdiagram egy egyszeresen összefüggő irányított gráf."
-    ],
-    "correct": "Az állapotdiagram egy egyszeresen összefüggő irányított gráf."
-  },
-  {
-    "question": "Az állapotdiagram bonyolultságát a következő módszerrel csökkenthetjük:",
-    "answers": [
-      "Állapotok általánosítása.",
-      "Állapotok általánosítása, illetve aggregációja.",
-      "Sehogy.",
-      "Állapotok aggregációja."
-    ],
-    "correct": "Állapotok általánosítása, illetve aggregációja."
-  },
-  {
-    "question": "Mely állítás igaz?",
-    "answers": [
-      "Az aggregált állapot állapotinvaránsa a részállapotok állapotinvariánsainak diszjunkciója.",
-      "Az általánosított állapot állapotinvaránsa a részállapotok állapotinvariánsainak konjunkciója.",
-      "Az általánosított állapot állapotinvaránsa a részállapotok állapotinvariánsainak diszjunkciója.",
-      "Az általánosított és az aggregált állapot állapotinvaránsa megegyezik."
-    ],
-    "correct": "Az általánosított állapot állapotinvaránsa a részállapotok állapotinvariánsainak diszjunkciója."
-  },
-  {
-    "question": "Hogyan jelöljük a sávos alapú tevékenység diagramon a szinkronizációs pontot?",
-    "answers": [
-      "Szaggatott vízszintes vonallal",
-      "Lekerekített sarkú téglalappal",
-      "Vastagított vízszintes vonallal",
-      "Rombusszal"
-    ],
-    "correct": "Vastagított vízszintes vonallal"
-  },
-  {
-    "question": "Az együttműködési diagramban az együttműködés mely objektumok között valósul meg?",
-    "answers": [
-      "Amelyeket ugyanaz az objektum példányosítja.",
-      "Amelyek életciklusa összekapcsolódik.",
-      "Amelyek asszociációs kapcsolattal vannak összekötve.",
-      "Amelyek ugyanazon osztály példányai."
-    ],
-    "correct": "Amelyek asszociációs kapcsolattal vannak összekötve."
-  },
-  {
-    "question": "Az együttműködési diagram mely diagram kiterjesztéseként fogható fel?",
-    "answers": [
-      "Csomag diagram",
-      "Osztály diagram",
-      "Komponens diagram",
-      "Objektum diagram"
-    ],
-    "correct": "Objektum diagram"
-  },
-  {
-    "question": "Hogyan jelöljük az együttműködési diagramon az üzenetküldés során átadott argumentumot?",
-    "answers": [
-      "Az asszociáción feltüntett üzenet azonosítóval.",
-      "Kis körből indított nyíllal.",
-      "A küldőtől a fogadó felé mutató nyíllal.",
-      "Az asszociáción feltüntetett boríték ikonnal."
-    ],
-    "correct": "Kis körből indított nyíllal."
-  },
-  {
-    "question": "Hogyan jelöljük az együttműködési diagramon, ha egy üzenetnek több címzettje is van?",
-    "answers": [
-      "Multiplicitással.",
-      "Erre nincs lehetőségünk.",
-      "Az asszociáción feltüntetett több nyíllal.",
-      "A fogadó feleket együttesen három, egymáshoz képest elcsúsztatott téglalappal jelöljük."
-    ],
-    "correct": "A fogadó feleket együttesen három, egymáshoz képest elcsúsztatott téglalappal jelöljük."
-  },
-  {
-    "question": "Mely NEM RÉSZE a felhasználói eset diagramnak?",
-    "answers": [
-      "Felhasználói fiók",
-      "Felhasználói esetek",
-      "Felhasználási relációk",
-      "Felhasználók"
-    ],
-    "correct": "Felhasználói fiók"
-  },
-  {
-    "question": "Hogyan jelöljük a felhasználói esetet a felhasználói eset diagramon?",
-    "answers": [
-      "Ellipszissel",
-      "Az eset nevének aláhúzásával",
-      "Körrel",
-      "Téglalappal"
-    ],
-    "correct": "Ellipszissel"
-  },
-  {
-    "question": "Mi lesz az eredménye egy olyan objektum wait() metódusának hívásának, amelynek a hívó szál nem birtokolja a monitor lockját?",
-    "answers": ["IllegalMonitorStateException", "-", "-", "-"],
-    "correct": "IllegalMonitorStateException"
-  },
-  {
-    "question": "Melyik output nem lehetséges a következő kód futtatása esetén? public class Tester extends Thread { int code = 9; public void run() { this.code = 7; } public static void main(String[] args) { Tester thread = new Tester(); thread.start(); for (int i = 0; i < 5; i++) { System.out.print(thread.code); } } }",
-    "answers": ["97777", "77777", "79999", "99999"],
-    "correct": "79999"
-  },
-  {
-    "question": "public class MyThread extends Thread { volatile private int x = 3; public static void main(String[] args) throws Exception { new MyThread().foo(); } public MyThread() { x = 10; start(); } public void foo() throws Exception { join(); x = x - 1; System.out.println(x); } public void run() { x *= 2; } }",
-    "answers": ["8", "19", "18", "10"],
-    "correct": "19"
-  },
-  {
-    "question": "Mi lesz a következő kód futtatásának eredménye? public class Test extends Thread { public void run() { System.out.println(isAlive()); } public static void main(String[] args) { Test test = new Test(); System.out.println(test.isAlive()); test.run(); } }",
-    "answers": ["false false", "true false", "false true", "true true"],
-    "correct": "false false"
-  },
-  {
-    "question": "Melyek Atomi műveletek az alábbiak közül?",
-    "answers": [
-      "Referencia változók írása/olvasása",
-      "Minden primitív típusú változó írása/olvasása",
-      "Mindkettő",
-      "Egyik sem"
-    ],
-    "correct": "Referencia változók írása/olvasása"
-  },
-  {
-    "question": "Melyik állítás nem igaz az immutable osztályokra?",
-    "answers": [
-      "Az osztályt final – ként kell deklarálni a leszármaztatás megelőzése végett",
-      "Az osztály összes adattagja private final – ként kell deklarálni",
-      "Az objektum típusú adattagokról mindig másolatot kell készíteni amikor azt getter metódusból ki kell adni és konstruktor paraméterből való inicializáció",
-      "Az osztály nem tartalmazhat olyan metódusokat, amelyek az állapotát a konstruktor lefutása után megváltoztatják."
-    ],
-    "correct": "Az objektum típusú adattagokról mindig másolatot kell készíteni amikor azt getter metódusból ki kell adni és konstruktor paraméterből való inicializáció"
-  },
-  {
-    "question": "Melyik nem DML utasítás az alábbi SQL utasítások közül?",
-    "answers": [
-      "update [table] set ... ",
-      "delete from [table] ...",
-      "alter table ... ",
-      "insert into [table] ... "
-    ],
-    "correct": "alter table ... "
-  },
-  {
-    "question": "Mely állítások igazak a JDBC kapcsolat felépítésével kapcsolatban? 1. DriverManager osztályon keresztül juthatunk pool-ozott kapcsolathoz. 2. DataSource osztályon keresztül juthatunk pool-ozott kapcsolathoz. 3. DataSource osztállyal történő kapcsolódás esetén meg kell adnunk az adatbázishoz tartozó connection URL-t. 4. Adatbázis kapcsolatot a DriverManger.getConnection hívással kaphatunk.",
-    "answers": ["1, 3", "2, 3", "2, 4", "3, 4"],
-    "correct": "2, 4"
-  },
-  {
-    "question": "Mely információ nem nyerhető ki az SQLException objektumból? ",
-    "answers": [
-      "SQL státusz kód.",
-      "Driver/Adatbázis specifikus hibakód.",
-      "A hibát okozó adatbázis kérés.",
-      "A felmerült hiba leírása."
-    ],
-    "correct": "A hibát okozó adatbázis kérés."
-  },
-  {
-    "question": "Melyik helytelen módja a resultSet adatainak elérésének?",
-    "answers": [
-      "String value0 = rs.getString(0);",
-      "String value1 = rs.getString(1);",
-      "int value2 = rs.getInt(2);",
-      "int value3 = rs.getInt('ADDR_LN1');"
-    ],
-    "correct": "String value0 = rs.getString(0);"
-  },
-  {
-    "question": "Hogyan indítható új adatbázis tranzakció?",
-    "answers": [
-      "A Connection-höz egy Transaction object kérésével és azon begin() metódus hívással.",
-      "A Connection-höz egy Transaction object kérésével és annak autoCommit tulajdonságánal false-ra állításával.",
-      "A Connection beginTransaction metódusának hívásával.",
-      "A Connection autoCommit tulajdonságának false-ra állításával és egy SQL utasítás végrehatásával."
-    ],
-    "correct": "A Connection autoCommit tulajdonságának false-ra állításával és egy SQL utasítás végrehatásával."
-  },
-  {
-    "question": "Mire való a tranzakció az adatbázisoknál?",
-    "answers": [
-      "Tárolt eljárások futtatására",
-      "Több művelet atomikénti végrehajtására",
-      "Kapcsolt táblás lekérdezésre",
-      "Átutalások elnevezésére"
-    ],
-    "correct": "Több művelet atomikénti végrehajtására"
-  },
-  {
-    "question": "Melyik kapcsolatot szokás kapcsolótáblával leképezni?",
-    "answers": [
-      "1-n kapcsolatot",
-      "m-1 kapcsolatot",
-      "m-n kapcsolatot",
-      "kapcsolatot"
-    ],
-    "correct": "m-n kapcsolatot"
-  },
-  {
-    "question": "Mi nem része az Egyed-Kapcsolat diagramnak?",
-    "answers": ["Attribútum", "Entitás", "Kulcsok ", "Osztály"],
-    "correct": "Osztály"
-  },
-  {
-    "question": "Melyik nem igaz a JTable és a modell kapcsolatáról?",
-    "answers": [
-      "A JTable nem tartalmaz adatot",
-      "A modell felüldefiniálható",
-      "A modell nem tudja értesíteni a JTable-t a változásról",
-      "A modell reprezentációja eltérhet a JTable által lekérdezett adatokétól"
-    ],
-    "correct": "A modell nem tudja értesíteni a JTable-t a változásról"
-  },
-  {
-    "question": "Melyek a szoftverek alapvető minőségi mutatói?",
-    "answers": [
-      "Szállítási idő, megvalósítási költség, hardver- és szoftverigény.",
-      "Karbantarthatóság, megbízhatóság, biztonság, hatékonyság, használhatóság.",
-      "Módosíthatóság, bővíthetőség, felbonthatóság, újrahasználhatóság, megbízhatóság.",
-      "Ergonómia, használhatóság, kompatibilitás, hardver- és szoftverigény."
-    ],
-    "correct": "Karbantarthatóság, megbízhatóság, biztonság, hatékonyság, használhatóság."
-  },
-  {
-    "question": "Mi a helyes sorrendje a követelményelemzésnek?",
-    "answers": [
-      "megvalósíthatósági elemzés, követelmény feltárás, követelmény specifikáció, követelmény validáció",
-      "követelmény feltárás, követelmény specifikáció, követelmény validáció, megvalósíthatósági elemzés",
-      "követelmény feltárás, követelmény validáció, követelmény specifikáció, megvalósíthatósági elemzés ",
-      "követelmény feltárás, követelmény specifikáció, megvalósíthatósági elemzés, követelmény validáció"
-    ],
-    "correct": "megvalósíthatósági elemzés, követelmény feltárás, követelmény specifikáció, követelmény validáció"
-  },
-  {
-    "question": "Az alábbiak közül melyik nem szoftverfejlesztési modell?",
-    "answers": ["waterfall", "evolution", "scrum", "prototyping"],
-    "correct": "evolution"
-  },
-  {
-    "question": "Az alábbiak közül melyek az UML használati eset (use case) diagram relációi?",
-    "answers": [
-      "függőség (dependency), kompozíció (composition), használat (usage), beágyazás (nesting)",
-      "előfeltétel (precedes), tartalmazás (include), használat (usage), általánosítás (generalization)",
-      "használat (usage), beágyazás (nesting), importálás (import), függőség (dependency)",
-      "felület (interface), megvalósítás (implementation), tartalmazás (include)"
-    ],
-    "correct": "előfeltétel (precedes), tartalmazás (include), használat (usage), általánosítás (generalization)"
-  },
-  {
-    "question": "Mire szolgál az UML telepítési (deployment) diagram?",
-    "answers": [
-      "Ábrázolja azt a műveletsorozatot, amely a szoftver adott gépen történő üzembehelyezéséhez szükséges.",
-      "Ábrázolja az összes hibalehetőséget, amellyel a telepítés során találkozhatunk",
-      "Ábrázolja a szoftver összetevőket, annak megfelelően, miként kell őket telepítőcsomagba helyezni.",
-      "Ábrázolja a szoftver összetevőinek fizikai (különböző gépeken történő) elhelyezését, a szükséges szoftverkörnyezettel."
-    ],
-    "correct": "Ábrázolja a szoftver összetevőinek fizikai (különböző gépeken történő) elhelyezését, a szükséges szoftverkörnyezettel."
-  },
-  {
-    "question": "Mely objektumorientált elvet sérti az egyke (singleton) szerkezet, amely korábban egy népszerű tervminta volt? Az egyke szerkezet azt garantálja, hogy az objektumból csak egy példány legyen, amelyet egy statikus művelet segítségével kérhetünk el az osztálytól.",
-    "answers": [
-      "Single Responsibility Principle",
-      "Open/Closed Principle",
-      "Liskov Substitution Principle",
-      "Dependency Inversion Principle"
-    ],
-    "correct": "Dependency Inversion Principle"
-  },
-  {
-    "question": "Az alábbiak közül melyik technika használható a Dependency Inversion Principle megvalósítására?",
-    "answers": [
-      "(figyelő) observer",
-      "MVC (modell-view-controller) ",
-      "függőség befecskendezés (dependency injection)",
-      "általánosítás (generalization)"
-    ],
-    "correct": "függőség befecskendezés (dependency injection)"
-  },
-  {
-    "question": "Mit jelent a tesztvezérelt fejlesztés (TDD)?",
-    "answers": [
-      "Szoftverfejlesztési módszer, amelyben a teszteket a tényleges programkód elkészítése előtt írják meg.",
-      "Tesztelési módszer, amelynek célja, hogy az tesztesetek minden programegységre kiterjedjenek, és megfelelő sorrendben hajtódjanak végre. ",
-      "Egy általános elv, amely kimondja, hogy a programkód minden utasítását ellenőrizni kell egységtesztek segítségével (100%-os kódlefedettség).",
-      "Tesztelési módszer, amelyben először egységteszteket készítenek az osztályokra (és metódusaikra), majd integrációs tesztekkel ellenőrzik az osztályok együttes viselkedését, végül rendszertesztekkel a teljes szoftvert viselkedését ellenőrzik."
-    ],
-    "correct": "Szoftverfejlesztési módszer, amelyben a teszteket a tényleges programkód elkészítése előtt írják meg."
-  },
-  {
-    "question": "Az alábbiak közül mely funkciót nem tudják biztosítani a teszt keretrendszerek (unit testing frameworks)?",
-    "answers": [
-      "Tesztesetek manuális létrehozását külön programegységekben (osztályokban).",
-      "Mindent lefedő tesztesetek automatikus generálását a programkód elemzésével. ",
-      "A kapott és elvárt eredmények összehasonlítását elvégző assert utasításokat.",
-      "Tesztjelentés elkészítését, amelyben látható, hogy mely tesztek lettek sikeresek/sikertelenek."
-    ],
-    "correct": "Mindent lefedő tesztesetek automatikus generálását a programkód elemzésével. "
-  },
-  {
-    "question": "Egység (Unit) tesztelés esetén a program részeit el kell különítenünk egymástól és határokat kell felállítanunk közöttük. Erre az egyik lehetséges megoldás, hogy olyan objektumokat használunk, melyek más objektumok működését utánozzák.  Hogyan nevezzük ezeket az objektumokat? ",
-    "answers": [
-      "Mock objektumoknak",
-      "Moduloknak ",
-      "Egységeknek",
-      "Atomoknak"
-    ],
-    "correct": "Mock objektumoknak"
-  },
-  {
-    "question": "Miből indul ki az objektum orientált tervezés?",
-    "answers": [
-      "Funkciók",
-      "Tevékenységek",
-      "Entitások és kapcsolataik",
-      "Architektúra"
-    ],
-    "correct": "Entitások és kapcsolataik"
-  },
-  {
-    "question": "Mivel fejezzük ki, hogy egy objektum egy osztály több objektumával is kapcsolatban áll?",
-    "answers": [
-      "Kompozícióval",
-      "Multiplicitással",
-      "Tömb típusú attribútummal ",
-      "Aggregációval"
-    ],
-    "correct": "Multiplicitással"
-  },
-  {
-    "question": "Mihez rendelhetünk egy osztálydiagram esetén megszorítást?",
-    "answers": ["Reláció", "Attribútum", "Metódus paraméterek", "Mindhez"],
-    "correct": "Mindhez"
-  },
-  {
-    "question": "Az alábbi relációk közül, melyik nem értelmezett osztályok objektumai között?",
-    "answers": ["Asszociáció", "Függőség", "Származtatás", "Aggregáció"],
-    "correct": "Származtatás"
-  },
-  {
-    "question": "Melyik diagram nem része a dinamikus modellnek?",
-    "answers": [
-      "Állapot diagram",
-      "Szekvencia diagram",
-      "Tevékenyseg diagram",
-      "Komponens diagram"
-    ],
-    "correct": "Komponens diagram"
-  },
-  {
-    "question": "Mije nem lehet az állapotnak?",
-    "answers": ["Neve", "Invariánsa", "Előfeltétele", "Paramétere"],
-    "correct": "Paramétere"
-  },
-  {
-    "question": "Mivel csökkenthető az állapotdiagram komplexitása?",
-    "answers": [
-      "Általánosítás",
-      "Aggregáció",
-      "Általánosítással és aggregációval ",
-      "Más módszerrel"
-    ],
-    "correct": "Általánosítással és aggregációval "
-  },
-  {
-    "question": "Melyik igaz?",
-    "answers": [
-      "Az általánosítás invariánsa az állapotok invariánsainak diszjunkciója",
-      "Az általánosítás invariánsa az állapotok invariánsainak konjunkciója",
-      "Az aggregáció invariánsa az állapotok invariánsainak diszjunkciója",
-      "A két módszerrel kapott állapotoknak nincs invariánsa"
-    ],
-    "correct": "Az általánosítás invariánsa az állapotok invariánsainak diszjunkciója"
-  },
-  {
-    "question": "Melyik opcióban szereplő diagramok részei a statikus modellnek?",
-    "answers": [
-      "Osztálydiagram, Objektumdiagram",
-      "Osztálydiagram, Állapotdiagram",
-      "Objektumdiagram, Szekvenciadiagram",
-      "Objektumdiagram, Aktivációs diagram"
-    ],
-    "correct": "Osztálydiagram, Objektumdiagram"
-  },
-  {
-    "question": "Mivel csökkenthető az állapotdiagram komplexitása?",
-    "answers": [
-      "Az állapotok általánosításával.",
-      "Az állapotok aggregációjával.",
-      "Az állapotok általánosításával és/vagy aggregációjával.",
-      "Más módszerrel."
-    ],
-    "correct": "Az állapotok általánosításával és/vagy aggregációjával."
-  },
-  {
-    "question": "Az alábbi megvalósítás alapján melyik reláció áll fenn pontosan az autó (Car) és a motor (Engine) között? public class Car { private Engine engine; public Car(Engine engine){  this.engine = engine; } } public Engine getEngine(){ return engine; }",
-    "answers": [
-      "Asszociáció (Association)",
-      "Aggregáció (Aggregation)",
-      "Kompozíció (Composition)",
-      "Általánosítás (Generalization)"
-    ],
-    "correct": "Aggregáció (Aggregation)"
-  },
-  {
-    "question": "Az alábbi megvalósítás alapján melyik reláció áll fenn pontosan az autó (Car) és a motor (Engine) között? public class Car { private final Engine engine; public Car(int engineCapacity, int engineSerialNumber) { this.engine = new Engine(engineCapacity, engineSerialNumber); } public int getEngineCapacity() { return engine.getEngineCapacity(); } } public int getEngineSerialNumber(){ return engine.getEngineSerialNumber(); } ",
-    "answers": [
-      "Asszociáció (Association)",
-      "Aggregáció (Aggregation)",
-      "Kompozíció (Composition)",
-      "Általánosítás (Generalization)"
-    ],
-    "correct": "Kompozíció (Composition)"
-  },
-  {
-    "question": "Mit kell implementálni saját típus eseten a HashMap használatához?",
-    "answers": [
-      "== operátor",
-      "hashCode(…) metódus",
-      "equals(…) metódus",
-      "Mindkét metódust"
-    ],
-    "correct": "Mindkét metódust"
-  },
-  {
-    "question": "Melyik megvalósítást válasszuk az alábbi opciók közül abban az esetben, ha főleg index alapú keresést szeretnénk alkalmazni egy dinamikusan változó méretű adathalmazon, ahol többször is előfordulhat ugyan az az elem? (Új elemet csak a gyűjtemény végére szeretnénk helyezni, törölni a gyűjteményből nem szeretnénk gyakran.)",
-    "answers": ["ArrayList", "LinkedList", "Tömb (Array)", "HashSet"],
-    "correct": "ArrayList"
-  },
-  {
-    "question": "Melyik megvalósítást válasszuk az alábbi opciók közül, ha olyan gyűjteményt szeretnénk a feladat során használni, mely nem duplikált elemeket tartalmaz és nincs szükségünk arra, hogy az elemeket a beszúrás sorrendjében vagy az értékek szerint növekvő sorrendben tároljuk?",
-    "answers": ["TreeSet", "LinkedHashSet", "HashSet", "ArrayList"],
-    "correct": "HashSet"
-  },
-  {
-    "question": "Az alábbi interfészek közül melyik implementációit használjuk kulcs-érték párok tárolására?",
-    "answers": ["List", "Set", "Map", "Collection"],
-    "correct": "Map"
-  },
-  {
-    "question": "Mely állítás igaz?",
-    "answers": [
-      "final abstract osztálynak legalább egy metódusa abstract",
-      "abstract osztálynak legalább egy metódusa abstract",
-      "final osztály minden attribútuma final",
-      "abstract osztály leszármazottja is lehet abstract"
-    ],
-    "correct": "abstract osztály leszármazottja is lehet abstract"
-  },
-  {
-    "question": "Mely állítas nem igaz?",
-    "answers": [
-      "final osztály nem származtatható",
-      "interface-ek nem származtathatók egymásból",
-      "Egy osztály több interface-t is megvalósíthat",
-      "Az interface minden metódusát meg kell valósítani"
-    ],
-    "correct": "interface-ek nem származtathatók egymásból"
-  },
-  {
-    "question": "Mi lehet generikus paraméter?",
-    "answers": [
-      "Alaptípus",
-      "Osztály",
-      "interface",
-      "Osztály, ami megvalósítja a generikusban használt műveleteket"
-    ],
-    "correct": "Osztály"
-  },
-  {
-    "question": "Mely gyűjtemény indexelhető?",
-    "answers": ["HashSet", "HashMap", "Vector", "TreeMap"],
-    "correct": "Vector"
-  },
-  {
-    "question": "Mit támogat a Java a többszörös specializáció és többszörös általánosítás közül?",
-    "answers": ["Általanosítás", "Specializáció", "Mindkettő", "Egyik sem"],
-    "correct": "Specializáció"
-  },
-  {
-    "question": "Melyik nem agilis elv a következők közül?",
+    "question": "Melyik állítás igaz a RAII (Resource Allocation Is Initialization) paradigmára vonatkozóan?",
     "answers": [
-      "a módszertan érvényesítése, szemben az eszközökkel",
-      "a működő szoftver, szemben az átfogó dokumentációval",
-      "együttműködés az ügyféllel, szemben a szerződéses tárgyalásokkal",
-      "a változásra való reagálás, szemben a terv követésével."
+      "Jelentése, a biztonságos memóriakezelés azáltal, hogy a hatókörén kívül került objektumokat a szemétgyűjtő felszabadítja (garbage collection).",
+      "Jelentése, hogy minden erőforrás foglalás megfeleltethető egy objektum példányosításnak, ezért a paradigma C++ nyelven nem alkalmazható, mert nem csak objektum-orientáltan lehet programozni a nyelvben.",
+      "Jelentése, hogy a kezelendő erőforrás az osztály invariánsa: annak lefoglalására / megnyitására az objektumok létrehozásakor, a felszabadítására / bezárására az objektum megsemmisítésekor kell sor kerüljön.",
+      "Jelentése, hogy minden objektum példányosítás megfeleltethető egy erőforrás foglalásnak."
     ],
-    "correct": "a módszertan érvényesítése, szemben az eszközökkel"
+    "correct": "Jelentése, hogy a kezelendő erőforrás az osztály invariánsa: annak lefoglalására / megnyitására az objektumok létrehozásakor, a felszabadítására / bezárására az objektum megsemmisítésekor kell sor kerüljön."
   },
   {
-    "question": "Melyik állítás nem igaz a futam kapcsán? ",
+    "question": "Melyik állítás igaz a kölcsönös kizárásra (mutual exclusion)?",
     "answers": [
-      "A terméknek mind a tervezése, kódolása és tesztelése is a futamon belül történik.",
-      "A futam eredménye üzleti értéket képviselő működő kód.",
-      "A feladatok és az idők meghatározása után csak a termékgazda szól bele a csapat munkájába.",
-      "A Scrum csapat önszerveződő módon dolgozik a futam során."
+      "A kölcsönös kizárás célja a szálak szinkronizációja: a kritikus szakasz mindig ugyanazon a szálon fusson le.",
+      "A kölcsönös kizárás garantálja, hogy a közös erőforráshoz egyszerre csak egy szál férhessen hozzá, kizárva ezzel a versenyhelyzetet (race condition).",
+      "Nincsen olyan többszálú program, amely kölcsönös kizárás nélkül helyesen tud működni,",
+      "A kölcsönös kizárás célja, hogy a többszálú program egyszerre mindig csak egy szál futhasson."
     ],
-    "correct": "A feladatok és az idők meghatározása után csak a termékgazda szól bele a csapat munkájába."
+    "correct": "A kölcsönös kizárás garantálja, hogy a közös erőforráshoz egyszerre csak egy szál férhessen hozzá, kizárva ezzel a versenyhelyzetet (race condition)."
   },
   {
-    "question": "Melyik állítás igaz a Scrum mesterre?",
-    "answers": [
-      "A Scrum mester a Scrum csapat menedzsere",
-      "A Scrum mester vezeti a napi Scrumot",
-      "A Scrum mester nem felel azért, hogy külső hatásoktól védje a Scrum csapat munkáját",
-      "A Scrum mester a folyamatokért felel"
-    ],
-    "correct": "A Scrum mester a folyamatokért felel"
+    "question": "Melyik nem tartozik az előadáson felsorolt SCRUM folyamat elemek közé?",
+    "answers": ["futam", "bemutató", "visszatekintés", "bemutató tervezés"],
+    "correct": "bemutató tervezés"
   },
   {
     "question": "Melyik állítás igaz a napi Scrum-ra?",
     "answers": [
-      "A napi Scrum-ot a Scrum mester vezeti.",
-      "A napi Scrum során a csapattagok beszámolnak a Scrum mesternek a haladásukról.",
       "A napi Scrum során az a cél, hogy felszámoljuk a csapatot érintő akadályokat.",
-      "A napi Scrum maximum 15 percet tarthat."
+      "A napi Scrum-megbeszélés célja, hogy a maximum 1 óra hosszúra korlátozott megbeszélés során a Scrum Master megismerje, hogy ki mennyit haladt a projekttel az előző megbeszélés óta.",
+      "A napi Scrum-megbeszélés célja, hogy a Scrum csapat tagjai összehangolják tevékenységüket. A megbeszélés ideje maximum 15 percre korlátozott.",
+      "A napi Scrum-megbeszélésen bárki részt vehet és beszélhet a Scrum Master-rel jelentkezéses alapon."
     ],
-    "correct": "A napi Scrum maximum 15 percet tarthat."
+    "correct": "A napi Scrum-megbeszélés célja, hogy a Scrum csapat tagjai összehangolják tevékenységüket. A megbeszélés ideje maximum 15 percre korlátozott."
   },
   {
-    "question": "A három Scrum termék a következő:",
+    "question": "Melyik állítás igaz a Scrum master-re?",
     "answers": [
-      "termék kívánságlista, futam feladatlista, Scrum tábla",
-      "termékvízió, termék kívánságlista, felhasználói történet",
-      "termék kívánságlista, Scrum tábla, haladási diagram",
-      "termék kívánságlista, futam feladatlista, inkrementum"
+      "A Scrum mester nem felel azért, hogy külső hatásoktól védje a Scrum csapat munkáját.",
+      "A Scrum mester vezeti a napi Scrumot.",
+      "A Scrum master a Scrum csapat menedzsere.",
+      "A Scrum master a folyamatokért felel."
     ],
-    "correct": "termék kívánságlista, futam feladatlista, inkrementum"
+    "correct": "A Scrum master a folyamatokért felel."
   },
   {
-    "question": "A Test-driven development (TDD) egy szoftverfejlesztési módszertan, mely szerint …",
-    "answers": [
-      "a teszteket a tényleges programkód implementálása előtt kell elkészíteni.",
-      "a teszteket a tényleges programkód implementálása után kell elkészíteni minden egységre.",
-      "a tesztelő kolléga jóváhagyása után lehet új programkódot implementálni.",
-      "a tesztjegyzőkönyvet egy nappal az új programkód implementálása előtt kell a dokumentációhoz rendelni."
-    ],
-    "correct": "a teszteket a tényleges programkód implementálása előtt kell elkészíteni."
+    "question": "Melyik lineáris szoftverfejlesztési modell az alábbiak közül?",
+    "answers": ["Kanban", "Scrum", "Spiral (Spirális)", "Waterfall (Vízesés)"],
+    "correct": "Waterfall (Vízesés)"
   },
   {
-    "question": "Mik a centralizált verziókövető rendszerek (Például: SVN, Perforce, CVS) hátrányai?",
+    "question": "Mi az előadáson elmondott planning poker?",
     "answers": [
-      "A szerver kitüntetett szerepe. (Meghibásodás esetén használhatatlanná válik a rendszer a szerver javításáig.), Továbbá a verziókezeléshez hálózati kapcsolat szükséges.",
-      "Fájl alapú műveletvégzés (1 verzió 1 fájl változásai)",
-      "Lokális tároló",
-      "Konkurenciakezelés kizárólagos zárak által történik."
+      "projektmenedzsment becslési módszere",
+      "szerencsejáték",
+      "szoftver tervezésének becslési módszere",
+      "kártyajáték"
     ],
-    "correct": "A szerver kitüntetett szerepe. (Meghibásodás esetén használhatatlanná válik a rendszer a szerver javításáig.), Továbbá a verziókezeléshez hálózati kapcsolat szükséges."
-  },
-  {
-    "question": "Melyik állítás nem igaz az elosztott verziókövető rendszerekre (Például: Git, Mercurial)?",
-    "answers": [
-      "Decentralizált, elosztott hálózati modellt használnak, ahol a konkurenciakezelés jellemzően a beküldés utáni egyesítéssel történik.",
-      "Minden kliens rendelkezik a teljes tárolóval és verziótörténettel. A revíziókezelő eszköz műveletei lokálisan, a kliens tárolóján történnek.",
-      "A kommunikáció peer-to-peer elven történik, de kitüntetett szerverek felállítására is van lehetőség.",
-      "Fájlhalmaz alapú műveletvégzés jellemző rá, ahol a konkurenciakezelés jellemzően a beküldés előtti egyesítéssel történik."
-    ],
-    "correct": "Decentralizált, elosztott hálózati modellt használnak, ahol a konkurenciakezelés jellemzően a beküldés utáni egyesítéssel történik."
-  },
-  {
-    "question": "Igaz-e, hogy Git merge esetén nem lehet konfliktus?",
-    "answers": [
-      "Igaz, mivel csak rebase esetén alakulhat ki konfliktus.",
-      "Hamis, mivel minden merge esetén van konfliktus a kollégák között.",
-      "Igaz, mivel minden merge egyben egy újabb commit is.",
-      "Hamis, mivel előfordulhat, hogy a git nem tudja megoldani a változások automatikus integrálását. (Például: Két különböző commit egy fájl ugyanazon sorára vonatkozóan tárol módosítást.)"
-    ],
-    "correct": "Hamis, mivel előfordulhat, hogy a git nem tudja megoldani a változások automatikus integrálását. (Például: Két különböző commit egy fájl ugyanazon sorára vonatkozóan tárol módosítást.)"
-  },
-  {
-    "question": "Az alábbiak közül, melyek az ismertebb build eszközök? ",
-    "answers": [
-      "Ant, Maven, Gradle",
-      "Ant, Git, Subversion (SVN)",
-      "Ant, Maven, Subversion (SVN)",
-      "Maven, Gradle, Git"
-    ],
-    "correct": "Ant, Maven, Gradle"
-  },
-  {
-    "question": "Mit mond ki a DRY elv?",
-    "answers": [
-      "Ne implementáljunk előre olyan kódot, ami „majd a jövőben kelleni fog”, mert szinte biztos, hogy sose lesz rá szükségünk.",
-      "A tudás minden darabkájának egyetlen, egyértelmű és megbízható reprezentációval kell rendelkeznie egy rendszeren belül.",
-      "A tökéletességet nem akkor lehet a legjobban megközelíteni, ha egy rendszerhez nem tudunk már semmit hozzáadni, hanem akkor, ha nem tudunk mit elvenni belőle.",
-      "Az biztosan elmondható, hogy javulni fog a kódbázisunk minősége, ha mindig úgy hagyjuk ott az aktuális kódunkat, hogy az egy kicsit „jobb”, egy kicsit tisztább annál, mint ahogy megtaláltuk."
-    ],
-    "correct": "A tudás minden darabkájának egyetlen, egyértelmű és megbízható reprezentációval kell rendelkeznie egy rendszeren belül."
-  },
-  {
-    "question": " Melyik objektumorientált elvet szegtük meg az alábbi kódrészletben? public enum Status { UNRESOLVED, IN_PROGRESS, RESOLVED, CLOSED } public class Task { protected Status status; public void close() { this.status = Status.CLOSED; } } public class ProjectTask extends Task { } @Override public void close() { if(status == Status.IN_PROGRESS) {  throw new RuntimeException('You cannot close …'); } super.close(); }",
-    "answers": [
-      "Liskov Substitution Principle (Liskov-féle helyettesítési elv)",
-      "Dependency Inversion Principle (Függőség megfordítása elv)",
-      "KISS",
-      "DRY"
-    ],
-    "correct": "Liskov Substitution Principle (Liskov-féle helyettesítési elv)"
-  },
-  {
-    "question": "Melyik nem SOLID alapelv az alábbiak közül?",
-    "answers": [
-      "Liskov Substitution Principle (Liskov-féle helyettesítési elv)",
-      "Open/Closed Principle (Nyílt/Zárt elv)",
-      "Single Responsibility Principle (Egy felelősség elve)",
-      "Separation of Concerns Principle (A vonatkozások szétválasztásának elve)"
-    ],
-    "correct": "Separation of Concerns Principle (A vonatkozások szétválasztásának elve)"
-  },
-  {
-    "question": "Melyik tervezési minta nyújt megoldást arra a problémára, ha több objektumot szeretnénk értesíteni, amikor egy másik objektumnak megváltozik az állapota.",
-    "answers": [
-      "Singleton (Egyke)",
-      "Observer (Megfigyelő)",
-      "Adapter (Illesztő)",
-      "Factory (Gyártó)"
-    ],
-    "correct": "Observer (Megfigyelő)"
-  },
-  {
-    "question": "Melyik tervezési minta alkalmazható a hosszú paraméterlistájú konstruktorok elkerülésére?",
-    "answers": [
-      "Observer (Megfigyelő)",
-      "Factory (Gyártó)",
-      "Builder (Építő)",
-      "Command (Parancs)"
-    ],
-    "correct": "Builder (Építő)"
-  },
-  {
-    "question": "Melyik tervezési minta megvalósításának része lehet az alábbi kódrészlet? public MyPattern withName(String name) { this.name = name; return this; } public MyPattern withNumber(int number) { this.number = number; return this; } ",
-    "answers": [
-      "Singleton (Egyke)",
-      "Builder (Építő)",
-      "Command (Parancs)",
-      "Adapter (Illesztő)"
-    ],
-    "correct": "Builder (Építő)"
-  },
-  {
-    "question": "Melyik tervezési mintát alkalmazhatjuk abban az esetben, ha konkrét osztály megadása nélkül szeretnénk kapcsolódó vagy egymástól függő objektumok családjának létrehozására felületet biztosítani?",
-    "answers": [
-      "Factory method (Gyártó függvény)",
-      "Adapter (Illesztő)",
-      "Builder (Építő)",
-      "Abstract Factory (Absztrakt gyár)"
-    ],
-    "correct": "Abstract Factory (Absztrakt gyár)"
-  },
-  {
-    "question": "Melyik tervezési mintát alkalmazhatjuk abban az esetben, ha egy adott osztály példányosítását szeretnénk a hozzátartozó alosztályokra átruházni?",
-    "answers": [
-      "Factory method (Gyártó függvény)",
-      "Builder (Építő)",
-      "Command (Parancs)",
-      "Observer (Megfigyelő)"
-    ],
-    "correct": "Factory method (Gyártó függvény)"
+    "correct": "projektmenedzsment becslési módszere"
   }
 ]

@@ -534,11 +534,9 @@
     let autoAdvanceTimer = null;
     let questions = [];
 
-    // Load questions.json and convert to internal format
     async function loadQuestions() {
         const response = await fetch('questions.json');
         const data = await response.json();
-        // Convert JSON format to internal format
         questions = data.map(q => {
             const options = q.answers || [];
             let correctIdx = [];
@@ -560,7 +558,6 @@
         document.getElementById('total-q-count').innerText = questions.length;
     }
 
-    // Sötét mód kezelése
     function toggleTheme() {
         document.body.classList.toggle('dark-mode');
         const btn = document.getElementById('theme-toggle');
@@ -573,7 +570,6 @@
         }
     }
 
-    // Fisher-Yates keverés
     function shuffleArray(array) {
         let currentIndex = array.length, randomIndex;
         while (currentIndex != 0) {
